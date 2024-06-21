@@ -260,6 +260,8 @@ import ICONMenu from "@/assets/icons/menu.svg";
 import amplitudeConfigs from "@/helpers/amplitudeConfigs";
 import { MenuItem } from "@headlessui/vue";
 import { useRoute } from "vue-router";
+import AppDropdownMenu from "./AppDropdownMenu.vue";
+import theMobileMenu from "./TheMobileMenu.vue";
 
 defineProps({
   bgVisible: {
