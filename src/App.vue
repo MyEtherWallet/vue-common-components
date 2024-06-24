@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { TheHeader } from "./libs/main";
+
 </script>
 <template>
   <!-- <div>
@@ -10,24 +11,23 @@ import { TheHeader } from "./libs/main";
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div> -->
-  <TheHeader :bg-visible="true" />
+  <p className="text-3xl underline font-bold">
+    Hello world I will be udnerlined by tailwind
+  </p>
+  <!-- <TheHeader :bg-visible="true" /> -->
 </template>
 
 <style scoped>
 .staking {
-  background: linear-gradient(
-    44.56deg,
-    #4cc9ff 0%,
-    #9dd6c9 34.49%,
-    #ffe589 76.6%,
-    #ff0013 118.76%
-  );
-  background: linear-gradient(
-    90deg,
-    #e40c5b 0%,
-    #674cff 33%,
-    #1681ff 66%,
-    #05c0a5 100%
-  );
+  background: linear-gradient(44.56deg,
+      #4cc9ff 0%,
+      #9dd6c9 34.49%,
+      #ffe589 76.6%,
+      #ff0013 118.76%);
+  background: linear-gradient(90deg,
+      #e40c5b 0%,
+      #674cff 33%,
+      #1681ff 66%,
+      #05c0a5 100%);
 }
 </style>
