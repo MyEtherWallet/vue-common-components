@@ -3,6 +3,7 @@
 </template>
 
 <script setup lang="ts">
+import AppBtnIcon from "./AppBtnIcon.vue";
 import ICONClose from "@/assets/icons/close.svg";
 
 const emit = defineEmits<{

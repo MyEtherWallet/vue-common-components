@@ -5,13 +5,19 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/vue-component-npm-example.umd.cjs",
-  "module": "./dist/vue-component-npm-example.js",
-  "types": "./dist/main.d.ts",
+  "main": "./dist/vue-common-components.umd.cjs",
+  "module": "./dist/vue-common-components.js",
+  "types": "./dist/libs/main.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/vue-component-npm-example.js",
-      "require": "./dist/vue-component-npm-example.umd.js"
+      "import": {
+        "types": "./dist/libs/main.d.ts",
+        "default": "./dist/vue-common-components.js"
+      },
+      "require": {
+        "types": "./dist/libs/main.d.ts",
+        "default": "./dist/vue-common-components.umd.js"
+      }
     },
     "./dist/style.css": "./dist/style.css"
   },
@@ -20,12 +26,11 @@
     "build": "vite build && vue-tsc --emitDeclarationOnly",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "@headlessui/vue": "^1.7.22",
-    "vue": "^3.4.29",
-    "vue-router": "^4.4.0"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "vue": "^3.4.29",
+    "vue-router": "^4.4.0",
+    "@headlessui/vue": "^1.7.22",
     "@types/node": "^20.14.7",
     "@vitejs/plugin-vue": "^5.0.5",
     "autoprefixer": "^10.4.19",

@@ -17,9 +17,9 @@
           class="flex flex-row items-center justify-between px-4 my-auto h-full"
         >
           <!-- Logo -->
-          <NuxtLink to="/" class="py-2" @click="trackLogo">
+          <link-component to="/" class="py-2" @click="trackLogo">
             <img :src="IMGMEWlogo" contain alt="MyEtherWallet Logo" />
-          </NuxtLink>
+          </link-component>
           <!-- Menu items -->
           <div class="hidden md-header:flex flex-row gap-x-5 xl:gap-x-8">
             <a
@@ -40,11 +40,11 @@
               <template #items>
                 <div class="grid gap-6">
                   <MenuItem id="header-more-feat-staking" class="hoverOpacity">
-                    <NuxtLink
+                    <link-component
                       to="/staking"
                       class="text-base xl:text-lg"
                       @click="trackStaking"
-                      >Staking</NuxtLink
+                      >Staking</link-component
                     >
                   </MenuItem>
                   <MenuItem id="header-more-feat-nft" class="hoverOpacity">
@@ -92,7 +92,9 @@
                     >
                   </MenuItem>
                   <MenuItem id="header-resources-faq" class="hoverOpacity">
-                    <NuxtLink to="/faq" @click="trackFAQ">FAQ</NuxtLink>
+                    <link-component to="/faq" @click="trackFAQ"
+                      >FAQ</link-component
+                    >
                   </MenuItem>
                   <MenuItem
                     id="header-resources-customer-support"
@@ -245,27 +247,50 @@
     </header>
     <the-mobile-menu
       :is-open="isOpenMobileMenu"
+      :amplitude="$amplitude"
+      :link-component="linkComponent"
+      :user-consent="userConsent"
+      @update:consent="(val) => emit('update:consent', val)"
       @close-mobile-menu="isOpenMobileMenu = false"
     />
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
-import IMGMEWlogo from "@/assets/logo.svg";
+import IMGMEWlogo from "@/assets/images/logo.svg";
 import IMGWeblogo from "@/assets/images/products/mewweb-logo.svg";
 import IMGMobilelogo from "@/assets/images/products/mewwallet-logo.svg";
 import IMGEnkryptlogo from "@/assets/images/products/enkrypt-logo.png";
 import IMGEthvmlogo from "@/assets/images/products/ethvm-logo.svg";
 import ICONMenu from "@/assets/icons/menu.svg";
 import amplitudeConfigs from "@/helpers/amplitudeConfigs";
-import { MenuItem } from "@headlessui/vue";
-import { useRoute } from "vue-router";
 import AppDropdownMenu from "./AppDropdownMenu.vue";
-import theMobileMenu from "./TheMobileMenu.vue";
+import TheMobileMenu from "./TheMobileMenu.vue";
+import { MenuItem } from "@headlessui/vue";
+import { ref, PropType } from "vue";
+import { AmplitudePropType } from "@/libs/types";
+import { useRoute } from "vue-router";
+import { RouterLink } from "vue-router";
 
-defineProps({
+const emit = defineEmits<{
+  (e: "update:consent", newval: boolean): void;
+}>();
+
+const props = defineProps({
   bgVisible: {
+    required: true,
     default: true,
+    type: Boolean,
+  },
+  amplitude: {
+    required: true,
+    type: Object as PropType<AmplitudePropType>,
+  },
+  linkComponent: {
+    type: Object as PropType<typeof RouterLink>,
+    required: true,
+  },
+  userConsent: {
+    required: true,
     type: Boolean,
   },
 });
@@ -277,9 +302,7 @@ interface itemType {
   item: string;
 }
 
-const $amplitude = {
-  track: (abc: any, def?: any) => {},
-};
+const $amplitude = props.amplitude;
 const route = useRoute();
 
 const trackLogo = () => {
@@ -338,3 +361,6 @@ const openMobileMenu = () => {
   $amplitude.track(amplitudeConfigs.openMobileMenu);
 };
 </script>
+<style scoped>
+@import "../../style.css";
+</style>

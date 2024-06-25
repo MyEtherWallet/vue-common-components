@@ -9,11 +9,11 @@
         <AppBtnIconClose @close="closeMobileMenu" />
       </div>
       <div class="grid grid-cols-1 gap-6 px-6">
-        <NuxtLink
+        <link-component
           to="/"
           class="text-lg font-medium leading-6 hoverOpacity p-2"
           @click="trackHome"
-          >Home</NuxtLink
+          >Home</link-component
         >
         <a
           href="https://ccswap.myetherwallet.com/"
@@ -46,11 +46,11 @@
             v-show="isFeaturesOpen"
             class="grid grid-cols-1 gap-4 px-3 pt-6 pb-2 transition-all transition-[height] duration-500 ease-out"
           >
-            <NuxtLink
+            <link-component
               to="/staking"
               class="hoverOpacity cursor-pointer p-2"
               @click="trackStaking"
-              >Staking</NuxtLink
+              >Staking</link-component
             >
             <a
               href="https://www.myetherwallet.com/how-it-works#nft"
@@ -98,11 +98,11 @@
               @click="trackHelpCenter"
               >Help Center</a
             >
-            <NuxtLink
+            <link-component
               to="/faq"
               class="hoverOpacity cursor-pointer p-2"
               @click="trackFAQ"
-              >FAQ</NuxtLink
+              >FAQ</link-component
             >
             <a
               href="mailto:support@myetherwallet.com"
@@ -229,7 +229,11 @@
           </a>
         </div>
         <!-- Consent Button -->
-        <AppSwitchDataTracking id="consent-switch-mobile-menu" />
+        <AppSwitchDataTracking
+          id="consent-switch-mobile-menu"
+          :user-consent="userConsent"
+          @update:consent="(val) => emit('update:consent', val)"
+        />
       </div>
     </div>
   </Transition>
@@ -237,14 +241,17 @@
 
 <script setup lang="ts">
 import amplitudeConfigs from "@/helpers/amplitudeConfigs";
-import { ref } from "vue";
+import { PropType, ref } from "vue";
 import ICONChevronDown from "@/assets/icons/chevron-down.svg";
 import IMGWeblogo from "@/assets/images/products/mewweb-logo.svg";
 import IMGMobilelogo from "@/assets/images/products/mewwallet-logo.svg";
 import IMGEnkryptlogo from "@/assets/images/products/enkrypt-logo.png";
 import IMGEthvmlogo from "@/assets/images/products/ethvm-logo.svg";
+import AppSwitchDataTracking from "./AppSwitchDataTracking.vue";
 import AppBtnIconClose from "./AppBtnIconClose.vue";
-import { useRoute } from "vue-router";
+import { RouterLink, useRoute } from "vue-router";
+import { AmplitudePropType } from "../types";
+
 const route = useRoute();
 interface itemType {
   item: string;
@@ -254,18 +261,33 @@ const isFeaturesOpen = ref<boolean>(false);
 const isResourcesOpen = ref<boolean>(false);
 const isProductsOpen = ref<boolean>(false);
 
-defineProps({
+const props = defineProps({
   isOpen: {
     type: Boolean,
     default: false,
   },
+  amplitude: {
+    default: () => {
+      track: () => {};
+    },
+    type: Object as PropType<AmplitudePropType>,
+  },
+  linkComponent: {
+    default: () => {},
+    type: Object as PropType<typeof RouterLink>,
+  },
+  userConsent: {
+    default: false,
+    required: true,
+    type: Boolean,
+  },
 });
+const $amplitude = props.amplitude;
+const emit = defineEmits<{
+  (e: "update:consent", newval: boolean): void;
+  (e: "closeMobileMenu"): void;
+}>();
 
-const $amplitude = {
-  track: (abc: any, def?: any) => {},
-};
-
-const emit = defineEmits(["closeMobileMenu"]);
 const trackHome = () => {
   $amplitude.track(amplitudeConfigs.headerHome, { route: route.fullPath });
   emit("closeMobileMenu");

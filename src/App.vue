@@ -1,33 +1,38 @@
-<script setup lang="ts">
-import { TheHeader } from "./libs/main";
-
-</script>
 <template>
-  <!-- <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div> -->
-  <p className="text-3xl underline font-bold">
-    Hello world I will be udnerlined by tailwind
-  </p>
-  <!-- <TheHeader :bg-visible="true" /> -->
+  <TheHeader
+    :bg-visible="false"
+    :link-component="RouterLink"
+    :user-consent="userConsent"
+    @update:consent="onUserConsentChange"
+    :amplitude="{ track: () => {} }"
+  />
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { TheHeader } from "./libs/main";
+import { RouterLink } from "vue-router";
+const userConsent = ref(false);
+const onUserConsentChange = (newval: boolean) => {
+  userConsent.value = newval;
+};
+</script>
 
 <style scoped>
 .staking {
-  background: linear-gradient(44.56deg,
-      #4cc9ff 0%,
-      #9dd6c9 34.49%,
-      #ffe589 76.6%,
-      #ff0013 118.76%);
-  background: linear-gradient(90deg,
-      #e40c5b 0%,
-      #674cff 33%,
-      #1681ff 66%,
-      #05c0a5 100%);
+  background: linear-gradient(
+    44.56deg,
+    #4cc9ff 0%,
+    #9dd6c9 34.49%,
+    #ffe589 76.6%,
+    #ff0013 118.76%
+  );
+  background: linear-gradient(
+    90deg,
+    #e40c5b 0%,
+    #674cff 33%,
+    #1681ff 66%,
+    #05c0a5 100%
+  );
 }
 </style>
