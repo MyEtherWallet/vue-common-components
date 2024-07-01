@@ -1,7 +1,7 @@
 <template>
   <div>
-    <MewHeader :bg-visible="true" :link-component="RouterLink" :user-consent="userConsent"
-      @update:consent="onUserConsentChange" :amplitude="{ track }" />
+    <MewHeader :curr-project="PROJECTS.PORTFOLIO" :bg-visible="true" :link-component="RouterLink"
+      :user-consent="userConsent" @update:consent="onUserConsentChange" :amplitude="{ track }" />
     <p class="mx-auto max-w-[1400px] py-[140px] bg-info px-5">
       Etiam tempor orci eu lobortis elementum nibh tellus molestie nunc. Feugiat scelerisque varius morbi enim nunc
       faucibus. Nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum. Elementum sagittis vitae

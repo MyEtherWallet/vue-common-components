@@ -1,7 +1,11 @@
 <template>
     <div>
-        <a v-if="!isNative" :href="routeURL" @click="linkClick">{{ props.linkText }}</a>
-        <link-component v-else :to="routeURL" @click="linkClick">{{ linkText }}</link-component>
+        <a v-if="!isNative" :href="routeURL" @click="linkClick">{{ props.linkText }}
+            <slot />
+        </a>
+        <link-component v-else :to="routeURL" @click="linkClick">{{ linkText }}
+            <slot />
+        </link-component>
     </div>
 
 </template>
