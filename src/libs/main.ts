@@ -1,2 +1,3 @@
-import TheHeader from "./layouts/TheHeader.vue";
-export { TheHeader };
+import MewHeader from "./layouts/MewHeader.vue";
+import MewFooter from "./layouts/MewFooter.vue";
+export { MewHeader, MewFooter };
