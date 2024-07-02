@@ -133,9 +133,9 @@
         </div>
       </div>
     </header>
-    <mew-mobile-menu :is-open="isOpenMobileMenu" :amplitude="$amplitude" :link-component="linkComponent"
-      :user-consent="userConsent" @update:consent="(val) => emit('update:consent', val)"
-      @close-mobile-menu="isOpenMobileMenu = false" />
+    <mew-mobile-menu :is-open="isOpenMobileMenu" :amplitude="$amplitude" :link-component="props.linkComponent"
+      :curr-project="props.currProject" :user-consent="props.userConsent"
+      @update:consent="(val) => emit('update:consent', val)" @close-mobile-menu="isOpenMobileMenu = false" />
   </div>
 </template>
 <script setup lang="ts">
@@ -154,6 +154,7 @@ import { AmplitudePropType } from "@/libs/types";
 import { useRoute } from "vue-router";
 import { RouterLink } from "vue-router";
 import { PROJECT_LINKS, PROJECTS } from "@/helpers/links";
+
 const emit = defineEmits<{
   (e: "update:consent", newval: boolean): void;
 }>();
