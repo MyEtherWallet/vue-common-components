@@ -17,9 +17,11 @@
       "require": {
         "types": "./dist/libs/main.d.ts",
         "default": "./dist/vue-common-components.umd.js"
-      }
+      },
+      "styles": "./dist/style.css"
+
     },
-    "./dist/style.css": "./dist/style.css"
+    "./css": "./dist/style.css"
   },
   "scripts": {
     "dev": "vite",

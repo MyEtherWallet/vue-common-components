@@ -1,9 +1,5 @@
 <template>
-  <button
-    type="button"
-    :class="['rounded-full hoverBGGrey', height, width]"
-    @click="btnClick"
-  >
+  <button type="button" :class="['rounded-full hoverBGGrey', height, width]" @click="btnClick">
     <img :src="icon" contain alt="" class="m-auto" />
   </button>
 </template>
@@ -34,3 +30,6 @@ const btnClick = (payload: MouseEvent) => {
   emit("click", payload);
 };
 </script>
+<style>
+@import "../../style.css";
+</style>

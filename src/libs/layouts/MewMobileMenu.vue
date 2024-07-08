@@ -2,7 +2,7 @@
   <Transition name="expand-app-mobile-menu">
     <div v-if="isOpen" class="bg-white h-screen w-screen z-40 fixed overflow-y-auto" role="dialog">
       <div class="flex items-center justify-end pt-4 pr-4 pb-3">
-        <AppBtnIconClose @close="closeMobileMenu" />
+        <MewAppBtnIconClose @close="closeMobileMenu" />
       </div>
       <div class="grid grid-cols-1 gap-6 px-6">
         <MewLink :link-url="PROJECT_LINKS[PROJECTS.LANDING].HOME" :curr-project="props.currProject"
@@ -137,7 +137,7 @@ import IMGMobilelogo from "@/assets/images/products/mewwallet-logo.svg";
 import IMGEnkryptlogo from "@/assets/images/products/enkrypt-logo.png";
 import IMGEthvmlogo from "@/assets/images/products/ethvm-logo.svg";
 import MewSwitchDataTracking from "./MewSwitchDataTracking.vue";
-import AppBtnIconClose from "./AppBtnIconClose.vue";
+import MewAppBtnIconClose from "./MewAppBtnIconClose.vue";
 import MewLink from "./MewLink.vue";
 import { PROJECT_LINKS, PROJECTS } from "@/helpers/links";
 import { RouterLink, useRoute } from "vue-router";
@@ -250,22 +250,6 @@ const closeMobileMenu = () => {
   $amplitude.track(amplitudeConfigs.closeMobileMenu, { route: route.fullPath });
 };
 </script>
-<style scoped>
-.expand-app-mobile-menu-enter-from {
-  height: 0;
-}
-
-.expand-app-mobile-menu-leave-active {
-  transition: height 200ms ease-in-out;
-  overflow: hidden;
-}
-
-.expand-app-mobile-menu-enter-to {
-  transition: height 200ms ease-out;
-  overflow: hidden;
-}
-
-.expand-app-mobile-menu-leave-to {
-  height: 0;
-}
+<style>
+@import "../../style.css";
 </style>

@@ -115,19 +115,3 @@ const track = () => {
 }
 
 </script>
-
-
-<style scoped>
-.staking {
-  background: linear-gradient(44.56deg,
-      #4cc9ff 0%,
-      #9dd6c9 34.49%,
-      #ffe589 76.6%,
-      #ff0013 118.76%);
-  background: linear-gradient(90deg,
-      #e40c5b 0%,
-      #674cff 33%,
-      #1681ff 66%,
-      #05c0a5 100%);
-}
-</style>

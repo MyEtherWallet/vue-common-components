@@ -22,7 +22,7 @@
               :link-component="props.linkComponent" link-text="Swap Tokens" @mewlink:click="trackSwap"
               class="font-medium text-base xl:text-lg hoverOpacity" />
             <!-- More Features Dropdown -->
-            <AppDropdownMenu text="More Features">
+            <MewAppDropdownMenu text="More Features">
               <template #items>
                 <div class="grid gap-6">
                   <MewLink :link-url="PROJECT_LINKS[PROJECTS.LANDING].STAKING" :curr-project="props.currProject"
@@ -36,9 +36,9 @@
                     @mewlink:click="trackDapps" class="text-base xl:text-lg hoverOpacity" />
                 </div>
               </template>
-            </AppDropdownMenu>
+            </MewAppDropdownMenu>
             <!-- Resources Dropdown -->
-            <AppDropdownMenu text="Resources">
+            <MewAppDropdownMenu text="Resources">
               <template #items>
                 <div class="grid gap-6">
                   <a href="https://www.myetherwallet.com/blog" target="_blank" class="text-base xl:text-lg hoverOpacity"
@@ -52,9 +52,9 @@
                     class="text-base xl:text-lg hoverOpacity" @click="trackCustomerSupport">Customer Support</a>
                 </div>
               </template>
-            </AppDropdownMenu>
+            </MewAppDropdownMenu>
             <!-- Products Dropdown -->
-            <AppDropdownMenu text="Products">
+            <MewAppDropdownMenu text="Products">
               <template #items>
                 <div
                   class="grid grid-cols-1 3xl:grid-cols-2 gap-y-1 lg:gap-y-2 min-w-[280px] lg:min-w-[300px] 3xl:min-w-[568px] -mx-4 lg:mx-0">
@@ -119,7 +119,7 @@
                   </div>
                 </div>
               </template>
-            </AppDropdownMenu>
+            </MewAppDropdownMenu>
           </div>
           <!-- Access Button -->
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].WALLET_ACCESS" :curr-project="props.currProject"
@@ -146,7 +146,7 @@ import IMGEnkryptlogo from "@/assets/images/products/enkrypt-logo.png";
 import IMGEthvmlogo from "@/assets/images/products/ethvm-logo.svg";
 import ICONMenu from "@/assets/icons/menu.svg";
 import amplitudeConfigs from "@/helpers/amplitudeConfigs";
-import AppDropdownMenu from "./AppDropdownMenu.vue";
+import MewAppDropdownMenu from "./MewAppDropdownMenu.vue";
 import MewMobileMenu from "./MewMobileMenu.vue";
 import MewLink from "./MewLink.vue";
 import { ref, PropType } from "vue";
@@ -249,6 +249,6 @@ const openMobileMenu = () => {
   $amplitude.track(amplitudeConfigs.openMobileMenu, { route: route.fullPath });
 };
 </script>
-<style scoped>
+<style>
 @import "../../style.css";
 </style>

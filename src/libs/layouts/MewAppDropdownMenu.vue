@@ -35,3 +35,6 @@ defineProps({
 
 const open = ref(false);
 </script>
+<style>
+@import "../../style.css";
+</style>

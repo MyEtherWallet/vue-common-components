@@ -1,9 +1,9 @@
 <template>
-  <AppBtnIcon :icon="ICONClose" @click="closeClick" />
+  <MewAppBtnIcon :icon="ICONClose" @click="closeClick" />
 </template>
 
 <script setup lang="ts">
-import AppBtnIcon from "./AppBtnIcon.vue";
+import MewAppBtnIcon from "./MewAppBtnIcon.vue";
 import ICONClose from "@/assets/icons/close.svg";
 
 const emit = defineEmits<{
