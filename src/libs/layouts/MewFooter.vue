@@ -3,6 +3,11 @@
     <div class="grid grid-cols-1 gap-[42px]">
       <div class="grid grid-cols-1 md:grid-cols-4 justify-items-start content-start gap-[42px]">
         <div class="grid grid-cols-1 gap-2.5 content-start">
+          <!-- About Us 
+              Careers
+              How it works
+              Team
+              -->
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].ABOUT" :class="linkClass"
             :curr-project="props.currProject" :link-component="props.linkComponent" link-text="About us"
             @mewlink:click="trackAboutUs" />
@@ -15,20 +20,29 @@
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].TEAM" :class="linkClass"
             :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Team"
             @mewlink:click="trackTeam" />
-          <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].ADVERTISE_WITH_US" :class="linkClass"
-            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Advertise With Us"
-            @mewlink:click="trackAdvertiseWithUs" />
+          <!--  Privacy
+                Terms
+                Security Policy
+                Bug Bounty
+              -->
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].PRIVACY_POLICY" :class="['mt-8', linkClass]"
             :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Privacy"
             @mewlink:click="trackPrivacy" />
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].TERMS_OF_SERVICE" :class="linkClass"
             :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Terms"
             @mewlink:click="trackTerms" />
-          <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].BUG_BOUNTY" :class="linkClass"
-            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Bug Bounty"
-            @mewlink:click="trackBugBounty" />
+          <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].SECURITY_POLICY" :class="linkClass"
+            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Security Policy"
+            @mewlink:click="trackSecurityPolicy" />
+          <a href="https://hackenproof.com/programs/myetherwallet" target="_blank" :class="linkClass"
+            @mewlink:click="trackBugBounty">Bug Bounty </a>
         </div>
         <div class="grid grid-cols-1 gap-2.5 content-start">
+          <!--  Mobile App
+                Portfoio Manager
+                Enkrypt
+                ethVM
+              -->
           <a href="https://www.mewwallet.com/" target="_blank" :class="linkClass" @click="trackMobile">MEW Mobile
             App</a>
           <a href="https://www.enkrypt.com/" target="_blank" :class="linkClass" @click="trackEnkrypt">Enkrypt</a>
@@ -36,23 +50,11 @@
             :curr-project="props.currProject" :link-component="props.linkComponent" link-text="MEW Portfolio Manager"
             @mewlink:click="trackPortfolio" />
           <a href="https://www.ethvm.com/" target="_blank" :class="linkClass" @click="trackEthvm">ethVM</a>
-          <a href="https://www.myetherwallet.com/blog/" :class="['mt-8', linkClass]" target="_blank"
-            @click="trackMewtopia">Blog</a>
-          <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].PRESSKIT" :class="linkClass"
-            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Press Kit"
-            @mewlink:click="trackPressKit" />
-        </div>
-        <div class="grid grid-cols-1 gap-2.5 content-start">
-          <a href="https://help.myetherwallet.com/en/" target="_blank" :class="linkClass" @click="trackHelpCenter">Help
-            Center</a>
-          <MewLink :link-url="PROJECT_LINKS[PROJECTS.LANDING].FAQ" :class="linkClass" :curr-project="props.currProject"
-            :link-component="props.linkComponent" link-text="FAQ" @mewlink:click="trackFAQ" />
-          <a href="mailto:support@myetherwallet.com" rel="noopener noreferrer" target="_blank" :class="linkClass"
-            @click="trackCustomerSupport">Customer Support</a>
-          <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].SECURITY_POLICY" :class="linkClass"
-            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Security Policy"
-            @mewlink:click="trackSecurityPolicy" />
-          <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].VERIFY_MESSAGE" :class="linkClass"
+          <!--  Verify Message
+                Convert Units
+                Offline Helper
+              -->
+          <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].VERIFY_MESSAGE" :class="['mt-8', linkClass]"
             :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Verify Message"
             @mewlink:click="trackVerifyMessage" />
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].CONVERT_UNITS" :class="linkClass"
@@ -61,6 +63,30 @@
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].SEND_OFFLINE_HELPER" :class="linkClass"
             :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Send Offline Helper"
             @mewlink:click="trackSendOfflineHelper" />
+        </div>
+        <div class="grid grid-cols-1 gap-2.5 content-start">
+          <!--  Help Center
+                Customer support
+                FAQ
+                Blog
+              -->
+          <a href="https://help.myetherwallet.com/en/" target="_blank" :class="linkClass" @click="trackHelpCenter">Help
+            Center</a>
+          <a href="mailto:support@myetherwallet.com" rel="noopener noreferrer" target="_blank" :class="linkClass"
+            @click="trackCustomerSupport">Customer Support</a>
+          <MewLink :link-url="PROJECT_LINKS[PROJECTS.LANDING].FAQ" :class="linkClass" :curr-project="props.currProject"
+            :link-component="props.linkComponent" link-text="FAQ" @mewlink:click="trackFAQ" />
+          <a href="https://www.myetherwallet.com/blog/" :class="linkClass" target="_blank"
+            @click="trackMewtopia">Blog</a>
+          <!--  Press Kit
+                Advertise with Us
+              -->
+          <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].PRESSKIT" :class="['mt-8', linkClass]"
+            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Press Kit"
+            @mewlink:click="trackPressKit" />
+          <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].ADVERTISE_WITH_US" :class="linkClass"
+            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Advertise With Us"
+            @mewlink:click="trackAdvertiseWithUs" />
         </div>
         <!--Donation Block-->
         <div class="grid grid-cols-1 gap-2.5 content-start">

@@ -247,7 +247,7 @@ const productsToggle = () => {
 
 const closeMobileMenu = () => {
   emit("closeMobileMenu");
-  $amplitude.track(amplitudeConfigs.closeMobileMenu);
+  $amplitude.track(amplitudeConfigs.closeMobileMenu, { route: route.fullPath });
 };
 </script>
 <style scoped>

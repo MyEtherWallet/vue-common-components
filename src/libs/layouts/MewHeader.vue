@@ -246,7 +246,7 @@ const isOpenMobileMenu = ref(false);
 
 const openMobileMenu = () => {
   isOpenMobileMenu.value = true;
-  $amplitude.track(amplitudeConfigs.openMobileMenu);
+  $amplitude.track(amplitudeConfigs.openMobileMenu, { route: route.fullPath });
 };
 </script>
 <style scoped>

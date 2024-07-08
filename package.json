@@ -1,6 +1,6 @@
 {
   "name": "@myetherwallet/vue-common-components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "files": [
     "dist"
@@ -26,10 +26,7 @@
     "build": "vite build && vue-tsc --emitDeclarationOnly",
     "preview": "vite preview"
   },
-  "dependencies": {},
   "devDependencies": {
-    "vue": "^3.4.29",
-    "vue-router": "^4.4.0",
     "@headlessui/vue": "^1.7.22",
     "@types/node": "^20.14.7",
     "@vitejs/plugin-vue": "^5.0.5",
@@ -38,6 +35,8 @@
     "tailwindcss": "^3.4.4",
     "typescript": "^5.2.2",
     "vite": "^5.3.1",
-    "vue-tsc": "^2.0.21"
+    "vue": "^3.4.29",
+    "vue-router": "^4.4.0",
+    "vue-tsc": "^2.0.24"
   }
 }
