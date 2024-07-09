@@ -1,14 +1,14 @@
 import { createApp } from "vue";
 import "./style.css";
 import App from "./App.vue";
-import { TheHeader } from "./libs/main";
+import { MewHeader, MewFooter } from "./libs/main";
 import { createMemoryHistory, createRouter } from "vue-router";
 
-const routes = [{ path: "/", component: TheHeader }];
+const routes = [{ path: "/", component: MewHeader }];
 
 const router = createRouter({
   history: createMemoryHistory(),
   routes,
 });
 createApp(App).use(router).mount("#app");
-export { TheHeader };
+export { MewHeader, MewFooter };

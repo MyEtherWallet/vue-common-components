@@ -2,3 +2,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/** Hover Transition */
+.hoverOpacity {
+    @apply  hover:opacity-50 transition-opacity duration-300 ease-in-out;
+}
+.hoverBGGrey {
+    @apply hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-300;
+}
+.hoverOpacityHasBG {
+    @apply  hover:opacity-75 transition-opacity duration-300 ease-in-out;
+}
