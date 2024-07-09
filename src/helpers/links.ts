@@ -1,7 +1,8 @@
 export enum PROJECTS {
     PORTFOLIO = 'MEW_PORTFOLIO',
     LANDING = 'MEW_LANDING',
-    TOKENS = 'MEW_TOKENS_PAGE'
+    TOKENS = 'MEW_TOKENS_PAGE',
+    BLOG = 'MEW_BLOG'
 }
 export const PROJECT_LINKS: Record<PROJECTS, Record<string, string>> = {
     [PROJECTS.PORTFOLIO]: {
@@ -28,6 +29,7 @@ export const PROJECT_LINKS: Record<PROJECTS, Record<string, string>> = {
         STAKING: "staking",
         HOME: ""
     },
-    [PROJECTS.TOKENS]: {}
+    [PROJECTS.TOKENS]: {},
+    [PROJECTS.BLOG]: {}
 }
 
