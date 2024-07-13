@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <header v-if="!isOpenMobileMenu" class="fixed w-full z-10 h-[72px] md-header:h-[104px] md-header:py-5">
+  <div id="myetherwallet-core-header">
+    <header v-if="!isOpenMobileMenu"
+      class="fixed w-full z-10 h-[72px] md-header:h-[104px] md-header:py-5 inset-x-0 top-0">
       <div :class="[
       'max-w-[1392px] h-full md-header:mx-6 2xl:mx-auto md-header:rounded-[52px] transition-all duration-500',
       {
@@ -134,7 +135,7 @@
       </div>
     </header>
     <mew-mobile-menu :is-open="isOpenMobileMenu" :amplitude="$amplitude" :link-component="props.linkComponent"
-      :curr-project="props.currProject" :user-consent="props.userConsent"
+      :curr-project="props.currProject" :user-consent="props.userConsent" :curr-url="ampUrl"
       @update:consent="(val) => emit('update:consent', val)" @close-mobile-menu="isOpenMobileMenu = false" />
   </div>
 </template>
@@ -149,10 +150,10 @@ import amplitudeConfigs from "@/helpers/amplitudeConfigs";
 import MewAppDropdownMenu from "./MewAppDropdownMenu.vue";
 import MewMobileMenu from "./MewMobileMenu.vue";
 import MewLink from "./MewLink.vue";
-import { ref, PropType } from "vue";
+import { ref, PropType, computed } from "vue";
 import { AmplitudePropType } from "@/libs/types";
-import { useRoute } from "vue-router";
 import { RouterLink } from "vue-router";
+import { useRoute } from "vue-router";
 import { PROJECT_LINKS, PROJECTS } from "@/helpers/links";
 
 const emit = defineEmits<{
@@ -171,7 +172,7 @@ const props = defineProps({
   },
   linkComponent: {
     type: Object as PropType<typeof RouterLink>,
-    required: true,
+    default: RouterLink
   },
   userConsent: {
     required: true,
@@ -181,6 +182,9 @@ const props = defineProps({
     required: true,
     type: String as PropType<PROJECTS>
   },
+  currUrl: {
+    type: String,
+  }
 });
 
 /**
@@ -193,50 +197,53 @@ interface itemType {
 const $amplitude = props.amplitude;
 const route = useRoute();
 
+const ampUrl = computed<string>(() => {
+  return props.currUrl ? props.currUrl : route.fullPath || ''
+})
 const trackLogo = () => {
-  $amplitude.track(amplitudeConfigs.headerLogo, { route: route.fullPath });
+  $amplitude.track(amplitudeConfigs.headerLogo, { route: ampUrl.value });
 };
 const trackSwap = () => {
-  $amplitude.track(amplitudeConfigs.headerSwap, { route: route.fullPath });
+  $amplitude.track(amplitudeConfigs.headerSwap, { route: ampUrl.value });
 };
 const trackBuy = () => {
-  $amplitude.track(amplitudeConfigs.headerBuy, { route: route.fullPath });
+  $amplitude.track(amplitudeConfigs.headerBuy, { route: ampUrl.value });
 };
 const trackNft = () => {
-  $amplitude.track(amplitudeConfigs.headerNft, { route: route.fullPath });
+  $amplitude.track(amplitudeConfigs.headerNft, { route: ampUrl.value });
 };
 const trackDapps = () => {
-  $amplitude.track(amplitudeConfigs.headerDapps, { route: route.fullPath });
+  $amplitude.track(amplitudeConfigs.headerDapps, { route: ampUrl.value });
 };
 const trackMewtopia = () => {
-  $amplitude.track(amplitudeConfigs.headerMewtopia, { route: route.fullPath });
+  $amplitude.track(amplitudeConfigs.headerMewtopia, { route: ampUrl.value });
 };
 const trackHelpCenter = () => {
   $amplitude.track(amplitudeConfigs.headerHelpCenter, {
-    route: route.fullPath,
+    route: ampUrl.value,
   });
 };
 const trackCustomerSupport = () => {
   $amplitude.track(amplitudeConfigs.headerCustomerSupport, {
-    route: route.fullPath,
+    route: ampUrl.value,
   });
 };
 const trackAccessWallet = () => {
   $amplitude.track(amplitudeConfigs.headerAccessWallet, {
-    route: route.fullPath,
+    route: ampUrl.value,
   });
 };
 const trackProduct = (obj: itemType) => {
   $amplitude.track(amplitudeConfigs.headerProduct, {
     ...obj,
-    route: route.fullPath,
+    route: ampUrl.value,
   });
 };
 const trackFAQ = () => {
-  $amplitude.track(amplitudeConfigs.headerFAQ, { route: route.fullPath });
+  $amplitude.track(amplitudeConfigs.headerFAQ, { route: ampUrl.value });
 };
 const trackStaking = () => {
-  $amplitude.track(amplitudeConfigs.headerStaking, { route: route.fullPath });
+  $amplitude.track(amplitudeConfigs.headerStaking, { route: ampUrl.value });
 };
 
 /**
@@ -246,7 +253,7 @@ const isOpenMobileMenu = ref(false);
 
 const openMobileMenu = () => {
   isOpenMobileMenu.value = true;
-  $amplitude.track(amplitudeConfigs.openMobileMenu, { route: route.fullPath });
+  $amplitude.track(amplitudeConfigs.openMobileMenu, { route: ampUrl.value });
 };
 </script>
 <style>
