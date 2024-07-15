@@ -20,9 +20,9 @@ export const PROJECT_LINKS: Record<PROJECTS, Record<string, string>> = {
         BUG_BOUNTY: "bug-bounty",
         PRESSKIT: "presskit",
         SECURITY_POLICY: "security-policy",
-        VERIFY_MESSAGE: "verify-message",
-        CONVERT_UNITS: "convert-units",
-        SEND_OFFLINE_HELPER: "send-offline-helper",
+        VERIFY_MESSAGE: "tools?tool=verify",
+        CONVERT_UNITS: "tools?tool=convert",
+        SEND_OFFLINE_HELPER: "tools?tool=offline",
     },
     [PROJECTS.LANDING]: {
         FAQ: "faq",
