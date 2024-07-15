@@ -195,7 +195,7 @@ const props = defineProps({
   },
   linkComponent: {
     type: Object as PropType<typeof RouterLink>,
-    required: true,
+    default: RouterLink
   },
   userConsent: {
     required: true,

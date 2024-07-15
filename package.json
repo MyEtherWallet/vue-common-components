@@ -1,6 +1,6 @@
 {
   "name": "@myetherwallet/vue-common-components",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "type": "module",
   "files": [
     "dist"
@@ -19,7 +19,6 @@
         "default": "./dist/vue-common-components.umd.js"
       },
       "styles": "./dist/style.css"
-
     },
     "./css": "./dist/style.css"
   },

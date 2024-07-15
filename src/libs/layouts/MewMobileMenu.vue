@@ -1,6 +1,6 @@
 <template>
   <Transition name="expand-app-mobile-menu">
-    <div v-if="isOpen" class="bg-white h-screen w-screen z-40 fixed overflow-y-auto" role="dialog">
+    <div v-if="isOpen" class="bg-white h-screen w-screen z-40 fixed overflow-y-auto top-0" role="dialog">
       <div class="flex items-center justify-end pt-4 pr-4 pb-3">
         <MewAppBtnIconClose @close="closeMobileMenu" />
       </div>
@@ -122,7 +122,7 @@
         </div>
         <!-- Consent Button -->
         <MewSwitchDataTracking id="consent-switch-mobile-menu" :user-consent="userConsent"
-          @update:consent="(val) => emit('update:consent', val)" />
+          @update:consent="emitConsentUpdate" />
       </div>
     </div>
   </Transition>
@@ -140,10 +140,9 @@ import MewSwitchDataTracking from "./MewSwitchDataTracking.vue";
 import MewAppBtnIconClose from "./MewAppBtnIconClose.vue";
 import MewLink from "./MewLink.vue";
 import { PROJECT_LINKS, PROJECTS } from "@/helpers/links";
-import { RouterLink, useRoute } from "vue-router";
+import { RouterLink } from "vue-router";
 import { AmplitudePropType } from "../types";
 
-const route = useRoute();
 interface itemType {
   item: string;
 }
@@ -176,6 +175,10 @@ const props = defineProps({
     required: true,
     type: String as PropType<PROJECTS>
   },
+  currUrl: {
+    type: String,
+    required: true
+  }
 });
 const $amplitude = props.amplitude;
 const emit = defineEmits<{
@@ -183,53 +186,57 @@ const emit = defineEmits<{
   (e: "closeMobileMenu"): void;
 }>();
 
+const emitConsentUpdate = (val: boolean) => {
+  emit('update:consent', val)
+}
+
 const trackHome = () => {
-  $amplitude.track(amplitudeConfigs.headerHome, { route: route.fullPath });
+  $amplitude.track(amplitudeConfigs.headerHome, { route: props.currUrl });
   emit("closeMobileMenu");
 };
 const trackSwap = () => {
-  $amplitude.track(amplitudeConfigs.headerSwap, { route: route.fullPath });
+  $amplitude.track(amplitudeConfigs.headerSwap, { route: props.currUrl });
 };
 const trackBuy = () => {
-  $amplitude.track(amplitudeConfigs.headerBuy, { route: route.fullPath });
+  $amplitude.track(amplitudeConfigs.headerBuy, { route: props.currUrl });
 };
 
 const trackNft = () => {
-  $amplitude.track(amplitudeConfigs.headerNft, { route: route.fullPath });
+  $amplitude.track(amplitudeConfigs.headerNft, { route: props.currUrl });
 };
 const trackDapps = () => {
-  $amplitude.track(amplitudeConfigs.headerDapps, { route: route.fullPath });
+  $amplitude.track(amplitudeConfigs.headerDapps, { route: props.currUrl });
 };
 const trackMewtopia = () => {
-  $amplitude.track(amplitudeConfigs.headerMewtopia, { route: route.fullPath });
+  $amplitude.track(amplitudeConfigs.headerMewtopia, { route: props.currUrl });
 };
 const trackHelpCenter = () => {
   $amplitude.track(amplitudeConfigs.headerHelpCenter, {
-    route: route.fullPath,
+    route: props.currUrl,
   });
 };
 const trackCustomerSupport = () => {
   $amplitude.track(amplitudeConfigs.headerCustomerSupport, {
-    route: route.fullPath,
+    route: props.currUrl,
   });
 };
 const trackAccessWallet = () => {
   $amplitude.track(amplitudeConfigs.headerAccessWallet, {
-    route: route.fullPath,
+    route: props.currUrl,
   });
 };
 const trackProduct = (obj: itemType) => {
   $amplitude.track(amplitudeConfigs.headerProduct, {
     ...obj,
-    route: route.fullPath,
+    route: props.currUrl,
   });
 };
 const trackFAQ = () => {
-  $amplitude.track(amplitudeConfigs.headerFAQ, { route: route.fullPath });
+  $amplitude.track(amplitudeConfigs.headerFAQ, { route: props.currUrl });
   emit("closeMobileMenu");
 };
 const trackStaking = () => {
-  $amplitude.track(amplitudeConfigs.headerStaking, { route: route.fullPath });
+  $amplitude.track(amplitudeConfigs.headerStaking, { route: props.currUrl });
   emit("closeMobileMenu");
 };
 
@@ -247,7 +254,7 @@ const productsToggle = () => {
 
 const closeMobileMenu = () => {
   emit("closeMobileMenu");
-  $amplitude.track(amplitudeConfigs.closeMobileMenu, { route: route.fullPath });
+  $amplitude.track(amplitudeConfigs.closeMobileMenu, { route: props.currUrl });
 };
 </script>
 <style>
