@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div CLASS=" mx-auto max-w-[1400px] py-[140px] bg-info px-5">
     <MewHeader :curr-project="PROJECTS.BLOG" :bg-visible="true" :link-component="RouterLink" :user-consent="userConsent"
       @update:consent="onUserConsentChange" :amplitude="{ track }" />
-    <p class="mx-auto max-w-[1400px] py-[140px] bg-info px-5">
+    <MEWSubscribe />
+    <p class="my-5">
       Etiam tempor orci eu lobortis elementum nibh tellus molestie nunc. Feugiat scelerisque varius morbi enim nunc
       faucibus. Nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum. Elementum sagittis vitae
       et leo duis. At tellus at urna condimentum mattis pellentesque id nibh tortor. Quam vulputate dignissim
@@ -102,7 +103,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { MewHeader, MewFooter } from "./libs/main";
+import { MewHeader, MewFooter, MEWSubscribe } from "./libs/main";
 import { RouterLink } from "vue-router";
 import { PROJECTS } from "@/helpers/links";
 

@@ -75,6 +75,7 @@ export default {
       },
       letterSpacing: {
         "sp-06": "0.6px",
+        "sp-01": "0.01em",
       },
       transitionProperty: {
         height: "height",

@@ -1,11 +1,16 @@
 <template>
-  <MewAppBtnIcon :icon="ICONClose" @click="closeClick" />
+  <MewAppBtnIcon :icon="ICONClose" @click="closeClick" :is-white="props.isWhite" />
 </template>
 
 <script setup lang="ts">
 import MewAppBtnIcon from "./MewAppBtnIcon.vue";
 import ICONClose from "@/assets/icons/close.svg";
-
+const props = defineProps({
+  isWhite: {
+    default: false,
+    type: Boolean
+  }
+});
 const emit = defineEmits<{
   close: [payload: MouseEvent];
 }>();

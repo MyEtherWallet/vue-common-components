@@ -1,5 +1,6 @@
 <template>
-  <button type="button" :class="['rounded-full hoverBGGrey', height, width]" @click="btnClick">
+  <button type="button" :class="['rounded-full hoverBGGrey', height, width, { 'invert brightness-100': isWhite }]"
+    @click="btnClick">
     <img :src="icon" contain alt="" class="m-auto" />
   </button>
 </template>
@@ -20,6 +21,10 @@ defineProps({
     default: "w-[32px]",
     type: String,
   },
+  isWhite: {
+    default: false,
+    type: Boolean
+  }
 });
 
 const emit = defineEmits<{
