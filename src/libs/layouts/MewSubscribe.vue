@@ -1,31 +1,41 @@
 <template>
     <div>
-        <div
+        <div v-if="!props.dialogOnly"
             class="w-full  flex flex-col items-start justify-between p-8 sm:p-14 bg-[linear-gradient(94.39deg,#005BE5_1.51%,#0081F0_99.36%)] gap-4 rounded-4xl">
             <h3 class="title3 !text-white ">Get better at crypto</h3>
-            <p class="max-w-[599px] text-white sm:text-2xl -tracking-[0.02em] font-medium sm:font-normal sm:mb-4">Level
+            <p class="max-w-[599px] text-white sm:text-2xl -tracking-[0.02em] font-medium sm:font-normal mb-5 sm:mb-4">
+                Level
                 up your
                 skills with
                 security tips, industry
                 insights, news and more!
             </p>
             <div class="w-full flex flex-col sm:flex-row">
-                <input type="email" id="email-in-sub-box"
-                    class="grow bg-primary border border-white text-white text-sm rounded-[20px] h-[58px] w-full sm:max-w-[472px] px-5 py-[14px] text-xl"
-                    placeholder="Enter your email" required />
+                <div class="relative grow sm:max-w-[472px]">
+                    <input type="email" id="email-in-sub-box" v-model="email"
+                        :class="[isValidEmail ? 'border-white text-white' : ' focus:outline-none !border-error text-error focus-visible:!border-error focus-visible:ring-error', 'grow bg-primary border-2 text-sm rounded-[20px] h-[58px] w-full  px-5 py-[14px] text-xl transition-all']"
+                        placeholder="Enter your email" required @focus="inFocusEmail = true"
+                        @blur="inFocusEmail = false" />
+                    <p v-if="!isValidEmail" class="pl-4 pt-[2px] absolute text-error text-[15px] leading-[23px]">email
+                        is not valid
+                    </p>
+                    <MewAppBtnIcon :icon="ICONClose" @click="clearInputEmail" is-white
+                        :class="[(email !== '' && inFocusEmail) || !isValidEmail ? 'opacity-100' : 'opacity-0', 'transition-opacity absolute top-3 right-6 z-1']" />
+                </div>
 
-                <button
-                    class="px-8 py-4 h-[58px] w-full sm:w-auto sm:min-w-[178px]  bg-white rounded-[20px] text-xl text-primary font-bold hoverOpacityHasBG mt-4 sm:mt-0 sm:ml-4"
-                    @click="setIsOpen(true, 0)">Sign
+                <button :disabled="!(isValidEmail && hasInputEmail)"
+                    class="mt-7 sm:mt-0 px-8 py-4 h-[58px] w-full sm:w-auto sm:min-w-[178px]  bg-white rounded-[20px] text-xl text-primary font-bold hoverOpacityHasBG mt-4 sm:mt-0 sm:ml-4"
+                    @click="signUp('blue-container-btn', true)">Sign
                     me up!</button>
             </div>
         </div>
 
-        <Dialog :open="isOpen" @close="setIsOpen(false)">
+        <Dialog :open="model" @close="setIsOpen(false, 0, 'click-outside-popup')">
             <!-- The backdrop, rendered as a fixed sibling to the panel container -->
             <div class="fixed inset-0 bg-black/30 z-[99]" aria-hidden="true" />
             <!-- Full-screen scrollable container -->
-            <div class="fixed inset-0 w-screen overflow-y-auto z-[100] " @click="setIsOpen(false)">
+            <div class="fixed inset-0 w-screen overflow-y-auto z-[100] "
+                @click="setIsOpen(false, 0, 'click-outside-popup')">
                 <!-- Container to center the panel -->
                 <div class="h-screen flex items-center justify-center p-4">
                     <DialogPanel class="h-full sm:h-[512px] w-full md:w-[800px] bg-white rounded-4xl   overflow-auto">
@@ -44,12 +54,23 @@
                                             insights,
                                             news and more!
                                         </p>
-                                        <input type="email" id="email-in-sub-popup"
-                                            class="mb-[12px] bg-white border border-primary text-sm rounded-[20px] h-[58px] w-full px-5 py-[14px] text-xl"
-                                            placeholder="Enter your email" required />
-                                        <button
+                                        <div class="relative grow sm:max-w-[472px] mb-7">
+                                            <input type="email" id="email-in-sub-popup" v-model="email"
+                                                :class="[isValidEmail ? 'border-primary' : ' focus:outline-none !border-error text-error focus-visible:!border-error focus-visible:ring-error', ' grow  bg-white border-2 text-sm rounded-[20px] h-[58px] w-full  px-5 py-[14px] text-xl transition-all']"
+                                                placeholder="Enter your email" required @focus="inFocusEmail = true"
+                                                @blur="inFocusEmail = false" />
+                                            <p v-if="!isValidEmail"
+                                                class="pl-4 pt-[2px] absolute text-error text-[15px] leading-[23px]">
+                                                email
+                                                is not valid
+                                            </p>
+                                            <MewAppBtnIcon :icon="ICONClose" @click="clearInputEmail"
+                                                :class="[(email !== '' && inFocusEmail) || !isValidEmail ? 'opacity-100' : 'opacity-0', 'transition-opacity absolute top-3 right-6 z-1']" />
+                                        </div>
+
+                                        <button :disabled="!(isValidEmail && hasInputEmail)"
                                             class="px-8 py-4 mb-2 sm:mb-4 h-[58px] w-full  sm:min-w-[178px] bg-primary rounded-[20px] text-xl text-white font-bold hoverOpacityHasBG"
-                                            @click="step = 1">Sign
+                                            @click="signUp('popup-btn')">Sign
                                             me up!</button>
                                         <p class="text-center text-info text-s-17 leading-p-150">
                                             We
@@ -65,7 +86,7 @@
                                                 <label
                                                     class="relative flex items-center p-2 rounded-full cursor-pointer  hover:bg-primary hover:bg-opacity-10 transition-opacity "
                                                     htmlFor="checkboxCryptoKb">
-                                                    <input type="checkbox"
+                                                    <input type="checkbox" v-model="checkBoxCryptoKB"
                                                         class="before:content[''] peer relative h-8 w-8 cursor-pointer appearance-none rounded-full border border-primary border-2 bg-white transition-all checked:border-primary checked:bg-primary checked:before:bg-primary"
                                                         id="checkboxCryptoKb" />
                                                     <span
@@ -90,10 +111,10 @@
                                             <div>
                                                 <label
                                                     class="relative flex items-center p-2 rounded-full cursor-pointer  hover:bg-primary hover:bg-opacity-10 transition-opacity "
-                                                    htmlFor="customStyle">
-                                                    <input type="checkbox"
+                                                    htmlFor="checkBoxMarket">
+                                                    <input type="checkbox" v-model="checkBoxMarket"
                                                         class="before:content[''] peer relative h-8 w-8 cursor-pointer appearance-none rounded-full border border-primary border-2 bg-white transition-all checked:border-primary checked:bg-primary checked:before:bg-primary"
-                                                        id="customStyle" />
+                                                        id="checkBoxMarket" />
                                                     <span
                                                         class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
@@ -129,23 +150,36 @@
                                     </div>
                                 </div>
 
-                                <p v-if="step === 0" @click="setIsOpen(false, 0)"
+                                <p v-if="step === 0" @click="setIsOpen(false, 0, 'click-no-thanks')"
                                     class="text-center underline cursor-pointer text-[15px] leading-[23px]">
                                     No thanks, <br /> I already know everything about crypto.
                                 </p>
-                                <button v-else-if="step === 1"
-                                    class="px-8 py-4 h-[58px] w-full  sm:min-w-[178px] bg-primary rounded-[20px] text-xl text-white font-bold hoverOpacityHasBG"
-                                    @click="step = 2">Finish</button>
+                                <button v-else-if="step === 1" :disabled="atLeastOneCheckbox === false"
+                                    class="px-8 py-4 h-[58px] w-full  sm:min-w-[178px] bg-primary rounded-[20px] text-xl text-white font-bold hoverOpacityHasBG disabled:opacity-40 flex justify-center"
+                                    @click="finishSignUP">
+
+                                    <svg v-if="isLoading" aria-hidden="true"
+                                        class="w-8 h-8 text-white-40 animate-spin fill-white" viewBox="0 0 100 101"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                                            fill="currentColor" />
+                                        <path
+                                            d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                                            fill="currentFill" />
+                                    </svg>
+                                    <p v-else>Finish</p>
+                                </button>
                                 <div v-else>
                                     <h6 class="uppercase text-sm font-bold tracking-[1px] mb-2">What's next:
                                     </h6>
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <button
                                             class="px-6 py-4  h-[58px] w-full  sm:min-w-[178px] bg-primary rounded-[20px] text-xl text-white font-bold hoverOpacityHasBG"
-                                            @click="step = 1">Create a wallet</button>
+                                            @click="clickCreateWallet">Create a wallet</button>
                                         <button
                                             class="px-6 py-4 h-[58px] w-full  sm:min-w-[178px] bg-primary rounded-[20px] text-xl text-white font-bold hoverOpacityHasBG"
-                                            @click="step = 1">Buy Crypto</button>
+                                            @click="clickBuyCrypto">Buy Crypto</button>
                                     </div>
                                 </div>
                             </div>
@@ -153,14 +187,10 @@
                                 <div class="bg-primary flex rounded-4xl w-full h-full w-full">
                                     <div class="w-full"></div>
                                     <mew-app-btn-icon-close class="inline-block self-start justify-self-end min-w-8 m-4"
-                                        is-white @click="setIsOpen(false)" />
+                                        is-white @click="setIsOpen(false, 0, 'clock-close-btn')" />
                                 </div>
-
                             </div>
-
-
                         </div>
-
                     </DialogPanel>
                 </div>
             </div>
@@ -174,36 +204,83 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel } from "@headlessui/vue";
 import MewAppBtnIconClose from "./MewAppBtnIconClose.vue";
-import { computed, ref } from 'vue'
-
-defineProps({
-    title: {
-        default: "",
-        type: String,
-    },
-    // isOpen: {
-    //     default: false,
-    //     type: Boolean
-    // },
+import MewAppBtnIcon from "./MewAppBtnIcon.vue";
+import ICONClose from "@/assets/icons/close.svg";
+import { computed, ref, PropType } from 'vue'
+import { watchDebounced } from '@vueuse/core'
+import { AmplitudePropType } from "@/libs/types";
+import { PROJECTS } from "@/helpers/links";
+import { useRoute } from "vue-router";
+import amplitudeConfigs from "@/helpers/amplitudeConfigs";
+const props = defineProps({
     dialogOnly: {
         default: false,
         type: Boolean
+    },
+    amplitude: {
+        required: true,
+        type: Object as PropType<AmplitudePropType>,
+    },
+    currProject: {
+        required: true,
+        type: String as PropType<PROJECTS>
+    },
+    currUrl: {
+        type: String,
     }
 });
+const $amplitude = props.amplitude;
+const route = useRoute();
 
-const isOpen = ref<boolean>(false)
+const ampUrl = computed<string>(() => {
+    return props.currUrl ? props.currUrl : route.fullPath || ''
+})
+
+const model = defineModel<boolean>()
 const step = ref(0)
-const checkBoxCryptoKB = ref(false)
+
 const emit = defineEmits<{
     (e: "update:isOpenPopupSubscribe", newval: boolean): void;
+    (e: "subscribe:createWallet",): void;
 }>();
 
-const setIsOpen = (_value: boolean = false, _step: number = 0) => {
-    isOpen.value = _value
+/** Open/Close poup  */
+const setIsOpen = (_value: boolean = false, _step: number = 0, method?: string) => {
+    model.value = _value
+
+    if (_value) {
+        $amplitude.track(amplitudeConfigs.subscriptionOpen, {
+            route: ampUrl.value,
+            step: step.value.toFixed(),
+            method: method
+        })
+    }
+    else {
+        $amplitude.track(amplitudeConfigs.subscriptionClose, {
+            route: ampUrl.value,
+            step: step.value.toFixed(),
+            method: method
+        })
+    }
     step.value = _step
-    console.log('Is open:', isOpen.value)
     emit('update:isOpenPopupSubscribe', _value)
 };
+
+/** Click Sign Up button. */
+const signUp = (method: string, openPopup = false) => {
+    if (isValidEmail.value && hasInputEmail.value) {
+
+        $amplitude.track(amplitudeConfigs.subscriptionSignupBtn, {
+            route: ampUrl.value,
+            method: method
+        })
+        if (openPopup) {
+            setIsOpen(true, 1, method)
+        }
+        step.value = 1
+    }
+}
+
 
 const popUpTitle = computed<string>(() => {
     switch (step.value) {
@@ -215,4 +292,128 @@ const popUpTitle = computed<string>(() => {
             return 'Welcome to the MEW Universe!'
     }
 })
+
+// Valid Email:
+const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+const email = ref<string>('')
+const isValidEmail = ref<boolean>(true)
+const inFocusEmail = ref<boolean>(false)
+
+watchDebounced(
+    email,
+    () => {
+        isValidEmail.value = email.value === '' ? true : validateEmail(email.value)
+    },
+    { debounce: 800, maxWait: 1500 }
+)
+
+const clearInputEmail = () => {
+    email.value = ''
+}
+
+const hasInputEmail = computed(() => {
+    return email.value && email.value !== ''
+})
+
+/**
+ * Checkbox
+ */
+const checkBoxCryptoKB = ref(true)
+const checkBoxMarket = ref(true)
+
+const atLeastOneCheckbox = computed(() => {
+    return checkBoxCryptoKB.value || checkBoxMarket.value
+})
+
+/**
+ * Subscribe and Finish
+ * */
+const resetAll = () => {
+    email.value = ''
+    checkBoxCryptoKB.value = true
+    checkBoxMarket.value = false
+    step.value = props.dialogOnly ? 1 : 0
+    model.value = false
+}
+
+const KLAVIYO_USER_PROPERTIES = {
+    cryptoKB: 'cryptoKnowledge',
+    market: 'marketData',
+    sourceURL: 'sourceURL'
+}
+
+const isLoading = ref(false)
+
+/**
+ * Creates Subscription profile in Klaviyo
+
+ */
+const finishSignUP = async () => {
+    const _url = 'https://a.klaviyo.com/client/subscriptions/?company_id=U4YyUR'
+    const _body = JSON.stringify({
+        data: {
+            type: 'subscription',
+            attributes: {
+                custom_source: `${props.currProject}`,
+                profile: {
+                    data: {
+                        type: 'profile',
+                        attributes: {
+                            email: email.value,
+                            properties: {
+                                [KLAVIYO_USER_PROPERTIES.cryptoKB]: checkBoxCryptoKB.value,
+                                [KLAVIYO_USER_PROPERTIES.market]: checkBoxMarket.value,
+                                [KLAVIYO_USER_PROPERTIES.sourceURL]: ampUrl.value
+                            }
+                        },
+                    }
+                }
+            },
+            relationships: { list: { data: { type: 'list', id: 'TBPh3n' } } }
+        }
+    })
+    try {
+        isLoading.value = true
+        const response = await fetch(_url, {
+            method: 'POST',
+            headers: {
+                revision: '2024-07-15', 'content-type': 'application/json'
+            },
+            body: _body,
+
+        })
+        isLoading.value = false
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        $amplitude.track(amplitudeConfigs.subscriptionCreateSubscription, {
+            route: ampUrl.value,
+            cryptoKb: checkBoxCryptoKB.value,
+            market: checkBoxMarket.value,
+
+        })
+        step.value = 2
+    }
+    catch (error) {
+        alert(`Something went wrong. Please try again later:  ${error}`)
+    }
+}
+
+const clickCreateWallet = () => {
+    emit('subscribe:createWallet')
+    $amplitude.track(amplitudeConfigs.createWallet1, {
+        location: 'subscribe-popup',
+    });
+    resetAll()
+}
+const clickBuyCrypto = () => {
+    resetAll()
+    $amplitude.track(amplitudeConfigs.subscriptionBuyCryptoBtn, {
+        route: ampUrl.value,
+    })
+}
 </script>

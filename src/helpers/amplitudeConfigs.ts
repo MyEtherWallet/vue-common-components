@@ -13,6 +13,8 @@ export default {
   headerProduct: "LP2HeaderProduct",
   headerAccessWallet: "LP2HeaderAccessWallet",
   accessWallet: "LP2AccessWallet",
+  createWallet1: "LP2CreateWallet1",
+  //Footer
   footerAboutUs: "LP2FooterAboutUs",
   footerCareers: "LP2Footercareers",
   footerHowItWorks: "LP2FooterHowItWorks",
@@ -40,4 +42,10 @@ export default {
   footerJoinMewCommunity: "LP2JoinCommunity",
   openMobileMenu: "LP2OpenMobileMenu",
   closeMobileMenu: "LP2CloseMobileMenu",
+  //Subscription
+  subscriptionClose: "SubscriptionClosePopup",
+  subscriptionOpen: "SubscriptionOpenPopup",
+  subscriptionBuyCryptoBtn: "SubscriptionClickBuyCryptoBtn",
+  subscriptionSignupBtn: "SubscriptionClickSignupBtn",
+  subscriptionCreateSubscription: "SubscriptionClickFinish",
 };
