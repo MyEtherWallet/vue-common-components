@@ -1,5 +1,10 @@
 ### Release v1.1.0
 
+### Fix
+- repalce lottie size calculations with tailwind
+
+### Release v1.1.0
+
 ### Chore
 - fix prop casing in Subscribe component 
 

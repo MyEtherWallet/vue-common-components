@@ -32,8 +32,8 @@
                         me up!</button>
                 </div>
             </div>
-            <Vue3Lottie :animationData="playPeggy" :height="lottieSize" :width="lottieSize" :pauseAnimation="true"
-                class="sm:absolute sm:right-[0px] sm:bottom-[-10px] md:right-[-60px] md:bottom-[-20px] lg:bottom-[-45px] lg:right-[-60px] xl:right-[80px]  order-1 sm:order-2"
+            <Vue3Lottie :animationData="playPeggy" :pauseAnimation="true"
+                class="max-w-[300px] max-h-[300px] lg:max-w-[512px] lg:max-h-[512px] sm:absolute sm:right-[-50px] sm:bottom-[-10px] md:right-[-60px] md:bottom-[-20px] lg:bottom-[-45px] lg:right-[-60px] xl:right-[80px]  order-1 sm:order-2"
                 :autoPlay="false" />
 
         </div>
@@ -201,9 +201,8 @@
                                         is-white @click="setIsOpen(false, 0, 'clock-close-btn')" />
 
                                 </div>
-                                <Vue3Lottie :animationData="playPeggy" :height="lottieInPopupSize"
-                                    :width="lottieInPopupSize" :pauseAnimation="true"
-                                    class="absolute top-[-40px] inset-x-0 sm:inset-y-0 sm:right-[-90px] sm:left-auto"
+                                <Vue3Lottie :animationData="playPeggy" :pauseAnimation="true"
+                                    class="min-w-[360px] min-h-[360px] sm:min-w-[500px] sm:min-h-[500px] absolute top-[-40px] inset-x-0 sm:inset-y-0 sm:right-[-90px] sm:left-auto"
                                     :loop="1" :delay="100" />
                             </div>
                         </div>
@@ -229,8 +228,6 @@ import { useRoute } from "vue-router";
 import amplitudeConfigs from "@/helpers/amplitudeConfigs";
 import { Vue3Lottie } from 'vue3-lottie'
 import playPeggy from '@/assets/lottie/peggy.json'
-import { useBreakpoints } from '@vueuse/core'
-
 
 const props = defineProps({
     dialogOnly: {
@@ -441,29 +438,7 @@ const clickBuyCrypto = () => {
         route: ampUrl.value,
     })
 }
-/**
- * Lottie
- */
-const breakpoints = useBreakpoints({
-    xs: 0,
-    small: 768,
-    medium: 820,
-    large: 1024
-})
-const activeBreakpoint = breakpoints.active()
-const lottieSize = computed<number>(() => {
-    switch (activeBreakpoint.value) {
-        case 'medium':
-            return 300
-        case 'large':
-            return 512
-        default:
-            return 200
-    }
-})
-const lottieInPopupSize = computed<number>(() => {
-    return activeBreakpoint.value === 'xs' ? 360 : 500
-})
+
 </script>
 <style>
 @import "../../style.css";
