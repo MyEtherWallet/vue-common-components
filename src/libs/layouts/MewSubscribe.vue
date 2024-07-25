@@ -1,45 +1,54 @@
 <template>
     <div>
         <div v-if="!props.dialogOnly"
-            class="w-full  flex flex-col items-start justify-between p-8 sm:p-14 bg-[linear-gradient(94.39deg,#005BE5_1.51%,#0081F0_99.36%)] gap-4 rounded-4xl">
-            <h3 class="title3 !text-white ">Get better at crypto</h3>
-            <p class="max-w-[599px] text-white sm:text-2xl -tracking-[0.02em] font-medium sm:font-normal mb-5 sm:mb-4">
-                Level
-                up your
-                skills with
-                security tips, industry
-                insights, news and more!
-            </p>
-            <div class="w-full flex flex-col sm:flex-row">
-                <div class="relative grow sm:max-w-[472px]">
-                    <input type="email" id="email-in-sub-box" v-model="email"
-                        :class="[isValidEmail ? 'border-white text-white' : ' focus:outline-none !border-error text-error focus-visible:!border-error focus-visible:ring-error', 'grow bg-primary border-2 text-sm rounded-[20px] h-[58px] w-full  px-5 py-[14px] text-xl transition-all']"
-                        placeholder="Enter your email" required @focus="inFocusEmail = true"
-                        @blur="inFocusEmail = false" />
-                    <p v-if="!isValidEmail" class="pl-4 pt-[2px] absolute text-error text-[15px] leading-[23px]">email
-                        is not valid
-                    </p>
-                    <MewAppBtnIcon :icon="ICONClose" @click="clearInputEmail" is-white
-                        :class="[(email !== '' && inFocusEmail) || !isValidEmail ? 'opacity-100' : 'opacity-0', 'transition-opacity absolute top-3 right-6 z-1']" />
-                </div>
+            class="relative w-full  flex flex-col sm:flex-row items-stretch justify-between p-8 sm:p-14 bg-[linear-gradient(94.39deg,#005BE5_1.51%,#0081F0_99.36%)] gap-4 rounded-4xl">
+            <div class="order-2 sm:order-1 lg:mb-[87px] max-w-full sm:max-w-[490px] md:max-w-full">
+                <h3 class="title3 !text-white ">Get better at crypto</h3>
+                <p
+                    class="max-w-[599px] text-white sm:text-2xl -tracking-[0.02em] font-medium sm:font-normal mb-5 sm:mb-4">
+                    Level
+                    up your
+                    skills with
+                    security tips, industry
+                    insights, news and more!
+                </p>
+                <div class="w-full flex flex-col sm:flex-row">
+                    <div class="relative grow sm:max-w-[472px]">
+                        <input type="email" id="email-in-sub-box" v-model="email"
+                            :class="[isValidEmail ? 'border-white text-white' : ' focus:outline-none !border-error text-error focus-visible:!border-error focus-visible:ring-error', 'grow bg-primary border-2 text-sm rounded-[20px] h-[58px] w-full  px-5 py-[14px] text-xl transition-all']"
+                            placeholder="Enter your email" required @focus="inFocusEmail = true"
+                            @blur="inFocusEmail = false" />
+                        <p v-if="!isValidEmail" class="pl-4 pt-[2px] absolute text-error text-[15px] leading-[23px]">
+                            email
+                            is not valid
+                        </p>
+                        <MewAppBtnIcon :icon="ICONClose" @click="clearInputEmail" is-white
+                            :class="[(email !== '' && inFocusEmail) || !isValidEmail ? 'opacity-100' : 'opacity-0', 'transition-opacity absolute top-3 right-6 z-1']" />
+                    </div>
 
-                <button :disabled="!(isValidEmail && hasInputEmail)"
-                    class="mt-7 sm:mt-0 px-8 py-4 h-[58px] w-full sm:w-auto sm:min-w-[178px]  bg-white rounded-[20px] text-xl text-primary font-bold hoverOpacityHasBG mt-4 sm:mt-0 sm:ml-4"
-                    @click="signUp('blue-container-btn', true)">Sign
-                    me up!</button>
+                    <button :disabled="!(isValidEmail && hasInputEmail)"
+                        class="mt-7 sm:mt-0 px-8 py-4 h-[58px] w-full sm:w-auto sm:min-w-[178px]  bg-white rounded-[20px] text-xl text-primary font-bold hoverOpacityHasBG mt-4 sm:mt-0 sm:ml-4"
+                        @click="signUp('blue-container-btn', true)">Sign
+                        me up!</button>
+                </div>
             </div>
+            <Vue3Lottie :animationData="playPeggy" :height="lottieSize" :width="lottieSize" :pauseAnimation="true"
+                class="sm:absolute sm:right-[0px] sm:bottom-[-10px] md:right-[-60px] md:bottom-[-20px] lg:bottom-[-45px] lg:right-[-60px] xl:right-[80px]  order-1 sm:order-2"
+                :autoPlay="false" />
+
         </div>
 
-        <Dialog :open="model" @close="setIsOpen(false, 0, 'click-outside-popup')">
+        <div v-if="model" @close="setIsOpen(false, 0, 'click-outside-popup')">
             <!-- The backdrop, rendered as a fixed sibling to the panel container -->
-            <div class="fixed inset-0 bg-black/30 z-[99]" aria-hidden="true" />
+            <div v-if="model" class="fixed inset-0 bg-black/30 z-[99]" aria-hidden="true" />
             <!-- Full-screen scrollable container -->
-            <div class="fixed inset-0 w-screen overflow-y-auto z-[100] "
+            <div class="fixed inset-0 w-screen overflow-y-auto z-[100]"
                 @click="setIsOpen(false, 0, 'click-outside-popup')">
                 <!-- Container to center the panel -->
                 <div class="h-screen flex items-center justify-center p-4">
-                    <DialogPanel class="h-full sm:h-[512px] w-full md:w-[800px] bg-white rounded-4xl   overflow-auto">
-                        <div class=" flex flex-col sm:flex-row h-full content-stretch sm:min-h-[512px]">
+                    <div class="h-full sm:h-[512px] w-full md:w-[800px] bg-white rounded-4xl  overflow-y-scroll overflow-x-hidden"
+                        @click.stop>
+                        <div class=" flex flex-col sm:flex-row h-full content-stretch sm:min-h-[512px] ">
                             <div class="grow pt-4 pb-8 px-6 sm:p-8 order-2 sm:order-1 flex flex-col sm:justify-between">
                                 <div class="pb-2 h-full">
                                     <h1
@@ -183,18 +192,25 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="p-1 order-1 sm:order-2 w-full sm:w-full  h-[140px] sm:h-auto  md:pl-8">
-                                <div class="bg-primary flex rounded-4xl w-full h-full w-full">
-                                    <div class="w-full"></div>
+                            <div
+                                class="pt-1 px-1  sm:p-1 order-1 sm:order-2 w-full sm:w-full  h-[140px] sm:h-auto  md:pl-8 relative overflow-hidden sm:overflow-visible">
+                                <div class=" bg-primary flex rounded-4xl w-full h-full w-full">
+                                    <div class="w-full  ">
+                                    </div>
                                     <mew-app-btn-icon-close class="inline-block self-start justify-self-end min-w-8 m-4"
                                         is-white @click="setIsOpen(false, 0, 'clock-close-btn')" />
+
                                 </div>
+                                <Vue3Lottie :animationData="playPeggy" :height="lottieInPopupSize"
+                                    :width="lottieInPopupSize" :pauseAnimation="true"
+                                    class="absolute top-[-40px] inset-x-0 sm:inset-y-0 sm:right-[-90px] sm:left-auto"
+                                    :loop="1" :delay="100" />
                             </div>
                         </div>
-                    </DialogPanel>
+                    </div>
                 </div>
             </div>
-        </Dialog>
+        </div>
 
     </div>
 
@@ -202,7 +218,6 @@
 </template>
 
 <script setup lang="ts">
-import { Dialog, DialogPanel } from "@headlessui/vue";
 import MewAppBtnIconClose from "./MewAppBtnIconClose.vue";
 import MewAppBtnIcon from "./MewAppBtnIcon.vue";
 import ICONClose from "@/assets/icons/close.svg";
@@ -212,6 +227,11 @@ import { AmplitudePropType } from "@/libs/types";
 import { PROJECTS } from "@/helpers/links";
 import { useRoute } from "vue-router";
 import amplitudeConfigs from "@/helpers/amplitudeConfigs";
+import { Vue3Lottie } from 'vue3-lottie'
+import playPeggy from '@/assets/lottie/peggy.json'
+import { useBreakpoints } from '@vueuse/core'
+
+
 const props = defineProps({
     dialogOnly: {
         default: false,
@@ -247,7 +267,6 @@ const emit = defineEmits<{
 /** Open/Close poup  */
 const setIsOpen = (_value: boolean = false, _step: number = 0, method?: string) => {
     model.value = _value
-
     if (_value) {
         $amplitude.track(amplitudeConfigs.subscriptionOpen, {
             route: ampUrl.value,
@@ -261,6 +280,7 @@ const setIsOpen = (_value: boolean = false, _step: number = 0, method?: string) 
             step: step.value.toFixed(),
             method: method
         })
+        resetAll()
     }
     step.value = _step
     emit('update:isOpenPopupSubscribe', _value)
@@ -338,6 +358,7 @@ const resetAll = () => {
     checkBoxMarket.value = false
     step.value = props.dialogOnly ? 1 : 0
     model.value = false
+    isLoading.value = false
 }
 
 const KLAVIYO_USER_PROPERTIES = {
@@ -416,4 +437,30 @@ const clickBuyCrypto = () => {
         route: ampUrl.value,
     })
 }
+/**
+ * Lottie
+ */
+const breakpoints = useBreakpoints({
+    xs: 0,
+    small: 768,
+    medium: 820,
+    large: 1024
+})
+const activeBreakpoint = breakpoints.active()
+const lottieSize = computed<number>(() => {
+    switch (activeBreakpoint.value) {
+        case 'medium':
+            return 300
+        case 'large':
+            return 512
+        default:
+            return 200
+    }
+})
+const lottieInPopupSize = computed<number>(() => {
+    return activeBreakpoint.value === 'xs' ? 360 : 500
+})
 </script>
+<style>
+@import "../../style.css";
+</style>

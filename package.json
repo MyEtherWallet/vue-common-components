@@ -41,6 +41,7 @@
     "vue-tsc": "^2.0.24"
   },
   "dependencies": {
-    "@vueuse/core": "^10.11.0"
+    "@vueuse/core": "^10.11.0",
+    "vue3-lottie": "^3.3.0"
   }
 }
