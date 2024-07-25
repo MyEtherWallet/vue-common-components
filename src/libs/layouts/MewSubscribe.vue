@@ -247,7 +247,11 @@ const props = defineProps({
     },
     currUrl: {
         type: String,
-    }
+    },
+    projectID: {
+        required: true,
+        type: String
+    },
 });
 const $amplitude = props.amplitude;
 const route = useRoute();
@@ -374,7 +378,7 @@ const isLoading = ref(false)
 
  */
 const finishSignUP = async () => {
-    const _url = 'https://a.klaviyo.com/client/subscriptions/?company_id=U4YyUR'
+    const _url = `https://a.klaviyo.com/client/subscriptions/?company_id=${props.projectID}`
     const _body = JSON.stringify({
         data: {
             type: 'subscription',
