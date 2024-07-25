@@ -1,6 +1,6 @@
 {
   "name": "@myetherwallet/vue-common-components",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "files": [
     "dist"
@@ -39,5 +39,9 @@
     "vue": "^3.4.29",
     "vue-router": "^4.4.0",
     "vue-tsc": "^2.0.24"
+  },
+  "dependencies": {
+    "@vueuse/core": "^10.11.0",
+    "vue3-lottie": "^3.3.0"
   }
 }

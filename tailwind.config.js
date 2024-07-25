@@ -41,6 +41,7 @@ export default {
       enkryptBg: "rgba(186,74,255,0.1)",
       black: "#000000",
       white: "#ffffff",
+      "white-40": "rgba(255,255,255,0.4)",
       info: "rgba(0, 0, 0, 0.7)",
       greyLight: "rgba(0,0,0,0.3)",
       mewGreenText: "rgba(12,88,118,1)",
@@ -75,6 +76,7 @@ export default {
       },
       letterSpacing: {
         "sp-06": "0.6px",
+        "sp-01": "0.01em",
       },
       transitionProperty: {
         height: "height",
