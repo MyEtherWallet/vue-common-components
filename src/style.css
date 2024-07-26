@@ -108,3 +108,9 @@ min width screen-desktop-min
 .hoverOpacityHasBG {
     @apply  hover:opacity-75 transition-opacity duration-300 ease-in-out;
 }
+
+@layer base {
+    button {
+        @apply cursor-pointer;
+    }
+}

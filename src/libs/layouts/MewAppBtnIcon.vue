@@ -1,5 +1,6 @@
 <template>
-  <button type="button" :class="['rounded-full hoverBGGrey', height, width, { 'invert brightness-100': isWhite }]"
+  <button type="button"
+    :class="['rounded-full hoverBGGrey !cursor-pointer', height, width, { 'invert brightness-100': isWhite }]"
     @click="btnClick">
     <img :src="icon" contain alt="" class="m-auto" />
   </button>

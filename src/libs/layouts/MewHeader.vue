@@ -13,7 +13,7 @@
           <!-- Logo -->
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.LANDING].HOME" :curr-project="props.currProject"
             :link-component="props.linkComponent" link-text="" @mewlink:click="trackLogo">
-            <img :src="IMGMEWlogo" contain alt="MyEtherWallet Logo" />
+            <img :src="IMGMEWlogo" contain alt="MyEtherWallet Logo" class="cursor-pointer" />
           </MewLink>
           <!-- Menu items -->
           <div class="hidden md-header:flex flex-row gap-x-5 xl:gap-x-8">
@@ -126,7 +126,8 @@
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].WALLET_ACCESS" :curr-project="props.currProject"
             :link-component="props.linkComponent" link-text="" @mewlink:click="trackAccessWallet"
             class="hidden md-header:flex items-center px-4 py-2 bg-black text-white h-10 rounded-3xl hoverOpacity">
-            <span class="text-base xl:text-lg text-center font-medium leading-6 tracking-sp-06">Access my wallet</span>
+            <span class="text-base xl:text-lg text-center font-medium leading-6 tracking-sp-06">Access my
+              wallet</span>
           </MewLink>
           <!-- Mobile Menu Button -->
           <img :src="ICONMenu" contain alt="open mobile menu" class="block md-header:hidden rounded-full hoverBGGrey"
