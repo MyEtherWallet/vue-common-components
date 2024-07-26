@@ -2,7 +2,7 @@
   <div class=" mx-auto max-w-[1400px] py-[140px] bg-info px-5">
     <MewHeader :curr-project="PROJECTS.BLOG" :bg-visible="true" :link-component="RouterLink" :user-consent="userConsent"
       @update:consent="onUserConsentChange" :amplitude="{ track }" />
-    <MEWSubscribe v-model="openSubscirbe" :curr-project="PROJECTS.BLOG" :amplitude="{ track }" project-id="U4YyUR" />
+    <MEWSubscribe v-model="openSubscirbe" :curr-project="PROJECTS.BLOG" :amplitude="{ track }" project-id="test" />
     <p class="my-5">
       Etiam tempor orci eu lobortis elementum nibh tellus molestie nunc. Feugiat scelerisque varius morbi enim nunc
       faucibus. Nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum. Elementum sagittis vitae
