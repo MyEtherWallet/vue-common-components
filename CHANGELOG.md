@@ -1,4 +1,13 @@
-### Release v1.1.0
+
+
+### Release v1.1.2
+
+### Fix
+- lottie size in subscribe [#5](https://github.com/MyEtherWallet/vue-common-components/pull/5)
+- add cursor pointers [#5](https://github.com/MyEtherWallet/vue-common-components/pull/5)
+- fixes reset logic in subscribe [#5](https://github.com/MyEtherWallet/vue-common-components/pull/5)
+
+### Release v1.1.1
 
 ### Fix
 - repalce lottie size calculations with tailwind

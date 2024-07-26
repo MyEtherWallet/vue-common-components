@@ -27,7 +27,7 @@
                     </div>
 
                     <button :disabled="!(isValidEmail && hasInputEmail)"
-                        class="mt-7 sm:mt-0 px-8 py-4 h-[58px] w-full sm:w-auto sm:min-w-[178px]  bg-white rounded-[20px] text-xl text-primary font-bold hoverOpacityHasBG mt-4 sm:mt-0 sm:ml-4"
+                        class="cursor-pointer mt-7 sm:mt-0 px-8 py-4 h-[58px] w-full sm:w-auto sm:min-w-[178px]  bg-white rounded-[20px] text-xl text-primary font-bold hoverOpacityHasBG mt-4 sm:mt-0 sm:ml-4"
                         @click="signUp('blue-container-btn', true)">Sign
                         me up!</button>
                 </div>
@@ -78,7 +78,7 @@
                                         </div>
 
                                         <button :disabled="!(isValidEmail && hasInputEmail)"
-                                            class="px-8 py-4 mb-2 sm:mb-4 h-[58px] w-full  sm:min-w-[178px] bg-primary rounded-[20px] text-xl text-white font-bold hoverOpacityHasBG"
+                                            class="cursor-pointer px-8 py-4 mb-2 sm:mb-4 h-[58px] w-full  sm:min-w-[178px] bg-primary rounded-[20px] text-xl text-white font-bold hoverOpacityHasBG"
                                             @click="signUp('popup-btn')">Sign
                                             me up!</button>
                                         <p class="text-center text-info text-s-17 leading-p-150">
@@ -186,23 +186,24 @@
                                         <button
                                             class="px-6 py-4  h-[58px] w-full  sm:min-w-[178px] bg-primary rounded-[20px] text-xl text-white font-bold hoverOpacityHasBG"
                                             @click="clickCreateWallet">Create a wallet</button>
-                                        <button
-                                            class="px-6 py-4 h-[58px] w-full  sm:min-w-[178px] bg-primary rounded-[20px] text-xl text-white font-bold hoverOpacityHasBG"
-                                            @click="clickBuyCrypto">Buy Crypto</button>
+                                        <a class="text-center px-6 py-4 h-[58px] w-full sm:min-w-[178px] bg-primary rounded-[20px] text-xl text-white font-bold hoverOpacityHasBG"
+                                            href="https://ccswap.myetherwallet.com/" @click="clickBuyCrypto">Buy
+                                            Crypto</a>
                                     </div>
                                 </div>
                             </div>
                             <div
-                                class="pt-1 px-1  sm:p-1 order-1 sm:order-2 w-full sm:w-full  h-[140px] sm:h-auto  md:pl-8 relative overflow-hidden sm:overflow-visible">
-                                <div class=" bg-primary flex rounded-4xl w-full h-full w-full">
-                                    <div class="w-full  ">
+                                class="pt-1 px-1 sm:p-1 order-1 sm:order-2 w-full sm:w-full  h-[140px] sm:h-auto  md:pl-8 relative overflow-hidden sm:overflow-visible">
+                                <div class="bg-primary flex rounded-4xl w-full h-full w-full">
+                                    <div class="w-full">
                                     </div>
-                                    <mew-app-btn-icon-close class="inline-block self-start justify-self-end min-w-8 m-4"
+                                    <mew-app-btn-icon-close
+                                        class="inline-block self-start justify-self-end min-w-8 m-4 z-[101] !cursor-pointer"
                                         is-white @click="setIsOpen(false, 0, 'clock-close-btn')" />
 
                                 </div>
-                                <Vue3Lottie :animationData="playPeggy" :pauseAnimation="true"
-                                    class="min-w-[360px] min-h-[360px] sm:min-w-[500px] sm:min-h-[500px] absolute top-[-40px] inset-x-0 sm:inset-y-0 sm:right-[-90px] sm:left-auto"
+                                <Vue3Lottie :animationData="playPeggy" :pauseAnimation="true" aria-hidden="true"
+                                    class="min-w-[360px] min-h-[360px] max-w-[360px] max-h-[360px] sm:min-w-[500px] sm:min-h-[500px] sm:max-w-[500px] sm:max-h-[500px] absolute top-[-40px] inset-x-0 sm:inset-y-0 sm:right-[-90px] sm:left-auto mx-auto"
                                     :loop="1" :delay="100" />
                             </div>
                         </div>
@@ -356,9 +357,10 @@ const atLeastOneCheckbox = computed(() => {
 const resetAll = () => {
     email.value = ''
     checkBoxCryptoKB.value = true
-    checkBoxMarket.value = false
+    checkBoxMarket.value = true
     step.value = props.dialogOnly ? 1 : 0
     model.value = false
+    emit('update:isOpenPopupSubscribe', false)
     isLoading.value = false
 }
 

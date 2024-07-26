@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <a v-if="!isNative" :href="routeURL" @click="linkClick">{{ props.linkText }}
+    <div class="cursor-pointer">
+        <a v-if="!isNative" :href="routeURL" @click="linkClick" class="cursor-pointer"> {{ props.linkText }}
             <slot />
         </a>
-        <link-component v-else :to="routeURL" @click="linkClick">{{ linkText }}
+        <link-component v-else :to="routeURL" @click="linkClick" class="cursor-pointer">{{ linkText }}
             <slot />
         </link-component>
     </div>

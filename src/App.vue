@@ -115,5 +115,5 @@ const track = () => {
   console.log("Tracking");
 }
 
-const openSubscirbe = ref(false)
+const openSubscirbe = ref(true)
 </script>
