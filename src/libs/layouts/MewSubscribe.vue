@@ -52,7 +52,7 @@
                             <div class="grow pt-4 pb-8 px-6 sm:p-8 order-2 sm:order-1 flex flex-col sm:justify-between">
                                 <div class="pb-2 h-full">
                                     <h1
-                                        class="text-s-32 font-semibold !leading-p-110 -tracking-[0.02em] sm:font-bold sm:text-5xl sm:tracking-[-0.05em]">
+                                        class="text-s-32 font-semibold !leading-p-110 -tracking-[0.02em] sm:font-bold sm:text-5xl sm:tracking-[-0.05em] sm:-mr-8">
                                         {{ popUpTitle }}</h1>
                                     <!-- STEP 1-->
                                     <div v-if="step === 0" class="mt-2 sm:w-[420px]">
@@ -161,7 +161,7 @@
 
                                 <p v-if="step === 0" @click="setIsOpen(false, 0, 'click-no-thanks')"
                                     class="text-center underline cursor-pointer text-[15px] leading-[23px]">
-                                    No thanks, <br /> I already know everything about crypto.
+                                    No thanks, don't show this again. <br /> I already know everything about crypto.
                                 </p>
                                 <button v-else-if="step === 1" :disabled="atLeastOneCheckbox === false"
                                     class="px-8 py-4 h-[58px] w-full  sm:min-w-[178px] bg-primary rounded-[20px] text-xl text-white font-bold hoverOpacityHasBG disabled:opacity-40 flex justify-center"
@@ -264,6 +264,9 @@ const step = ref(0)
 const emit = defineEmits<{
     (e: "update:isOpenPopupSubscribe", newval: boolean): void;
     (e: "subscribe:createWallet",): void;
+    (e: "subscribe:finish"): void;
+    (e: "subscribe:doNotShow"): void;
+
 }>();
 
 /** Open/Close poup  */
@@ -283,6 +286,9 @@ const setIsOpen = (_value: boolean = false, _step: number = 0, method?: string) 
             method: method
         })
         resetAll()
+    }
+    if (method === 'click-no-thanks') {
+        emit('subscribe:doNotShow')
     }
     step.value = _step
     emit('update:isOpenPopupSubscribe', _value)
@@ -420,6 +426,7 @@ const finishSignUP = async () => {
             market: checkBoxMarket.value,
 
         })
+        emit('subscribe:finish')
         step.value = 2
     }
     catch (error) {
