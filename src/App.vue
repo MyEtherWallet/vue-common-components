@@ -1,5 +1,5 @@
 <template>
-  <div class=" mx-auto max-w-[1400px] py-[140px] bg-info px-5">
+  <div class=" mx-auto max-w-[1400px] py-[140px] px-5">
     <MewHeader :curr-project="PROJECTS.BLOG" :bg-visible="true" :link-component="RouterLink" :user-consent="userConsent"
       @update:consent="onUserConsentChange" :amplitude="{ track }" />
     <MEWSubscribe v-model="openSubscirbe" :curr-project="PROJECTS.BLOG" :amplitude="{ track }" project-id="test" />
@@ -115,5 +115,5 @@ const track = () => {
   console.log("Tracking");
 }
 
-const openSubscirbe = ref(true)
+const openSubscirbe = ref(false)
 </script>
