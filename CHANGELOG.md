@@ -1,5 +1,13 @@
 
 
+
+### Release v1.1.4
+
+
+### Feat
+- adds emits on subscription finish and no thanks [#6](https://github.com/MyEtherWallet/vue-common-components/pull/6)
+- adds dialog transitions [#6](https://github.com/MyEtherWallet/vue-common-components/pull/6)
+
 ### Release v1.1.2
 
 ### Fix
