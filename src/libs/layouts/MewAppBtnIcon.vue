@@ -1,5 +1,5 @@
 <template>
-  <button type="button"
+  <button type="button" :aria-label="ariaLabelString"
     :class="['rounded-full hoverBGGrey !cursor-pointer', height, width, { 'invert brightness-100': isWhite }]"
     @click="btnClick">
     <img :src="icon" contain alt="" class="m-auto" />
@@ -25,7 +25,11 @@ defineProps({
   isWhite: {
     default: false,
     type: Boolean
-  }
+  },
+  ariaLabelString: {
+    type: String,
+  },
+
 });
 
 const emit = defineEmits<{

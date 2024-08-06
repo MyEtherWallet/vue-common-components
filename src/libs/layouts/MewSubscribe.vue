@@ -23,6 +23,7 @@
                             is not valid
                         </p>
                         <MewAppBtnIcon :icon="ICONClose" @click="clearInputEmail" is-white
+                            aria-label-string="clear input"
                             :class="[(email !== '' && inFocusEmail) || !isValidEmail ? 'opacity-100' : 'opacity-0', 'transition-opacity absolute top-3 right-6 z-1']" />
                     </div>
 
@@ -78,6 +79,7 @@
                                             is not valid
                                         </p>
                                         <MewAppBtnIcon :icon="ICONClose" @click="clearInputEmail"
+                                            aria-label-string="clear input"
                                             :class="[(email !== '' && inFocusEmail) || !isValidEmail ? 'opacity-100' : 'opacity-0', 'transition-opacity absolute top-3 right-6 z-1']" />
                                     </div>
 

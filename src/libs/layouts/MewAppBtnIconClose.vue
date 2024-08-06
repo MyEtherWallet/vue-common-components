@@ -1,5 +1,5 @@
 <template>
-  <MewAppBtnIcon :icon="ICONClose" @click="closeClick" :is-white="props.isWhite" />
+  <MewAppBtnIcon :icon="ICONClose" @click="closeClick" :is-white="props.isWhite" aria-label-string="close" />
 </template>
 
 <script setup lang="ts">
