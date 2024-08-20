@@ -3,7 +3,8 @@
     <div>
       <MenuButton :id="`menu-button-${text}`" class="font-medium text-base xl:text-lg hoverOpacity flex items-center">
         {{ text }}
-        <img :src="ICONChevronDown" contain alt="menu icon" class="ml-1 mt-px" />
+        <img :src="ICONChevronDown" contain alt="menu icon" class="ml-1 mt-px" loading="lazy" width="11px"
+          height="7px" />
       </MenuButton>
     </div>
     <transition enter-active-class="transition duration-100 ease-out" enter-from-class="transform scale-95 opacity-0"

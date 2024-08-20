@@ -1,7 +1,7 @@
 <template>
   <div class="flex align-center jusify-start">
-    <Switch :id="id" v-model="userConsentVal" :class="[userConsentVal ? 'bg-primary' : 'bg-info', 'hoverOpacityHasBG']"
-      class="relative inline-flex h-6 w-11 items-center rounded-full">
+    <Switch :id="id" v-model="userConsentVal" aria-label="switch data tracking"
+      :class="[userConsentVal ? 'bg-primary' : 'bg-info', 'hoverOpacityHasBG relative inline-flex h-6 w-11 items-center rounded-full']">
       <span :class="userConsentVal ? 'translate-x-6' : 'translate-x-1'"
         class="inline-block h-4 w-4 transform rounded-full bg-white transition" />
     </Switch>

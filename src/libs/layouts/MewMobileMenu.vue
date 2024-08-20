@@ -17,9 +17,10 @@
         <div class="text-lg font-medium leading-6" @click="featuresToggle">
           <div class="flex justify-between items-center hoverOpacity cursor-pointer p-2">
             More Features
-            <span><img :src="ICONChevronDown" contain alt="menu icon" class="ml-1 mt-px" /></span>
+            <span><img :src="ICONChevronDown" contain alt="menu icon" class="ml-1 mt-px" width="11px" height="7px"
+                loading="lazy" /></span>
           </div>
-          <div v-show="isFeaturesOpen"
+          <div v-if="isFeaturesOpen"
             class="grid grid-cols-1 gap-4 px-3 pt-6 pb-2 transition-all transition-[height] duration-500 ease-out">
             <MewLink :link-url="PROJECT_LINKS[PROJECTS.LANDING].STAKING" :curr-project="props.currProject"
               :link-component="props.linkComponent" link-text="Staking" @mewlink:click="trackStaking"
@@ -36,9 +37,10 @@
         <div class="text-lg font-medium leading-6" @click="resourcesToggle">
           <div class="flex justify-between items-center hoverOpacity cursor-pointer p-2">
             Resources
-            <span><img :src="ICONChevronDown" contain alt="menu icon" class="ml-1 mt-px" /></span>
+            <span><img :src="ICONChevronDown" contain alt="menu icon" class="ml-1 mt-px" width="11px" height="7px"
+                loading="lazy" /></span>
           </div>
-          <div v-show="isResourcesOpen" class="grid grid-cols-1 gap-4 px-3 pt-8 pb-2">
+          <div v-if="isResourcesOpen" class="grid grid-cols-1 gap-4 px-3 pt-8 pb-2">
             <a href="https://www.myetherwallet.com/blog/" target="_blank" class="hoverOpacity cursor-pointer p-2"
               @click="trackMewtopia">Blog</a>
             <a href="https://help.myetherwallet.com/en/" target="_blank" class="hoverOpacity cursor-pointer p-2"
@@ -54,18 +56,19 @@
         <div class="text-lg font-medium leading-6" @click="productsToggle">
           <div class="flex justify-between items-center hoverOpacity cursor-pointer p-2">
             Products
-            <span><img :src="ICONChevronDown" contain alt="menu icon" class="ml-1 mt-px" /></span>
+            <span><img :src="ICONChevronDown" contain alt="menu icon" class="ml-1 mt-px" width="11px" height="7px"
+                loading="lazy" /></span>
           </div>
-          <div v-show="isProductsOpen" class="grid grid-cols-1 gap-2 pt-6 pb-4">
+          <div v-if="isProductsOpen" class="grid grid-cols-1 gap-2 pt-6 pb-4">
             <div id="header-products-mew-wallet" class="hoverBGGrey rounded-2xl p-2">
               <a href="https://www.mewwallet.com/" target="_blank" class="flex items-center pa-2"
                 @click="trackProduct({ item: 'MobileApp' })">
-                <img :src="IMGMobilelogo" alt="MEW mobile wallet logo"
+                <img :src="IMGMobilelogo" alt="MEW mobile wallet logo" width="50px" height="50px" loading="lazy"
                   class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" />
                 <div class="grow">
-                  <h6 class="text-base xl:text-lg font-bold mb-1 text-nowrap">
+                  <p class="text-base xl:text-lg font-bold mb-1 text-nowrap">
                     MEW Mobile App
-                  </h6>
+                  </p>
                   <p class="opacity-65 text-sm">Mobile wallet</p>
                 </div>
               </a>
@@ -74,12 +77,12 @@
               <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].WALLET_ACCESS" :curr-project="props.currProject"
                 :link-component="props.linkComponent" @mewlink:click="trackProduct({ item: 'MewWeb' })">
                 <div class="flex items-center pa-2" @click="trackProduct({ item: 'MewWeb' })">
-                  <img :src="IMGWeblogo" alt="MEW portfolio manager logo"
+                  <img :src="IMGWeblogo" alt="MEW portfolio manager logo" width="50px" height="50px" loading="lazy"
                     class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" />
                   <div class="block">
-                    <h6 class="text-base xl:text-lg font-bold mb-1 text-nowrap">
+                    <p class="text-base xl:text-lg font-bold mb-1 text-nowrap">
                       MEW Portfolio Manager
-                    </h6>
+                    </p>
                     <p class="opacity-65 text-sm">Web portfolio interface</p>
                   </div>
                 </div>
@@ -88,10 +91,10 @@
             <div id="header-products-enkrypt" class="hoverBGGrey rounded-2xl p-2">
               <a href="https://www.enkrypt.com/" target="_blank" class="flex items-center pa-2"
                 @click="trackProduct({ item: 'Enkrypt' })">
-                <img :src="IMGEnkryptlogo" alt="enkrypt wallet extension logo"
+                <img :src="IMGEnkryptlogo" alt="enkrypt wallet extension logo" width="50px" height="50px" loading="lazy"
                   class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" />
                 <div>
-                  <h6 class="text-base xl:text-lg font-bold mb-1">Enkrypt</h6>
+                  <p class="text-base xl:text-lg font-bold mb-1">Enkrypt</p>
                   <p class="opacity-65 text-sm">Browser extension wallet</p>
                 </div>
               </a>
@@ -99,10 +102,10 @@
             <div id="header-products-ethVM" class="hoverBGGrey rounded-2xl p-2">
               <a href="https://www.ethvm.com/" target="_blank" class="flex items-center pa-2"
                 @click="trackProduct({ item: 'Ethvm' })">
-                <img :src="IMGEthvmlogo" alt="ethVM logo"
+                <img :src="IMGEthvmlogo" alt="ethVM logo" width="50px" height="50px" loading="lazy"
                   class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" />
                 <div>
-                  <h6 class="text-base xl:text-lg font-bold mb-1">ethVM</h6>
+                  <p class="text-base xl:text-lg font-bold mb-1">ethVM</p>
                   <p class="opacity-65 text-sm">Blockchain explorer</p>
                 </div>
               </a>
@@ -134,7 +137,7 @@ import { PropType, ref } from "vue";
 import ICONChevronDown from "@/assets/icons/chevron-down.svg";
 import IMGWeblogo from "@/assets/images/products/mewweb-logo.svg";
 import IMGMobilelogo from "@/assets/images/products/mewwallet-logo.svg";
-import IMGEnkryptlogo from "@/assets/images/products/enkrypt-logo.png";
+import IMGEnkryptlogo from "@/assets/images/products/enkrypt-logo.webp";
 import IMGEthvmlogo from "@/assets/images/products/ethvm-logo.svg";
 import MewSwitchDataTracking from "./MewSwitchDataTracking.vue";
 import MewAppBtnIconClose from "./MewAppBtnIconClose.vue";

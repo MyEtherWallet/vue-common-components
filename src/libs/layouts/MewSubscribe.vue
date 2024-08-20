@@ -1,9 +1,9 @@
 <template>
     <div>
         <div v-if="!props.dialogOnly"
-            class="relative w-full flex flex-col sm:flex-row items-stretch justify-between p-8 sm:p-14 bg-[linear-gradient(94.39deg,#005BE5_1.51%,#0081F0_99.36%)] gap-4 rounded-4xl">
+            class="relative w-full flex flex-col sm:flex-row items-stretch justify-items-stretch p-8 sm:px-14 sm:pt-14 bg-[linear-gradient(94.39deg,#005BE5_1.51%,#0081F0_99.36%)] gap-4 rounded-4xl sm:max-h-[435px]">
             <div class="order-2 sm:order-1 lg:mb-[87px] max-w-full sm:max-w-[490px] md:max-w-full">
-                <h3 class="title3 !text-white ">Get better at crypto</h3>
+                <h2 class="title3 !text-white ">Get better at crypto</h2>
                 <p
                     class="max-w-[599px] text-white sm:text-2xl -tracking-[0.02em] font-medium sm:font-normal mb-5 sm:mb-4">
                     Level
@@ -23,6 +23,7 @@
                             is not valid
                         </p>
                         <MewAppBtnIcon :icon="ICONClose" @click="clearInputEmail" is-white
+                            aria-label-string="clear input"
                             :class="[(email !== '' && inFocusEmail) || !isValidEmail ? 'opacity-100' : 'opacity-0', 'transition-opacity absolute top-3 right-6 z-1']" />
                     </div>
 
@@ -32,10 +33,9 @@
                         me up!</button>
                 </div>
             </div>
-            <Vue3Lottie :animationData="playPeggy" :pauseAnimation="true"
-                class="pointer-events-none max-w-[300px] max-h-[300px] lg:max-w-[512px] lg:max-h-[512px] sm:absolute sm:right-[-50px] sm:bottom-[-10px] md:right-[-60px] md:bottom-[-20px] lg:bottom-[-45px] lg:right-[-60px] xl:right-[80px]  order-1 sm:order-2"
-                :autoPlay="false" />
-
+            <img :src="IMGPeggy" alt=""
+                class="sm:self-end sm:justify-self-center object-contain order-1 sm:order-2 mx-auto h-[200px] pt-20 sm:h-auto sm:pl-14"
+                width="180px" height="auto" loading="lazy" />
         </div>
 
         <!-- The backdrop, rendered as an absolute sibling to the panel container -->
@@ -78,6 +78,7 @@
                                             is not valid
                                         </p>
                                         <MewAppBtnIcon :icon="ICONClose" @click="clearInputEmail"
+                                            aria-label-string="clear input"
                                             :class="[(email !== '' && inFocusEmail) || !isValidEmail ? 'opacity-100' : 'opacity-0', 'transition-opacity absolute top-3 right-6 z-1']" />
                                     </div>
 
@@ -183,8 +184,8 @@
                                 <p v-else>Finish</p>
                             </button>
                             <div v-else>
-                                <h6 class="uppercase text-sm font-bold tracking-[1px] mb-2">What's next:
-                                </h6>
+                                <h2 class="uppercase text-sm font-bold tracking-[1px] mb-2">What's next:
+                                </h2>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <button
                                         class="px-6 py-4  h-[58px] w-full  sm:min-w-[178px] bg-primary rounded-[20px] text-xl text-white font-bold hoverOpacityHasBG"
@@ -229,6 +230,7 @@ import { useRoute } from "vue-router";
 import amplitudeConfigs from "@/helpers/amplitudeConfigs";
 import { Vue3Lottie } from 'vue3-lottie'
 import playPeggy from '@/assets/lottie/peggy.json'
+import IMGPeggy from '@/assets/lottie/peggy.webp'
 
 
 const props = defineProps({
