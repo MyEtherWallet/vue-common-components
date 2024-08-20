@@ -3,4 +3,5 @@ declare module '*.svg' {
     export default content;
 }
 declare module "*.png";
+declare module "*.webp";
 declare module "*.jpg";

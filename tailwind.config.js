@@ -34,7 +34,7 @@ export default {
       titleColor: "#222222",
       primary: "#005ae5",
       primaryActive: "#0067e0",
-      violet: "#ba4aff",
+      violet: "#9D00FF",
       violetActive: "#a81aff",
       portfolio: "#0c5876",
       mewBg: "rgba(53,94,236,0.1)",

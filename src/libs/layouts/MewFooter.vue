@@ -96,12 +96,14 @@
           </p>
           <a href="https://www.ethvm.com/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D" target="_blank"
             :class="['flex items-center pa-2', linkClass]" @click="trackEthDonation">
-            <span><img :src="SVGDonateEth" contain alt="Ethereum logo" class="pr-2" /></span>
+            <span><img :src="SVGDonateEth" contain alt="Ethereum logo" class="mr-2" width="20px" height="20px"
+                loading="lazy" /></span>
             Ethereum Donation
           </a>
           <a href="https://www.blockchain.com/explorer/addresses/btc/1DECAF2uSpFTP4L1fAHR8GCLrPqdwdLse9" target="_blank"
             :class="['flex items-center pa-2', linkClass]" @click="trackBtcDonation">
-            <span><img :src="SVGDonateBtc" contain alt="BTC logo" class="pr-2" /></span>
+            <span><img :src="SVGDonateBtc" contain alt="BTC logo" class="mr-2" width="20px" height="20px"
+                loading="lazy" /></span>
             Bitcoin Donation
           </a>
         </div>
@@ -124,39 +126,39 @@
         </div>
         <!-- Join Community -->
         <div class="order-1 md:order-last">
-          <h5 class="mb-3 font-bold">Join MEW Community</h5>
+          <p class="mb-3 font-bold">Join MEW Community</p>
           <div class="flex flex-wrap gap-3">
             <a href="https://www.facebook.com/MyEtherWallet" target="_blank" :class="linkClass"
               @click="trackJoinMewCommunity('facebook')">
-              <img :src="SVGFacebook" contain alt="Facebook logo" />
+              <img :src="SVGFacebook" contain alt="MEW Facebook" width="48px" height="48px" loading="lazy" />
             </a>
             <a href="https://twitter.com/myetherwallet/" target="_blank" :class="linkClass"
               @click="trackJoinMewCommunity('twitter')">
-              <img :src="SVGTwitter" contain alt="Twitter logo" />
+              <img :src="SVGTwitter" contain alt="MEW Twitter" width="48px" height="48px" loading="lazy" />
             </a>
             <a href="https://www.instagram.com/myetherwallet/" target="_blank" :class="linkClass"
               @click="trackJoinMewCommunity('instagram')">
-              <img :src="SVGInstagram" contain alt="Instagram logo" />
+              <img :src="SVGInstagram" contain alt="MEW Instagram" width="48px" height="48px" loading="lazy" />
             </a>
             <a href="https://www.linkedin.com/company/myetherwallet/" target="_blank" :class="linkClass"
               @click="trackJoinMewCommunity('linkedin')">
-              <img :src="SVGLinkedin" contain alt="Linkedin logo" />
+              <img :src="SVGLinkedin" contain alt="MEW Linkedin" width="48px" height="48px" loading="lazy" />
             </a>
             <a href="https://github.com/myetherwallet" target="_blank" :class="linkClass"
               @click="trackJoinMewCommunity('github')">
-              <img :src="SVGGithub" contain alt="Github logo" />
+              <img :src="SVGGithub" contain alt="MEW Github" width="48px" height="48px" loading="lazy" />
             </a>
             <a href="https://www.reddit.com/r/MyEtherWallet/" target="_blank" :class="linkClass"
               @click="trackJoinMewCommunity('reddit')">
-              <img :src="SVGReddit" contain alt="Reddit logo" />
+              <img :src="SVGReddit" contain alt="MEW Reddit" width="48px" height="48px" loading="lazy" />
             </a>
             <a href="https://medium.com/@myetherwallet" target="_blank" :class="linkClass"
               @click="trackJoinMewCommunity('medium')">
-              <img :src="SVGMedium" contain alt="Medium logo" />
+              <img :src="SVGMedium" contain alt="MEW Medium" width="48px" height="48px" loading="lazy" />
             </a>
             <a href="https://t.me/myetherwallet" target="_blank" :class="linkClass"
               @click="trackJoinMewCommunity('telegram')">
-              <img :src="SVGTelegram" contain alt="Telegram logo" />
+              <img :src="SVGTelegram" contain alt="MEW Telegram" width="48px" height="48px" loading="lazy" />
             </a>
           </div>
         </div>

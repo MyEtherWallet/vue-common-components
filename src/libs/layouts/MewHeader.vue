@@ -13,7 +13,8 @@
           <!-- Logo -->
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.LANDING].HOME" :curr-project="props.currProject"
             :link-component="props.linkComponent" link-text="" @mewlink:click="trackLogo">
-            <img :src="IMGMEWlogo" contain alt="MyEtherWallet Logo" class="cursor-pointer" />
+            <img :src="IMGMEWlogo" contain alt="MyEtherWallet Logo - go back home" class="cursor-pointer" width="113px"
+              height="auto" loading="lazy" />
           </MewLink>
           <!-- Menu items -->
           <div class="hidden md-header:flex flex-row gap-x-5 xl:gap-x-8">
@@ -62,12 +63,13 @@
                   <div class="hoverBGGrey rounded-2xl">
                     <a href="https://www.mewwallet.com/" target="_blank" class="flex items-center p-2"
                       @click="trackProduct({ item: 'MobileApp' })">
-                      <img :src="IMGMobilelogo" alt="MEW mobile wallet logo"
-                        class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" />
+                      <img :src="IMGMobilelogo" alt="MEW mobile wallet"
+                        class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" width="50px"
+                        height="auto" loading="lazy" />
                       <div class="grow">
-                        <h6 class="text-base xl:text-lg font-bold mb-1 text-nowrap">
+                        <p class="text-base xl:text-lg font-bold mb-1 text-nowrap">
                           MEW Mobile App
-                        </h6>
+                        </p>
                         <p class="opacity-65 text-sm">Mobile wallet</p>
                       </div>
                     </a>
@@ -77,12 +79,12 @@
                       :curr-project="props.currProject" :link-component="props.linkComponent" link-text=""
                       @mewlink:click="trackProduct({ item: 'MewWeb' })">
                       <div class="flex items-center p-2">
-                        <img :src="IMGWeblogo" alt="MEW portfolio manager logo"
-                          class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" />
+                        <img :src="IMGWeblogo" alt="MEW portfolio manager" width="50px" height="auto"
+                          class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" loading="lazy" />
                         <div class="block">
-                          <h6 class="text-base xl:text-lg font-bold mb-1 text-nowrap">
+                          <p class="text-base xl:text-lg font-bold mb-1 text-nowrap">
                             MEW Portfolio Manager
-                          </h6>
+                          </p>
                           <p class="opacity-65 text-sm">
                             Web portfolio interface
                           </p>
@@ -93,12 +95,12 @@
                   <div id="header-products-enkrypt" class="hoverBGGrey rounded-2xl">
                     <a href="https://www.enkrypt.com/" target="_blank" class="flex items-center p-2"
                       @click="trackProduct({ item: 'Enkrypt' })">
-                      <img :src="IMGEnkryptlogo" alt="enkrypt wallet extension logo"
-                        class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" />
+                      <img :src="IMGEnkryptlogo" alt="Enkrypt wallet extension" width="50px" height="auto"
+                        class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" loading="lazy" />
                       <div>
-                        <h6 class="text-base xl:text-lg font-bold mb-1">
+                        <p class="text-base xl:text-lg font-bold mb-1">
                           Enkrypt
-                        </h6>
+                        </p>
                         <p class="opacity-65 text-sm">
                           Browser extension wallet
                         </p>
@@ -108,12 +110,12 @@
                   <div id="header-products-ethVM" class="hoverBGGrey rounded-2xl">
                     <a href="https://www.ethvm.com/" target="_blank" class="flex items-center p-2"
                       @click="trackProduct({ item: 'Ethvm' })">
-                      <img :src="IMGEthvmlogo" alt="ethVM logo"
-                        class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" />
+                      <img :src="IMGEthvmlogo" alt="ethVM - block explorer" width="50px" height="auto"
+                        class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" loading="lazy" />
                       <div>
-                        <h6 class="text-base xl:text-lg font-bold mb-1">
+                        <p class="text-base xl:text-lg font-bold mb-1">
                           ethVM
-                        </h6>
+                        </p>
                         <p class="opacity-65 text-sm">Blockchain explorer</p>
                       </div>
                     </a>
@@ -130,8 +132,8 @@
               wallet</span>
           </MewLink>
           <!-- Mobile Menu Button -->
-          <img :src="ICONMenu" contain alt="open mobile menu" class="block md-header:hidden rounded-full hoverBGGrey"
-            @click="openMobileMenu" />
+          <img :src="ICONMenu" contain alt="open mobile menu" width="40px" height="auto" loading="lazy"
+            class="block md-header:hidden rounded-full hoverBGGrey" @click="openMobileMenu" />
         </div>
       </div>
     </header>
@@ -144,7 +146,7 @@
 import IMGMEWlogo from "@/assets/images/logo.svg";
 import IMGWeblogo from "@/assets/images/products/mewweb-logo.svg";
 import IMGMobilelogo from "@/assets/images/products/mewwallet-logo.svg";
-import IMGEnkryptlogo from "@/assets/images/products/enkrypt-logo.png";
+import IMGEnkryptlogo from "@/assets/images/products/enkrypt-logo.webp";
 import IMGEthvmlogo from "@/assets/images/products/ethvm-logo.svg";
 import ICONMenu from "@/assets/icons/menu.svg";
 import amplitudeConfigs from "@/helpers/amplitudeConfigs";
