@@ -96,13 +96,13 @@
           </p>
           <a href="https://www.ethvm.com/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D" target="_blank"
             :class="['flex items-center pa-2', linkClass]" @click="trackEthDonation">
-            <span><img :src="SVGDonateEth" contain alt="Ethereum logo" class="mr-2" width="20px" height="20px"
+            <span><img :src="DonateEth" contain alt="Ethereum logo" class="mr-2" width="20px" height="20px"
                 loading="lazy" /></span>
             Ethereum Donation
           </a>
           <a href="https://www.blockchain.com/explorer/addresses/btc/1DECAF2uSpFTP4L1fAHR8GCLrPqdwdLse9" target="_blank"
             :class="['flex items-center pa-2', linkClass]" @click="trackBtcDonation">
-            <span><img :src="SVGDonateBtc" contain alt="BTC logo" class="mr-2" width="20px" height="20px"
+            <span><img :src="DonateBtc" contain alt="BTC logo" class="mr-2" width="20px" height="20px"
                 loading="lazy" /></span>
             Bitcoin Donation
           </a>
@@ -176,8 +176,8 @@ import SVGGithub from "@/assets/social/github.svg";
 import SVGReddit from "@/assets/social/reddit.svg";
 import SVGMedium from "@/assets/social/medium.svg";
 import SVGTelegram from "@/assets/social/telegram.svg";
-import SVGDonateEth from "@/assets/social/donate-eth.svg";
-import SVGDonateBtc from "@/assets/social/donate-btc.svg";
+import DonateEth from "@/assets/social/eth.webp";
+import DonateBtc from "@/assets/social/btc.webp";
 import amplitudeConfigs from "@/helpers/amplitudeConfigs";
 import { AmplitudePropType } from "@/libs/types";
 import { RouterLink, useRoute } from "vue-router";
