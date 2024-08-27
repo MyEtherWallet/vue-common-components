@@ -10,6 +10,7 @@ export default defineConfig({
       "@": resolve(__dirname, "./src"),
     },
   },
+  assetsInclude: ["**/*.lottie", "**/*.svg", "**/*.webp"],
   build: {
     lib: {
       entry: resolve(__dirname, "src/libs/main.ts"),

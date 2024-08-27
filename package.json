@@ -31,6 +31,7 @@
     "@headlessui/vue": "^1.7.22",
     "@types/node": "^20.14.7",
     "@vitejs/plugin-vue": "^5.0.5",
+    "@vueuse/core": "^10.11.0",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.6",
@@ -38,10 +39,9 @@
     "vite": "^5.3.1",
     "vue": "^3.4.29",
     "vue-router": "^4.4.0",
-    "vue-tsc": "^2.0.24",
-    "@vueuse/core": "^10.11.0"
+    "vue-tsc": "^2.0.24"
   },
   "dependencies": {
-    "vue3-lottie": "^3.3.0"
+    "@lottiefiles/dotlottie-vue": "^0.4.12"
   }
 }

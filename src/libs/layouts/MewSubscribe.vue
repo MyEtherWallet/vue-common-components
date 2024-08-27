@@ -93,7 +93,8 @@
 
                                 </div>
                                 <!-- STEP 2-->
-                                <div v-else-if="step === 1" class="mt-8 sm:w-[420px] flex flex-col justify-between">
+                                <div v-else-if="step === 1"
+                                    class="mt-8 sm:mt-5 sm:w-[420px] flex flex-col justify-between">
                                     <!-- Checkbox 1-->
                                     <div class="flex align-start gap-3 sm:gap-[23px]">
                                         <div>
@@ -120,7 +121,7 @@
                                             knowledge, best practices and general tips.</p>
                                     </div>
                                     <!-- Checkbox 2-->
-                                    <div class="mt-[25px] sm:mt-8 flex align-start gap-3 sm:gap-[23px]">
+                                    <div class="mt-[25px] sm:mt-5 flex align-start gap-3 sm:gap-[23px]">
                                         <div>
                                             <label
                                                 class="relative flex items-center p-2 rounded-full cursor-pointer  hover:bg-primary hover:bg-opacity-10 transition-opacity "
@@ -144,7 +145,7 @@
                                             Trending tokens, big movers and onchain activity.</p>
                                     </div>
                                     <!-- Checkbox 3-->
-                                    <div class="mt-[25px] sm:mt-8 flex align-start gap-3 sm:gap-[23px]">
+                                    <div class="mt-[25px] sm:mt-5 flex align-start gap-3 sm:gap-[23px]">
                                         <div>
                                             <label
                                                 class="relative flex items-center p-2 rounded-full cursor-pointer  hover:bg-primary hover:bg-opacity-10 transition-opacity "
@@ -230,9 +231,8 @@
                                     is-white @click="setIsOpen(false, 0, 'clock-close-btn')" />
 
                             </div>
-                            <Vue3Lottie :animationData="playPeggy" :pauseAnimation="true" aria-hidden="true"
-                                class="min-w-[360px] min-h-[360px] max-w-[360px] max-h-[360px] sm:min-w-[500px] sm:min-h-[500px] sm:max-w-[500px] sm:max-h-[500px] absolute top-[-40px] inset-x-0 sm:inset-y-0 sm:right-[-90px] sm:left-auto mx-auto"
-                                :loop="1" :delay="100" />
+                            <DotLottieVue autoplay :loop="false" :src="playPeggy" aria-hidden="true"
+                                class="w-[360px] h-[360px]  sm:w-[500px] sm:h-[500px] absolute top-[-40px] inset-x-0 sm:inset-y-0 sm:right-[-90px] sm:left-auto mx-auto" />
                         </div>
                     </div>
                 </div>
@@ -252,10 +252,9 @@ import { AmplitudePropType } from "@/libs/types";
 import { PROJECTS } from "@/helpers/links";
 import { useRoute } from "vue-router";
 import amplitudeConfigs from "@/helpers/amplitudeConfigs";
-import { Vue3Lottie } from 'vue3-lottie'
-import playPeggy from '@/assets/lottie/peggy.json'
-import IMGPeggy from '@/assets/lottie/peggy.webp'
-
+import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
+import playPeggy from '@/assets/lottie/optimizeddotMEW.2_0.lottie';
+import IMGPeggy from '@/assets/lottie/peggy.webp';
 
 const props = defineProps({
     dialogOnly: {
