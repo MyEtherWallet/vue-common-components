@@ -35,7 +35,7 @@
             </div>
             <img :src="IMGPeggy" alt=""
                 class="sm:self-end sm:justify-self-center object-contain order-1 sm:order-2 mx-auto h-[200px] pt-20 sm:h-auto sm:pl-14"
-                width="180px" height="auto" loading="lazy" />
+                width="180px" height="270" loading="lazy" />
         </div>
 
         <!-- The backdrop, rendered as an absolute sibling to the panel container -->
@@ -93,7 +93,8 @@
 
                                 </div>
                                 <!-- STEP 2-->
-                                <div v-else-if="step === 1" class="mt-8 sm:w-[420px] flex flex-col justify-between">
+                                <div v-else-if="step === 1"
+                                    class="mt-8 sm:mt-5 sm:w-[420px] flex flex-col justify-between">
                                     <!-- Checkbox 1-->
                                     <div class="flex align-start gap-3 sm:gap-[23px]">
                                         <div>
@@ -105,9 +106,9 @@
                                                     id="checkboxCryptoKb" />
                                                 <span
                                                     class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
-                                                        viewBox="0 0 20 20" fill="currentColor" stroke="currentColor"
-                                                        stroke-width="1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" width="20"
+                                                        height="20" viewBox="0 0 20 20" fill="currentColor"
+                                                        stroke="currentColor" stroke-width="1">
                                                         <path fill-rule="evenodd"
                                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                                             clip-rule="evenodd"></path>
@@ -120,7 +121,7 @@
                                             knowledge, best practices and general tips.</p>
                                     </div>
                                     <!-- Checkbox 2-->
-                                    <div class="mt-[25px] sm:mt-8 flex align-start gap-3 sm:gap-[23px]">
+                                    <div class="mt-[25px] sm:mt-5 flex align-start gap-3 sm:gap-[23px]">
                                         <div>
                                             <label
                                                 class="relative flex items-center p-2 rounded-full cursor-pointer  hover:bg-primary hover:bg-opacity-10 transition-opacity "
@@ -130,9 +131,9 @@
                                                     id="checkBoxMarket" />
                                                 <span
                                                     class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
-                                                        viewBox="0 0 20 20" fill="currentColor" stroke="currentColor"
-                                                        stroke-width="1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" width="20"
+                                                        height="20" viewBox="0 0 20 20" fill="currentColor"
+                                                        stroke="currentColor" stroke-width="1">
                                                         <path fill-rule="evenodd"
                                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                                             clip-rule="evenodd"></path>
@@ -142,6 +143,30 @@
                                         </div>
                                         <p class="pt-2 text-s-17 !leading-p-150 sm:text-xl tracking-sp-01 text-info">
                                             Trending tokens, big movers and onchain activity.</p>
+                                    </div>
+                                    <!-- Checkbox 3-->
+                                    <div class="mt-[25px] sm:mt-5 flex align-start gap-3 sm:gap-[23px]">
+                                        <div>
+                                            <label
+                                                class="relative flex items-center p-2 rounded-full cursor-pointer  hover:bg-primary hover:bg-opacity-10 transition-opacity "
+                                                htmlFor="checkBoxUpdates">
+                                                <input type="checkbox" v-model="checkBoxUpdates"
+                                                    class="before:content[''] peer relative h-8 w-8 cursor-pointer appearance-none rounded-full border border-primary border-2 bg-white transition-all checked:border-primary checked:bg-primary checked:before:bg-primary"
+                                                    id="checkBoxUpdates" />
+                                                <span
+                                                    class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" width="20"
+                                                        height="20" viewBox="0 0 20 20" fill="currentColor"
+                                                        stroke="currentColor" stroke-width="1">
+                                                        <path fill-rule="evenodd"
+                                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                            clip-rule="evenodd"></path>
+                                                    </svg>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <p class="pt-2 text-s-17 !leading-p-150 sm:text-xl tracking-sp-01 text-info">
+                                            Product Updates</p>
                                     </div>
 
                                 </div>
@@ -173,7 +198,7 @@
 
                                 <svg v-if="isLoading" aria-hidden="true"
                                     class="w-8 h-8 text-white-40 animate-spin fill-white" viewBox="0 0 100 101"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
                                         fill="currentColor" />
@@ -206,9 +231,8 @@
                                     is-white @click="setIsOpen(false, 0, 'clock-close-btn')" />
 
                             </div>
-                            <Vue3Lottie :animationData="playPeggy" :pauseAnimation="true" aria-hidden="true"
-                                class="min-w-[360px] min-h-[360px] max-w-[360px] max-h-[360px] sm:min-w-[500px] sm:min-h-[500px] sm:max-w-[500px] sm:max-h-[500px] absolute top-[-40px] inset-x-0 sm:inset-y-0 sm:right-[-90px] sm:left-auto mx-auto"
-                                :loop="1" :delay="100" />
+                            <DotLottieVue autoplay :loop="false" :src="playPeggy" aria-hidden="true"
+                                class="w-[360px] h-[360px]  sm:w-[500px] sm:h-[500px] absolute top-[-40px] inset-x-0 sm:inset-y-0 sm:right-[-90px] sm:left-auto mx-auto" />
                         </div>
                     </div>
                 </div>
@@ -228,10 +252,9 @@ import { AmplitudePropType } from "@/libs/types";
 import { PROJECTS } from "@/helpers/links";
 import { useRoute } from "vue-router";
 import amplitudeConfigs from "@/helpers/amplitudeConfigs";
-import { Vue3Lottie } from 'vue3-lottie'
-import playPeggy from '@/assets/lottie/peggy.json'
-import IMGPeggy from '@/assets/lottie/peggy.webp'
-
+import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
+import playPeggy from '@/assets/lottie/optimizeddotMEW.2_0.lottie';
+import IMGPeggy from '@/assets/lottie/peggy.webp';
 
 const props = defineProps({
     dialogOnly: {
@@ -252,6 +275,10 @@ const props = defineProps({
     projectId: {
         required: true,
         type: String
+    },
+    apikey: {
+        type: String,
+        default: ''
     },
 });
 const $amplitude = props.amplitude;
@@ -355,9 +382,10 @@ const hasInputEmail = computed(() => {
  */
 const checkBoxCryptoKB = ref(true)
 const checkBoxMarket = ref(true)
+const checkBoxUpdates = ref(false)
 
 const atLeastOneCheckbox = computed(() => {
-    return checkBoxCryptoKB.value || checkBoxMarket.value
+    return checkBoxCryptoKB.value || checkBoxMarket.value || checkBoxUpdates.value
 })
 
 /**
@@ -367,54 +395,52 @@ const resetAll = () => {
     email.value = ''
     checkBoxCryptoKB.value = true
     checkBoxMarket.value = true
+    checkBoxUpdates.value = false
     step.value = props.dialogOnly ? 1 : 0
     model.value = false
     emit('update:isOpenPopupSubscribe', false)
     isLoading.value = false
 }
 
-const KLAVIYO_USER_PROPERTIES = {
-    cryptoKB: 'cryptoKnowledge',
-    market: 'marketData',
-    sourceURL: 'sourceURL'
-}
-
 const isLoading = ref(false)
 
 /**
- * Creates Subscription profile in Klaviyo
+ * Creates Subscription profile in Mailerlite
 
  */
+const GROUP_ID = {
+    cryptoKB: '130219086964590230',
+    market: '130219093858977184',
+    productUpdates: '130219101849126213'
+}
+
 const finishSignUP = async () => {
-    const _url = `https://a.klaviyo.com/client/subscriptions/?company_id=${props.projectId}`
+    const _url = `https://connect.mailerlite.com/api/subscribers`
+
+    const groups = []
+    if (checkBoxCryptoKB.value) groups.push(GROUP_ID.cryptoKB)
+    if (checkBoxMarket.value) groups.push(GROUP_ID.market)
+    if (checkBoxUpdates.value) groups.push(GROUP_ID.productUpdates)
+
     const _body = JSON.stringify({
-        data: {
-            type: 'subscription',
-            attributes: {
-                custom_source: `${props.currProject}`,
-                profile: {
-                    data: {
-                        type: 'profile',
-                        attributes: {
-                            email: email.value,
-                            properties: {
-                                [KLAVIYO_USER_PROPERTIES.cryptoKB]: checkBoxCryptoKB.value,
-                                [KLAVIYO_USER_PROPERTIES.market]: checkBoxMarket.value,
-                                [KLAVIYO_USER_PROPERTIES.sourceURL]: ampUrl.value
-                            }
-                        },
-                    }
-                }
-            },
-            relationships: { list: { data: { type: 'list', id: 'TBPh3n' } } }
-        }
+        email: email.value,
+        fields: {
+            product_source: props.currProject,
+            platform: 'web'
+        },
+        groups: [
+            ...groups
+        ]
     })
     try {
         isLoading.value = true
         const response = await fetch(_url, {
             method: 'POST',
             headers: {
-                revision: '2024-07-15', 'content-type': 'application/json'
+                Authorization: `Bearer ${props.apikey}`,
+                'X-Version': '2038-01-19',
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: _body,
 
@@ -427,7 +453,7 @@ const finishSignUP = async () => {
             route: ampUrl.value,
             cryptoKb: checkBoxCryptoKB.value,
             market: checkBoxMarket.value,
-
+            updates: checkBoxUpdates.value
         })
         emit('subscribe:finish')
         step.value = 2

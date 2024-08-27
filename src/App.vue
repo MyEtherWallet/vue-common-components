@@ -3,7 +3,7 @@
     <MewHeader :curr-project="PROJECTS.BLOG" :bg-visible="true" :link-component="RouterLink" :user-consent="userConsent"
       @update:consent="onUserConsentChange" :amplitude="{ track }" />
     <MEWSubscribe v-model="openSubscirbe" :curr-project="PROJECTS.BLOG" :amplitude="{ track }" project-id="test"
-      class="m-5" />
+      :apikey="key" class="m-5" />
     <p class="m-5">
       Etiam tempor orci eu lobortis elementum nibh tellus molestie nunc. Feugiat scelerisque varius morbi enim nunc
       faucibus. Nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum. Elementum sagittis vitae
@@ -107,7 +107,9 @@ import { ref } from "vue";
 import { MewHeader, MewFooter, MEWSubscribe } from "./libs/main";
 import { RouterLink } from "vue-router";
 import { PROJECTS } from "@/helpers/links";
+import configs from './configs';
 
+const key = configs.MAIL_KEY
 const userConsent = ref(false);
 const onUserConsentChange = (newval: boolean) => {
   userConsent.value = newval;
