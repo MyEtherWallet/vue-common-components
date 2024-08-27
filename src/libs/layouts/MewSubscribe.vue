@@ -460,6 +460,7 @@ const finishSignUP = async () => {
     }
     catch (error) {
         alert(`Something went wrong. Please try again later:  ${error}`)
+        throw new Error(`Something went wrong during subscription:  ${error}`)
     }
 }
 
