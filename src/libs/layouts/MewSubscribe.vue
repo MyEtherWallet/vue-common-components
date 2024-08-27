@@ -143,6 +143,30 @@
                                         <p class="pt-2 text-s-17 !leading-p-150 sm:text-xl tracking-sp-01 text-info">
                                             Trending tokens, big movers and onchain activity.</p>
                                     </div>
+                                    <!-- Checkbox 3-->
+                                    <div class="mt-[25px] sm:mt-8 flex align-start gap-3 sm:gap-[23px]">
+                                        <div>
+                                            <label
+                                                class="relative flex items-center p-2 rounded-full cursor-pointer  hover:bg-primary hover:bg-opacity-10 transition-opacity "
+                                                htmlFor="checkBoxUpdates">
+                                                <input type="checkbox" v-model="checkBoxUpdates"
+                                                    class="before:content[''] peer relative h-8 w-8 cursor-pointer appearance-none rounded-full border border-primary border-2 bg-white transition-all checked:border-primary checked:bg-primary checked:before:bg-primary"
+                                                    id="checkBoxUpdates" />
+                                                <span
+                                                    class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" width="20"
+                                                        height="20" viewBox="0 0 20 20" fill="currentColor"
+                                                        stroke="currentColor" stroke-width="1">
+                                                        <path fill-rule="evenodd"
+                                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                            clip-rule="evenodd"></path>
+                                                    </svg>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <p class="pt-2 text-s-17 !leading-p-150 sm:text-xl tracking-sp-01 text-info">
+                                            Product Updates</p>
+                                    </div>
 
                                 </div>
                                 <!-- STEP 3-->
@@ -253,6 +277,10 @@ const props = defineProps({
         required: true,
         type: String
     },
+    apikey: {
+        type: String,
+        default: ''
+    },
 });
 const $amplitude = props.amplitude;
 const route = useRoute();
@@ -355,9 +383,10 @@ const hasInputEmail = computed(() => {
  */
 const checkBoxCryptoKB = ref(true)
 const checkBoxMarket = ref(true)
+const checkBoxUpdates = ref(false)
 
 const atLeastOneCheckbox = computed(() => {
-    return checkBoxCryptoKB.value || checkBoxMarket.value
+    return checkBoxCryptoKB.value || checkBoxMarket.value || checkBoxUpdates.value
 })
 
 /**
@@ -367,54 +396,52 @@ const resetAll = () => {
     email.value = ''
     checkBoxCryptoKB.value = true
     checkBoxMarket.value = true
+    checkBoxUpdates.value = false
     step.value = props.dialogOnly ? 1 : 0
     model.value = false
     emit('update:isOpenPopupSubscribe', false)
     isLoading.value = false
 }
 
-const KLAVIYO_USER_PROPERTIES = {
-    cryptoKB: 'cryptoKnowledge',
-    market: 'marketData',
-    sourceURL: 'sourceURL'
-}
-
 const isLoading = ref(false)
 
 /**
- * Creates Subscription profile in Klaviyo
+ * Creates Subscription profile in Mailerlite
 
  */
+const GROUP_ID = {
+    cryptoKB: '130219086964590230',
+    market: '130219093858977184',
+    productUpdates: '130219101849126213'
+}
+
 const finishSignUP = async () => {
-    const _url = `https://a.klaviyo.com/client/subscriptions/?company_id=${props.projectId}`
+    const _url = `https://connect.mailerlite.com/api/subscribers`
+
+    const groups = []
+    if (checkBoxCryptoKB.value) groups.push(GROUP_ID.cryptoKB)
+    if (checkBoxMarket.value) groups.push(GROUP_ID.market)
+    if (checkBoxUpdates.value) groups.push(GROUP_ID.productUpdates)
+
     const _body = JSON.stringify({
-        data: {
-            type: 'subscription',
-            attributes: {
-                custom_source: `${props.currProject}`,
-                profile: {
-                    data: {
-                        type: 'profile',
-                        attributes: {
-                            email: email.value,
-                            properties: {
-                                [KLAVIYO_USER_PROPERTIES.cryptoKB]: checkBoxCryptoKB.value,
-                                [KLAVIYO_USER_PROPERTIES.market]: checkBoxMarket.value,
-                                [KLAVIYO_USER_PROPERTIES.sourceURL]: ampUrl.value
-                            }
-                        },
-                    }
-                }
-            },
-            relationships: { list: { data: { type: 'list', id: 'TBPh3n' } } }
-        }
+        email: email.value,
+        fields: {
+            product_source: props.currProject,
+            platform: 'web'
+        },
+        groups: [
+            ...groups
+        ]
     })
     try {
         isLoading.value = true
         const response = await fetch(_url, {
             method: 'POST',
             headers: {
-                revision: '2024-07-15', 'content-type': 'application/json'
+                Authorization: `Bearer ${props.apikey}`,
+                'X-Version': '2038-01-19',
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: _body,
 
@@ -427,7 +454,7 @@ const finishSignUP = async () => {
             route: ampUrl.value,
             cryptoKb: checkBoxCryptoKB.value,
             market: checkBoxMarket.value,
-
+            updates: checkBoxUpdates.value
         })
         emit('subscribe:finish')
         step.value = 2
