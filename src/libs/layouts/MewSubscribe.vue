@@ -3,9 +3,8 @@
         <div v-if="!props.dialogOnly"
             class="relative w-full flex flex-col sm:flex-row items-stretch justify-items-stretch p-8 sm:px-14 sm:pt-14 bg-[linear-gradient(94.39deg,#005BE5_1.51%,#0081F0_99.36%)] gap-4 rounded-4xl sm:max-h-[435px]">
             <div class="order-2 sm:order-1 lg:mb-[87px] max-w-full sm:max-w-[490px] md:max-w-full">
-                <h2 class="title3 !text-white ">Get better at crypto</h2>
-                <p
-                    class="max-w-[599px] text-white sm:text-2xl -tracking-[0.02em] font-medium sm:font-normal mb-5 sm:mb-4">
+                <h2 class="title3 !text-white mb-4 ">Get better at crypto</h2>
+                <p class="max-w-[599px] text-white sm:text-2xl -tracking-[0.02em] sm:font-light mb-5 sm:mb-4">
                     Level
                     up your
                     skills with
@@ -33,9 +32,14 @@
                         me up!</button>
                 </div>
             </div>
-            <img :src="IMGPeggy" alt=""
-                class="sm:self-end sm:justify-self-center object-contain order-1 sm:order-2 mx-auto h-[200px] pt-20 sm:h-auto sm:pl-14"
-                width="180px" height="270" loading="lazy" />
+            <div class="sm:self-end sm:justify-self-center rder-1 sm:order-2">
+                <picture>
+                    <source media="(max-width: 576px)" :srcset="IMGPeggyXS" sizes="118px" />
+                    <source media="(ming-width: 577px)" :srcset="IMGPeggy" />
+                    <img :src="IMGPeggy" alt="" class="object-contain mx-auto h-[120px] sm:h-[200px] mt-20 sm:mr-14"
+                        loading="lazy" width="543" height="833" />
+                </picture>
+            </div>
         </div>
 
         <!-- The backdrop, rendered as an absolute sibling to the panel container -->
@@ -254,6 +258,7 @@ import { useRoute } from "vue-router";
 import amplitudeConfigs from "@/helpers/amplitudeConfigs";
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
 import playPeggy from '@/assets/lottie/optimizeddotMEW.2_0.lottie';
+import IMGPeggyXS from '@/assets/lottie/peggy-xs.webp';
 import IMGPeggy from '@/assets/lottie/peggy.webp';
 
 const props = defineProps({
