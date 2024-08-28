@@ -1,6 +1,6 @@
 {
   "name": "@myetherwallet/vue-common-components",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "type": "module",
   "files": [
     "dist"
@@ -42,6 +42,6 @@
     "vue-tsc": "^2.0.24"
   },
   "dependencies": {
-    "@lottiefiles/dotlottie-vue": "^0.4.12"
+    "@lottiefiles/dotlottie-vue": "0.4.10"
   }
 }
