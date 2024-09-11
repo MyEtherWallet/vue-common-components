@@ -414,36 +414,33 @@ const isLoading = ref(false)
 
  */
 const GROUP_ID = {
-    cryptoKB: '130219086964590230',
-    market: '130219093858977184',
-    productUpdates: '130219101849126213'
+    cryptoKB: 'CRYPTO_KB',
+    market: 'MARKET',
+    productUpdates: 'PRODUCT_UPDATES'
 }
 
 const finishSignUP = async () => {
-    const _url = `https://connect.mailerlite.com/api/subscribers`
+    const _url = `https://qa.mewwallet.dev/email-web`
 
     const groups = []
     if (checkBoxCryptoKB.value) groups.push(GROUP_ID.cryptoKB)
     if (checkBoxMarket.value) groups.push(GROUP_ID.market)
     if (checkBoxUpdates.value) groups.push(GROUP_ID.productUpdates)
-
     const _body = JSON.stringify({
         email: email.value,
         fields: {
-            product_source: props.currProject,
             platform: 'web'
         },
         groups: [
             ...groups
-        ]
+        ],
+        product: props.currProject,
     })
     try {
         isLoading.value = true
         const response = await fetch(_url, {
             method: 'POST',
             headers: {
-                Authorization: `Bearer ${props.apikey}`,
-                'X-Version': '2038-01-19',
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
