@@ -420,7 +420,7 @@ const GROUP_ID = {
 }
 
 const finishSignUP = async () => {
-    const _url = `https://qa.mewwallet.dev/email-web`
+    const _url = `https://mainnet.mewwallet.dev/email-web`
 
     const groups = []
     if (checkBoxCryptoKB.value) groups.push(GROUP_ID.cryptoKB)
