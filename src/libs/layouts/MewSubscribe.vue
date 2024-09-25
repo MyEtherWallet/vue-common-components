@@ -14,30 +14,36 @@
                 <div class="w-full flex flex-col sm:flex-row">
                     <div class="relative grow sm:max-w-[472px]">
                         <input type="email" id="email-in-sub-box" v-model="email"
-                            :class="[isValidEmail ? 'border-white text-white' : ' focus:outline-none !border-error text-error focus-visible:!border-error focus-visible:ring-error', 'grow bg-primary border-2 text-sm rounded-[20px] h-[58px] w-full  px-5 py-[14px] text-xl transition-all']"
+                            :class="[isValidEmail && !hasError ? 'border-white text-white' : ' focus:outline-none !border-error text-error focus-visible:!border-error focus-visible:ring-error', 'grow bg-primary border-2 text-sm rounded-[20px] h-[58px] w-full  px-5 py-[14px] text-xl transition-all']"
                             placeholder="Enter your email" required @focus="inFocusEmail = true"
                             @blur="inFocusEmail = false" />
                         <p v-if="!isValidEmail" class="pl-4 pt-[2px] absolute text-error text-[15px] leading-[23px]">
                             email
                             is not valid
                         </p>
+                        <p v-else-if="hasError" class="pl-4 pt-[2px] absolute text-error text-[15px] leading-[23px]">
+                            email
+                            is required
+                        </p>
                         <MewAppBtnIcon :icon="ICONClose" @click="clearInputEmail" is-white
                             aria-label-string="clear input"
                             :class="[(email !== '' && inFocusEmail) || !isValidEmail ? 'opacity-100' : 'opacity-0', 'transition-opacity absolute top-3 right-6 z-1']" />
                     </div>
 
-                    <button :disabled="!(isValidEmail && hasInputEmail)"
+                    <button
                         class="cursor-pointer mt-7 sm:mt-0 px-8 py-4 h-[58px] w-full sm:w-auto sm:min-w-[178px]  bg-white rounded-[20px] text-xl text-primary font-bold hoverOpacityHasBG mt-4 sm:mt-0 sm:ml-4"
-                        @click="signUp('blue-container-btn', true)">Sign
+                        @click="clickSubscribe">Sign
                         me up!</button>
                 </div>
             </div>
-            <div class="sm:self-end sm:justify-self-center rder-1 sm:order-2">
+            <div
+                class="sm:flex-none sm:self-end sm:justify-self-center order-1 sm:order-2 sm:max-w-[150px] sm:ml-auto lg:mx-auto">
                 <picture>
                     <source media="(max-width: 576px)" :srcset="IMGPeggyXS" sizes="118px" />
-                    <source media="(ming-width: 577px)" :srcset="IMGPeggy" />
-                    <img :src="IMGPeggy" alt="" class="object-contain mx-auto h-[120px] sm:h-[200px] mt-20 sm:mr-14"
-                        loading="lazy" width="543" height="833" />
+                    <source media="(min-width: 577px)" :srcset="IMGPeggy" />
+                    <img :src="IMGPeggy" alt=""
+                        class="object-contain mx-auto h-[120px] sm:h-[150px] lg:h-[200px] mt-20 lg:mr-15" loading="lazy"
+                        width="543" height="833" />
                 </picture>
             </div>
         </div>
@@ -73,7 +79,7 @@
                                     </p>
                                     <div class="relative grow sm:max-w-[472px] mb-7">
                                         <input type="email" id="email-in-sub-popup" v-model="email"
-                                            :class="[isValidEmail ? 'border-primary' : ' focus:outline-none !border-error text-error focus-visible:!border-error focus-visible:ring-error', ' grow  bg-white border-2 text-sm rounded-[20px] h-[58px] w-full  px-5 py-[14px] text-xl transition-all']"
+                                            :class="[isValidEmail && !hasError ? 'border-primary' : ' focus:outline-none !border-error text-error focus-visible:!border-error focus-visible:ring-error', ' grow  bg-white border-2 text-sm rounded-[20px] h-[58px] w-full  px-5 py-[14px] text-xl transition-all']"
                                             placeholder="Enter your email" required @focus="inFocusEmail = true"
                                             @blur="inFocusEmail = false" />
                                         <p v-if="!isValidEmail"
@@ -81,14 +87,19 @@
                                             email
                                             is not valid
                                         </p>
+                                        <p v-else-if="hasError"
+                                            class="pl-4 pt-[2px] absolute text-error text-[15px] leading-[23px]">
+                                            email
+                                            is required
+                                        </p>
                                         <MewAppBtnIcon :icon="ICONClose" @click="clearInputEmail"
                                             aria-label-string="clear input"
                                             :class="[(email !== '' && inFocusEmail) || !isValidEmail ? 'opacity-100' : 'opacity-0', 'transition-opacity absolute top-3 right-6 z-1']" />
                                     </div>
 
-                                    <button :disabled="!(isValidEmail && hasInputEmail)"
+                                    <button
                                         class="cursor-pointer px-8 py-4 mb-2 sm:mb-4 h-[58px] w-full  sm:min-w-[178px] bg-primary rounded-[20px] text-xl text-white font-bold hoverOpacityHasBG"
-                                        @click="signUp('popup-btn')">Sign
+                                        @click="clickSubscribe">Sign
                                         me up!</button>
                                     <p class="text-center text-info text-s-17 leading-p-150">
                                         We
@@ -356,8 +367,12 @@ const popUpTitle = computed<string>(() => {
     }
 })
 
+//Used to check if users clicks subscribe without entering email
+const hasError = ref<boolean>(false)
+
 // Valid Email:
 const validateEmail = (email: string) => {
+    hasError.value = false
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
@@ -366,6 +381,19 @@ const email = ref<string>('')
 const isValidEmail = ref<boolean>(true)
 const inFocusEmail = ref<boolean>(false)
 
+const clickSubscribe = () => {
+    if (!email.value || email.value === '') {
+        hasError.value = true
+    }
+    else if (isValidEmail && hasInputEmail) {
+        if (props.dialogOnly) {
+            signUp('popup-btn')
+        }
+        else {
+            signUp('blue-container-btn', false)
+        }
+    }
+}
 watchDebounced(
     email,
     () => {
