@@ -3,8 +3,8 @@
     <div>
       <MenuButton :id="`menu-button-${text}`" class="font-medium text-base xl:text-lg hoverOpacity flex items-center">
         {{ text }}
-        <img :src="ICONChevronDown" contain alt="menu icon" class="ml-1 mt-px" loading="lazy" width="11px"
-          height="7px" />
+        <img :src="ICONChevronDown" contain :alt="t('common_components.open-dropdown')" class="ml-1 mt-px"
+          loading="lazy" width="11px" height="7px" />
       </MenuButton>
     </div>
     <transition enter-active-class="transition duration-100 ease-out" enter-from-class="transform scale-95 opacity-0"
@@ -26,7 +26,14 @@
 import { Menu, MenuButton, MenuItems } from "@headlessui/vue";
 import ICONChevronDown from "@/assets/icons/chevron-down.svg";
 import { ref } from "vue";
+import { useI18n } from 'vue-i18n';
+import commonMessages from "@/i18n/locales/common/index";
 
+const { t } = useI18n({
+  messages: {
+    ...commonMessages
+  }
+})
 defineProps({
   text: {
     default: "",

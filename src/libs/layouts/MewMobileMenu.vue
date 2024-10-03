@@ -6,58 +6,59 @@
       </div>
       <div class="grid grid-cols-1 gap-6 px-6">
         <MewLink :link-url="PROJECT_LINKS[PROJECTS.LANDING].HOME" :curr-project="props.currProject"
-          :link-component="props.linkComponent" link-text="Home" @mewlink:click="trackHome"
+          :link-component="props.linkComponent" :link-text="t('home')" @mewlink:click="trackHome"
           class="text-lg font-medium leading-6 hoverOpacity p-2" />
         <a href="https://ccswap.myetherwallet.com/" target="_blank"
-          class="text-lg font-medium leading-6 hoverOpacity p-2" @click="trackBuy">Buy Crypto</a>
+          class="text-lg font-medium leading-6 hoverOpacity p-2" @click="trackBuy">{{ t('buy') }}</a>
         <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_SWAP" :curr-project="props.currProject"
-          :link-component="props.linkComponent" link-text="Swap Tokens" @mewlink:click="trackSwap"
+          :link-component="props.linkComponent" :link-text="t('swap')" @mewlink:click="trackSwap"
           class="text-lg font-medium leading-6 hoverOpacity p-2" />
         <!-- More Features Dropdown -->
         <div class="text-lg font-medium leading-6" @click="featuresToggle">
           <div class="flex justify-between items-center hoverOpacity cursor-pointer p-2">
-            More Features
-            <span><img :src="ICONChevronDown" contain alt="menu icon" class="ml-1 mt-px" width="11px" height="7px"
-                loading="lazy" /></span>
+            {{ t('more_features.title') }}
+            <span><img :src="ICONChevronDown" contain :alt="t('common_components.open-dropdown')" class="ml-1 mt-px"
+                width="11px" height="7px" loading="lazy" /></span>
           </div>
           <div v-if="isFeaturesOpen"
             class="grid grid-cols-1 gap-4 px-3 pt-6 pb-2 transition-all transition-[height] duration-500 ease-out">
             <MewLink :link-url="PROJECT_LINKS[PROJECTS.LANDING].STAKING" :curr-project="props.currProject"
-              :link-component="props.linkComponent" link-text="Staking" @mewlink:click="trackStaking"
-              class="hoverOpacity cursor-pointer p-2" />
+              :link-component="props.linkComponent" :link-text="t('more_features.staking')"
+              @mewlink:click="trackStaking" class="hoverOpacity cursor-pointer p-2" />
             <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_NFT" :curr-project="props.currProject"
-              :link-component="props.linkComponent" link-text="NFT" @mewlink:click="trackNft"
+              :link-component="props.linkComponent" :link-text="t('more_features.nft')" @mewlink:click="trackNft"
               class="hoverOpacity cursor-pointer p-2" />
             <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_DAPPS" :curr-project="props.currProject"
-              :link-component="props.linkComponent" link-text="DApps" @mewlink:click="trackDapps"
+              :link-component="props.linkComponent" :link-text="t('more_features.dapps')" @mewlink:click="trackDapps"
               class="hoverOpacity cursor-pointer p-2" />
           </div>
         </div>
         <!-- Resources Dropdown -->
         <div class="text-lg font-medium leading-6" @click="resourcesToggle">
           <div class="flex justify-between items-center hoverOpacity cursor-pointer p-2">
-            Resources
-            <span><img :src="ICONChevronDown" contain alt="menu icon" class="ml-1 mt-px" width="11px" height="7px"
-                loading="lazy" /></span>
+            {{ t('resources.title') }}
+            <span><img :src="ICONChevronDown" contain :alt="t('common_components.open-dropdown')" class="ml-1 mt-px"
+                width="11px" height="7px" loading="lazy" /></span>
           </div>
           <div v-if="isResourcesOpen" class="grid grid-cols-1 gap-4 px-3 pt-8 pb-2">
             <a href="https://www.myetherwallet.com/blog/" target="_blank" class="hoverOpacity cursor-pointer p-2"
-              @click="trackMewtopia">Blog</a>
+              @click="trackMewtopia">{{ t('resources.blog') }}</a>
             <a href="https://help.myetherwallet.com/en/" target="_blank" class="hoverOpacity cursor-pointer p-2"
-              @click="trackHelpCenter">Help Center</a>
+              @click="trackHelpCenter">{{ t('resources.help_center') }}</a>
             <MewLink :link-url="PROJECT_LINKS[PROJECTS.LANDING].FAQ" :curr-project="props.currProject"
-              :link-component="props.linkComponent" link-text="FAQ" @mewlink:click="trackFAQ"
+              :link-component="props.linkComponent" :link-text="t('resources.faq')" @mewlink:click="trackFAQ"
               class="hoverOpacity cursor-pointer p-2" />
             <a href="mailto:support@myetherwallet.com" rel="noopener noreferrer" target="_blank"
-              class="hoverOpacity cursor-pointer p-2" @click="trackCustomerSupport">Customer Support</a>
+              class="hoverOpacity cursor-pointer p-2" @click="trackCustomerSupport">{{ t('resources.customer_support')
+              }}</a>
           </div>
         </div>
         <!-- Products Dropdown -->
         <div class="text-lg font-medium leading-6" @click="productsToggle">
           <div class="flex justify-between items-center hoverOpacity cursor-pointer p-2">
-            Products
-            <span><img :src="ICONChevronDown" contain alt="menu icon" class="ml-1 mt-px" width="11px" height="7px"
-                loading="lazy" /></span>
+            {{ t('products') }}
+            <span><img :src="ICONChevronDown" contain :alt="t('common_components.open-dropdown')" class="ml-1 mt-px"
+                width="11px" height="7px" loading="lazy" /></span>
           </div>
           <div v-if="isProductsOpen" class="grid grid-cols-1 gap-2 pt-6 pb-4">
             <div id="header-products-mew-wallet" class="hoverBGGrey rounded-2xl p-2">
@@ -67,9 +68,9 @@
                   class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" />
                 <div class="grow">
                   <p class="text-base xl:text-lg font-bold mb-1 text-nowrap">
-                    MEW Mobile App
+                    {{ t('mew_mobile_app.title') }}
                   </p>
-                  <p class="opacity-65 text-sm">Mobile wallet</p>
+                  <p class="opacity-65 text-sm">{{ t('mew_mobile_app.description') }}</p>
                 </div>
               </a>
             </div>
@@ -81,9 +82,9 @@
                     class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" />
                   <div class="block">
                     <p class="text-base xl:text-lg font-bold mb-1 text-nowrap">
-                      MEW Portfolio Manager
+                      {{ t('mew_portfolio_manager.title') }}
                     </p>
-                    <p class="opacity-65 text-sm">Web portfolio interface</p>
+                    <p class="opacity-65 text-sm">{{ t('mew_portfolio_manager.description') }}</p>
                   </div>
                 </div>
               </MewLink>
@@ -94,8 +95,8 @@
                 <img :src="IMGEnkryptlogo" alt="enkrypt wallet extension logo" width="50px" height="50px" loading="lazy"
                   class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" />
                 <div>
-                  <p class="text-base xl:text-lg font-bold mb-1">Enkrypt</p>
-                  <p class="opacity-65 text-sm">Browser extension wallet</p>
+                  <p class="text-base xl:text-lg font-bold mb-1">{{ t('enkrypt.title') }}</p>
+                  <p class="opacity-65 text-sm">{{ t('enkrypt.description') }}</p>
                 </div>
               </a>
             </div>
@@ -105,8 +106,8 @@
                 <img :src="IMGEthvmlogo" alt="ethVM logo" width="50px" height="50px" loading="lazy"
                   class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" />
                 <div>
-                  <p class="text-base xl:text-lg font-bold mb-1">ethVM</p>
-                  <p class="opacity-65 text-sm">Blockchain explorer</p>
+                  <p class="text-base xl:text-lg font-bold mb-1">{{ t('ethvm.title') }}</p>
+                  <p class="opacity-65 text-sm">{{ t('ethvm.description') }}</p>
                 </div>
               </a>
             </div>
@@ -119,7 +120,7 @@
             :link-component="props.linkComponent" @mewlink:click="trackAccessWallet"
             class="px-4 py-2 bg-black text-white h-10 rounded-3xl hoverOpacity">
             <p class="text-base xl:text-lg font-medium leading-6 tracking-sp-06">
-              Access my wallet
+              {{ t('access_wallet') }}
             </p>
           </MewLink>
         </div>
@@ -145,11 +146,17 @@ import MewLink from "./MewLink.vue";
 import { PROJECT_LINKS, PROJECTS } from "@/helpers/links";
 import { RouterLink } from "vue-router";
 import { AmplitudePropType } from "../types";
-
+import { useI18n } from 'vue-i18n'
+import messages from '@/i18n/locales/header/index'
+import { mergeLocalesWithCommon } from '@/i18n/locales/index'
+const mergedMessages = mergeLocalesWithCommon(messages)
+const { t } = useI18n({
+  locale: 'en',
+  messages: { ...mergedMessages }
+})
 interface itemType {
   item: string;
 }
-
 const isFeaturesOpen = ref<boolean>(false);
 const isResourcesOpen = ref<boolean>(false);
 const isProductsOpen = ref<boolean>(false);

@@ -9,16 +9,16 @@
               Team
               -->
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].ABOUT" :class="linkClass"
-            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="About us"
+            :curr-project="props.currProject" :link-component="props.linkComponent" :link-text="t('about_us')"
             @mewlink:click="trackAboutUs" />
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].CAREERS" :class="linkClass"
-            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Careers"
+            :curr-project="props.currProject" :link-component="props.linkComponent" :link-text="t('careers')"
             @mewlink:click="trackCareers" />
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS" :class="linkClass"
-            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="How it works"
+            :curr-project="props.currProject" :link-component="props.linkComponent" :link-text="t('how_it_works')"
             @mewlink:click="trackHowItWorks" />
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].TEAM" :class="linkClass"
-            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Team"
+            :curr-project="props.currProject" :link-component="props.linkComponent" :link-text="t('team')"
             @mewlink:click="trackTeam" />
           <!--  Privacy
                 Terms
@@ -26,16 +26,16 @@
                 Bug Bounty
               -->
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].PRIVACY_POLICY" :class="['mt-8', linkClass]"
-            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Privacy"
+            :curr-project="props.currProject" :link-component="props.linkComponent" :link-text="t('privacy')"
             @mewlink:click="trackPrivacy" />
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].TERMS_OF_SERVICE" :class="linkClass"
-            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Terms"
+            :curr-project="props.currProject" :link-component="props.linkComponent" :link-text="t('terms')"
             @mewlink:click="trackTerms" />
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].SECURITY_POLICY" :class="linkClass"
-            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Security Policy"
+            :curr-project="props.currProject" :link-component="props.linkComponent" :link-text="t('security_policy')"
             @mewlink:click="trackSecurityPolicy" />
           <a href="https://hackenproof.com/programs/myetherwallet" target="_blank" :class="linkClass"
-            @mewlink:click="trackBugBounty">Bug Bounty </a>
+            @mewlink:click="trackBugBounty">{{ t('bug_bounty') }}</a>
         </div>
         <div class="grid grid-cols-1 gap-2.5 content-start">
           <!--  Mobile App
@@ -43,25 +43,26 @@
                 Enkrypt
                 ethVM
               -->
-          <a href="https://www.mewwallet.com/" target="_blank" :class="linkClass" @click="trackMobile">MEW Mobile
-            App</a>
-          <a href="https://www.enkrypt.com/" target="_blank" :class="linkClass" @click="trackEnkrypt">Enkrypt</a>
+          <a href="https://www.mewwallet.com/" target="_blank" :class="linkClass" @click="trackMobile">{{
+            t('mobile_app') }}</a>
+          <a href="https://www.enkrypt.com/" target="_blank" :class="linkClass" @click="trackEnkrypt">{{ t('enkrypt')
+            }}</a>
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].WALLET_ACCESS" :class="linkClass"
-            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="MEW Portfolio Manager"
+            :curr-project="props.currProject" :link-component="props.linkComponent" :link-text="t('portfolio_manager')"
             @mewlink:click="trackPortfolio" />
-          <a href="https://www.ethvm.com/" target="_blank" :class="linkClass" @click="trackEthvm">ethVM</a>
+          <a href="https://www.ethvm.com/" target="_blank" :class="linkClass" @click="trackEthvm">{{ t('ethvm') }}</a>
           <!--  Verify Message
                 Convert Units
                 Offline Helper
               -->
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].VERIFY_MESSAGE" :class="['mt-8', linkClass]"
-            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Verify Message"
+            :curr-project="props.currProject" :link-component="props.linkComponent" :link-text="t('verify_message')"
             @mewlink:click="trackVerifyMessage" />
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].CONVERT_UNITS" :class="linkClass"
-            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Convert Units"
+            :curr-project="props.currProject" :link-component="props.linkComponent" :link-text="t('convert_units')"
             @mewlink:click="trackConvertUnits" />
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].SEND_OFFLINE_HELPER" :class="linkClass"
-            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Send Offline Helper"
+            :curr-project="props.currProject" :link-component="props.linkComponent" :link-text="t('offline_helper')"
             @mewlink:click="trackSendOfflineHelper" />
         </div>
         <div class="grid grid-cols-1 gap-2.5 content-start">
@@ -70,41 +71,41 @@
                 FAQ
                 Blog
               -->
-          <a href="https://help.myetherwallet.com/en/" target="_blank" :class="linkClass" @click="trackHelpCenter">Help
-            Center</a>
+          <a href="https://help.myetherwallet.com/en/" target="_blank" :class="linkClass" @click="trackHelpCenter"> {{
+            t('help_center') }}</a>
+
           <a href="mailto:support@myetherwallet.com" rel="noopener noreferrer" target="_blank" :class="linkClass"
-            @click="trackCustomerSupport">Customer Support</a>
+            @click="trackCustomerSupport">{{ t('customer_support') }}</a>
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.LANDING].FAQ" :class="linkClass" :curr-project="props.currProject"
-            :link-component="props.linkComponent" link-text="FAQ" @mewlink:click="trackFAQ" />
-          <a href="https://www.myetherwallet.com/blog/" :class="linkClass" target="_blank"
-            @click="trackMewtopia">Blog</a>
+            :link-component="props.linkComponent" :link-text="t('faq')" @mewlink:click="trackFAQ" />
+          <a href="https://www.myetherwallet.com/blog/" :class="linkClass" target="_blank" @click="trackMewtopia">{{
+            t('blog') }}</a>
           <!--  Press Kit
                 Advertise with Us
               -->
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].PRESSKIT" :class="['mt-8', linkClass]"
-            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Press Kit"
+            :curr-project="props.currProject" :link-component="props.linkComponent" :link-text="t('press_kit')"
             @mewlink:click="trackPressKit" />
           <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].ADVERTISE_WITH_US" :class="linkClass"
-            :curr-project="props.currProject" :link-component="props.linkComponent" link-text="Advertise With Us"
+            :curr-project="props.currProject" :link-component="props.linkComponent" :link-text="t('advertise_with_us')"
             @mewlink:click="trackAdvertiseWithUs" />
         </div>
         <!--Donation Block-->
         <div class="grid grid-cols-1 gap-2.5 content-start">
           <p class="mb-5 text-info max-w-96">
-            Help us keep MEW free and open-source, your donations go a long way
-            towards making that possible.
+            {{ t('donate.text') }}
           </p>
           <a href="https://www.ethvm.com/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D" target="_blank"
             :class="['flex items-center pa-2', linkClass]" @click="trackEthDonation">
             <span><img :src="DonateEth" contain alt="Ethereum logo" class="mr-2" width="20px" height="20px"
                 loading="lazy" /></span>
-            Ethereum Donation
+            {{ t('donate.ethereum') }}
           </a>
           <a href="https://www.blockchain.com/explorer/addresses/btc/1DECAF2uSpFTP4L1fAHR8GCLrPqdwdLse9" target="_blank"
             :class="['flex items-center pa-2', linkClass]" @click="trackBtcDonation">
             <span><img :src="DonateBtc" contain alt="BTC logo" class="mr-2" width="20px" height="20px"
                 loading="lazy" /></span>
-            Bitcoin Donation
+            {{ t('donate.bitcoin') }}
           </a>
         </div>
       </div>
@@ -126,7 +127,7 @@
         </div>
         <!-- Join Community -->
         <div class="order-1 md:order-last">
-          <p class="mb-3 font-bold">Join MEW Community</p>
+          <p class="mb-3 font-bold">{{ t('join_community') }}</p>
           <div class="flex flex-wrap gap-3">
             <a href="https://www.facebook.com/MyEtherWallet" target="_blank" :class="linkClass"
               @click="trackJoinMewCommunity('facebook')">
@@ -185,6 +186,14 @@ import { PropType } from "vue";
 import { PROJECT_LINKS, PROJECTS } from "@/helpers/links";
 import MewLink from "./MewLink.vue";
 import MewSwitchDataTracking from "./MewSwitchDataTracking.vue";
+import { useI18n } from 'vue-i18n'
+import messages from '@/i18n/locales/footer/index'
+const { t } = useI18n({
+  locale: 'en',
+  messages: {
+    ...messages
+  }
+})
 
 const emit = defineEmits<{
   (e: "update:consent", newval: boolean): void;

@@ -1,0 +1,7 @@
+{ 
+    "common_components": {
+        "close": "close",
+        "open-dropdown": "open/close dropdown menu",
+        "clear-input": "clear input"
+    }
+}

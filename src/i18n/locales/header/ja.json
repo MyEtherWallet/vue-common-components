@@ -1,0 +1,37 @@
+{ 
+    "home": "MyEtherWallet ロゴ - ホームに戻る",
+    "open_menu": "モバイルメニューを開く",
+    "buy": "暗号通貨を購入",
+    "swap": "トークンを交換",
+    "more_features": {
+      "title": "その他の機能",
+      "staking": "ステーキング",
+      "nft": "NFT",
+      "dapps": "DApps"
+    },
+    "resources": {
+      "title": "リソース",
+      "blog": "ブログ",
+      "help_center": "ヘルプセンター",
+      "faq": "よくある質問",
+      "customer_support": "カスタマーサポート"
+    },
+    "products": "製品",
+    "mew_mobile_app": {
+      "title": "MEWモバイルアプリ",
+      "description": "モバイルウォレット"
+    },
+    "mew_portfolio_manager": {
+      "title": "MEWポートフォリオマネージャー",
+      "description": "ウェブポートフォリオインターフェース"
+    },
+    "enkrypt": {
+      "title": "Enkrypt",
+      "description": "ブラウザ拡張ウォレット"
+    },
+    "ethvm": {
+      "title": "ethVM",
+      "description": "ブロックチェーンエクスプローラー"
+    },
+    "access_wallet": "私のウォレットにアクセス"
+}
