@@ -363,15 +363,16 @@ const isValidEmail = ref<boolean>(true)
 const inFocusEmail = ref<boolean>(false)
 
 const clickSubscribe = () => {
+    const isValid = validateEmail(email.value)
     if (!email.value || email.value === '') {
         hasError.value = true
     }
-    else if (isValidEmail && hasInputEmail) {
+    else if (isValid && hasInputEmail) {
         if (props.dialogOnly) {
             signUp('popup-btn')
         }
         else {
-            signUp('blue-container-btn', false)
+            signUp('blue-container-btn', true)
         }
     }
 }
