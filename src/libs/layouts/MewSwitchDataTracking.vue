@@ -10,9 +10,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { Switch } from "@headlessui/vue";
-import messages from '@/i18n/locales/data-tracking/index'
+import messages from '@/locales/data-tracking/index'
 
 const props = defineProps({
   id: {

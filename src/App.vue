@@ -107,7 +107,7 @@ import { ref } from "vue";
 import { MewHeader, MewFooter, MEWSubscribe } from "./libs/main";
 import { RouterLink } from "vue-router";
 import { PROJECTS } from "@/helpers/links";
-import { MassagesShema } from "./i18n/locales/index";
+import { MassagesShema } from "./locales/index";
 
 const userConsent = ref(false);
 const onUserConsentChange = (newval: boolean) => {

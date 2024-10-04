@@ -27,7 +27,7 @@
 import { Menu, MenuButton, MenuItems } from "@headlessui/vue";
 import ICONChevronDown from "@/assets/icons/chevron-down.svg";
 import { ref } from "vue";
-import commonMessages from "@/i18n/locales/common/index";
+import commonMessages from "@/locales/common/index";
 
 const props = defineProps({
   text: {

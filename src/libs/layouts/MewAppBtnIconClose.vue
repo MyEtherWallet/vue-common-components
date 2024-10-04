@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import MewAppBtnIcon from "./MewAppBtnIcon.vue";
 import ICONClose from "@/assets/icons/close.svg";
-import commonMessages from "@/i18n/locales/common/index";
+import commonMessages from "@/locales/common/index";
 
 const props = defineProps({
   isWhite: {

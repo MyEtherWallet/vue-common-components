@@ -244,8 +244,8 @@ import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
 import playPeggy from '@/assets/lottie/optimizeddotMEW.2_0.lottie';
 import IMGPeggyXS from '@/assets/lottie/peggy-xs.webp';
 import IMGPeggy from '@/assets/lottie/peggy.webp';
-import messages from '@/i18n/locales/subscribe/index'
-import { mergeLocalesWithCommon } from '@/i18n/locales/index'
+import messages from '@/locales/subscribe/index'
+import { mergeLocalesWithCommon } from '@/locales/index'
 const mergedMessages = mergeLocalesWithCommon(messages)
 
 const props = defineProps({

@@ -146,8 +146,8 @@ import MewLink from "./MewLink.vue";
 import { PROJECT_LINKS, PROJECTS } from "@/helpers/links";
 import { RouterLink } from "vue-router";
 import { AmplitudePropType } from "../types";
-import messages from '@/i18n/locales/header/index'
-import { mergeLocalesWithCommon } from '@/i18n/locales/index'
+import messages from '@/locales/header/index'
+import { mergeLocalesWithCommon } from '@/locales/index'
 const mergedMessages = mergeLocalesWithCommon(messages)
 
 interface itemType {

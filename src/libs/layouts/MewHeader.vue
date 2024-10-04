@@ -163,9 +163,8 @@ import { AmplitudePropType } from "@/libs/types";
 import { RouterLink } from "vue-router";
 import { useRoute } from "vue-router";
 import { PROJECT_LINKS, PROJECTS } from "@/helpers/links";
-
-import messages from '@/i18n/locales/header/index'
-import { mergeLocalesWithCommon } from '@/i18n/locales/index'
+import messages from '@/locales/header/index'
+import { mergeLocalesWithCommon } from '@/locales/index'
 const mergedMessages = mergeLocalesWithCommon(messages)
 
 const emit = defineEmits<{

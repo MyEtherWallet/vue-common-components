@@ -186,7 +186,7 @@ import { PropType } from "vue";
 import { PROJECT_LINKS, PROJECTS } from "@/helpers/links";
 import MewLink from "./MewLink.vue";
 import MewSwitchDataTracking from "./MewSwitchDataTracking.vue";
-import messages from '@/i18n/locales/footer/index'
+import messages from '@/locales/footer/index'
 
 
 const emit = defineEmits<{
