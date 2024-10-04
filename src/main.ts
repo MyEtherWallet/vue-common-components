@@ -9,7 +9,5 @@ const router = createRouter({
   history: createMemoryHistory(),
   routes,
 });
-// createApp(App).use(router).use(i18n).mount("#app");
-
 createApp(App).use(router).mount("#app");
 export { MewHeader, MewFooter };
