@@ -214,7 +214,7 @@
                             <div class="bg-primary flex rounded-4xl w-full h-full w-full">
                                 <div class="w-full">
                                 </div>
-                                <mew-app-btn-icon-close
+                                <mew-app-btn-icon-close :useI18n="(useI18n)"
                                     class="inline-block self-start justify-self-end min-w-8 m-4 z-[101] !cursor-pointer"
                                     is-white @click="setIsOpen(false, 0, 'clock-close-btn')" />
 
@@ -244,16 +244,10 @@ import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
 import playPeggy from '@/assets/lottie/optimizeddotMEW.2_0.lottie';
 import IMGPeggyXS from '@/assets/lottie/peggy-xs.webp';
 import IMGPeggy from '@/assets/lottie/peggy.webp';
-import { useI18n } from 'vue-i18n'
 import messages from '@/i18n/locales/subscribe/index'
 import { mergeLocalesWithCommon } from '@/i18n/locales/index'
 const mergedMessages = mergeLocalesWithCommon(messages)
-const { t } = useI18n({
-    locale: 'en',
-    messages: {
-        ...mergedMessages
-    }
-})
+
 const props = defineProps({
     dialogOnly: {
         default: false,
@@ -278,7 +272,17 @@ const props = defineProps({
         type: String,
         default: ''
     },
+    useI18n: {
+        required: true,
+        type: Function
+    }
 });
+const { t } = props.useI18n({
+    locale: 'en',
+    messages: {
+        ...mergedMessages
+    }
+})
 const $amplitude = props.amplitude;
 const route = useRoute();
 

@@ -1,5 +1,5 @@
 import commonMessages from "@/i18n/locales/common";
-type MassagesShema = {
+export type MassagesShema = {
     [key: string]: any
 }
 

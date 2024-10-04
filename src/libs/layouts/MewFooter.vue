@@ -113,7 +113,7 @@
         <!-- Copyright, CoinGecko,app version-->
         <div class="text-info order-last md:order-1">
           <!-- Consent Button -->
-          <MewSwitchDataTracking id="consent-switch-footer-menu" :user-consent="userConsent"
+          <MewSwitchDataTracking :useI18n="(useI18n)" id="consent-switch-footer-menu" :user-consent="userConsent"
             @update:consent="(val) => emit('update:consent', val)" class="mb-[42px]" />
           <p class="mb-[10px]">
             © {{ year }} MyEtherWallet. All rights reserved.
@@ -186,14 +186,8 @@ import { PropType } from "vue";
 import { PROJECT_LINKS, PROJECTS } from "@/helpers/links";
 import MewLink from "./MewLink.vue";
 import MewSwitchDataTracking from "./MewSwitchDataTracking.vue";
-import { useI18n } from 'vue-i18n'
 import messages from '@/i18n/locales/footer/index'
-const { t } = useI18n({
-  locale: 'en',
-  messages: {
-    ...messages
-  }
-})
+
 
 const emit = defineEmits<{
   (e: "update:consent", newval: boolean): void;
@@ -220,7 +214,17 @@ const props = defineProps({
     required: true,
     type: String as PropType<PROJECTS>
   },
+  useI18n: {
+    required: true,
+    type: Function
+  }
 });
+const { t } = props.useI18n({
+  locale: 'en',
+  messages: {
+    ...messages
+  }
+})
 
 const linkClass = "font-medium text-base hoverOpacity leading-[22px]";
 const dateInstance = new Date();

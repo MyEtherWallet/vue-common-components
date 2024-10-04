@@ -1,9 +1,9 @@
 <template>
   <div class="mx-auto max-w-[1400px] py-[140px]">
-    <MewHeader :curr-project="PROJECTS.BLOG" :bg-visible="true" :link-component="RouterLink" :user-consent="userConsent"
-      @update:consent="onUserConsentChange" :amplitude="{ track }" />
-    <MEWSubscribe v-model="openSubscirbe" :curr-project="PROJECTS.BLOG" :amplitude="{ track }" project-id="test"
-      class="m-5" />
+    <MewHeader :useI18n="(useI18n)" :curr-project="PROJECTS.BLOG" :bg-visible="true" :link-component="RouterLink"
+      :user-consent="userConsent" @update:consent="onUserConsentChange" :amplitude="{ track }" />
+    <MEWSubscribe :useI18n="(useI18n)" v-model="openSubscirbe" :curr-project="PROJECTS.BLOG" :amplitude="{ track }"
+      project-id="test" class="m-5" />
     <p class="m-5">
       Etiam tempor orci eu lobortis elementum nibh tellus molestie nunc. Feugiat scelerisque varius morbi enim nunc
       faucibus. Nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum. Elementum sagittis vitae
@@ -96,7 +96,7 @@
       blandit. Tristique senectus et netus et malesuada fames ac turpis egestas. Posuere sollicitudin aliquam ultrices
       sagittis orci. Donec massa sapien faucibus et molestie ac feugiat sed.
     </p>
-    <MewFooter :curr-project="PROJECTS.BLOG" packageVersion="3.4.5" :link-component="RouterLink"
+    <MewFooter :useI18n="(useI18n)" :curr-project="PROJECTS.BLOG" packageVersion="3.4.5" :link-component="RouterLink"
       :amplitude="{ track: () => { } }" :user-consent="userConsent" @update:consent="onUserConsentChange" />
   </div>
 
@@ -107,6 +107,7 @@ import { ref } from "vue";
 import { MewHeader, MewFooter, MEWSubscribe } from "./libs/main";
 import { RouterLink } from "vue-router";
 import { PROJECTS } from "@/helpers/links";
+import { MassagesShema } from "./i18n/locales/index";
 
 const userConsent = ref(false);
 const onUserConsentChange = (newval: boolean) => {
@@ -116,5 +117,23 @@ const track = () => {
   console.log("Tracking");
 }
 
+type useI18nParams = {
+  locale: string | undefined;
+  messages: MassagesShema
+
+}
 const openSubscirbe = ref(false)
+const useI18n = (param: useI18nParams) => {
+  const locale = param.locale || 'en';
+  const t = (key: string) => {
+    if (key.includes('.')) {
+      const keyOne = key.split('.').shift();;
+      const keyTwo = key.split('.').pop()
+      return keyOne && keyTwo ? param.messages[locale][keyOne][keyTwo] : key;
+    }
+
+    return param.messages[locale][key] || key;
+  }
+  return { t }
+}
 </script>

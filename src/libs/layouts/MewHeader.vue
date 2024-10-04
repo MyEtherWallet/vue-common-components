@@ -20,12 +20,12 @@
           <div class="hidden md-header:flex flex-row gap-x-5 xl:gap-x-8">
             <a href="https://ccswap.myetherwallet.com/" target="_blank"
               class="font-medium text-base xl:text-lg hoverOpacity" @click="trackBuy"> {{
-                t('common_components.close') }}</a>
+                t('buy') }}</a>
             <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_SWAP" :curr-project="props.currProject"
               :link-component="props.linkComponent" :link-text="t('swap')" @mewlink:click="trackSwap"
               class="font-medium text-base xl:text-lg hoverOpacity" />
             <!-- More Features Dropdown -->
-            <MewAppDropdownMenu :text="t('more_features.title')">
+            <MewAppDropdownMenu :text="t('more_features.title')" :useI18n="(useI18n)">
               <template #items>
                 <div class="grid gap-6">
                   <MewLink :link-url="PROJECT_LINKS[PROJECTS.LANDING].STAKING" :curr-project="props.currProject"
@@ -43,7 +43,7 @@
               </template>
             </MewAppDropdownMenu>
             <!-- Resources Dropdown -->
-            <MewAppDropdownMenu :text="t('resources.title')">
+            <MewAppDropdownMenu :text="t('resources.title')" :useI18n="(useI18n)">
               <template #items>
                 <div class="grid gap-6">
                   <a href="https://www.myetherwallet.com/blog" target="_blank" class="text-base xl:text-lg hoverOpacity"
@@ -60,7 +60,7 @@
               </template>
             </MewAppDropdownMenu>
             <!-- Products Dropdown -->
-            <MewAppDropdownMenu :text="t('products')">
+            <MewAppDropdownMenu :text="t('products')" :useI18n="(useI18n)">
               <template #items>
                 <div
                   class="grid grid-cols-1 3xl:grid-cols-2 gap-y-1 lg:gap-y-2 min-w-[280px] lg:min-w-[300px] 3xl:min-w-[568px] -mx-4 lg:mx-0">
@@ -141,9 +141,10 @@
         </div>
       </div>
     </header>
-    <mew-mobile-menu :is-open="isOpenMobileMenu" :amplitude="$amplitude" :link-component="props.linkComponent"
-      :curr-project="props.currProject" :user-consent="props.userConsent" :curr-url="ampUrl"
-      @update:consent="(val) => emit('update:consent', val)" @close-mobile-menu="isOpenMobileMenu = false" />
+    <mew-mobile-menu :useI18n="(useI18n)" :is-open="isOpenMobileMenu" :amplitude="$amplitude"
+      :link-component="props.linkComponent" :curr-project="props.currProject" :user-consent="props.userConsent"
+      :curr-url="ampUrl" @update:consent="(val) => emit('update:consent', val)"
+      @close-mobile-menu="isOpenMobileMenu = false" />
   </div>
 </template>
 <script setup lang="ts">
@@ -162,14 +163,11 @@ import { AmplitudePropType } from "@/libs/types";
 import { RouterLink } from "vue-router";
 import { useRoute } from "vue-router";
 import { PROJECT_LINKS, PROJECTS } from "@/helpers/links";
-import { useI18n } from 'vue-i18n'
+
 import messages from '@/i18n/locales/header/index'
 import { mergeLocalesWithCommon } from '@/i18n/locales/index'
 const mergedMessages = mergeLocalesWithCommon(messages)
-const { t } = useI18n({
-  locale: 'en',
-  messages: { ...mergedMessages }
-})
+
 const emit = defineEmits<{
   (e: "update:consent", newval: boolean): void;
 }>();
@@ -198,9 +196,16 @@ const props = defineProps({
   },
   currUrl: {
     type: String,
+  },
+  useI18n: {
+    required: true,
+    type: Function
   }
 });
-
+const { t } = props.useI18n({
+  locale: 'en',
+  messages: { ...mergedMessages }
+})
 /**
  * Amplitude
  */

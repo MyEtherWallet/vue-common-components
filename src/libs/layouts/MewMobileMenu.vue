@@ -2,7 +2,7 @@
   <Transition name="expand-app-mobile-menu">
     <div v-if="isOpen" class="bg-white h-screen w-screen z-40 fixed overflow-y-auto top-0" role="dialog">
       <div class="flex items-center justify-end pt-4 pr-4 pb-3">
-        <MewAppBtnIconClose @close="closeMobileMenu" />
+        <MewAppBtnIconClose :useI18n="(useI18n)" @close="closeMobileMenu" />
       </div>
       <div class="grid grid-cols-1 gap-6 px-6">
         <MewLink :link-url="PROJECT_LINKS[PROJECTS.LANDING].HOME" :curr-project="props.currProject"
@@ -125,7 +125,7 @@
           </MewLink>
         </div>
         <!-- Consent Button -->
-        <MewSwitchDataTracking id="consent-switch-mobile-menu" :user-consent="userConsent"
+        <MewSwitchDataTracking :useI18n="(useI18n)" id="consent-switch-mobile-menu" :user-consent="userConsent"
           @update:consent="emitConsentUpdate" />
       </div>
     </div>
@@ -146,14 +146,10 @@ import MewLink from "./MewLink.vue";
 import { PROJECT_LINKS, PROJECTS } from "@/helpers/links";
 import { RouterLink } from "vue-router";
 import { AmplitudePropType } from "../types";
-import { useI18n } from 'vue-i18n'
 import messages from '@/i18n/locales/header/index'
 import { mergeLocalesWithCommon } from '@/i18n/locales/index'
 const mergedMessages = mergeLocalesWithCommon(messages)
-const { t } = useI18n({
-  locale: 'en',
-  messages: { ...mergedMessages }
-})
+
 interface itemType {
   item: string;
 }
@@ -188,8 +184,16 @@ const props = defineProps({
   currUrl: {
     type: String,
     required: true
+  },
+  useI18n: {
+    required: true,
+    type: Function
   }
 });
+const { t } = props.useI18n({
+  locale: 'en',
+  messages: { ...mergedMessages }
+})
 const $amplitude = props.amplitude;
 const emit = defineEmits<{
   (e: "update:consent", newval: boolean): void;

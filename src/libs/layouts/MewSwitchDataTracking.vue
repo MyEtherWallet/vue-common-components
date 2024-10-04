@@ -12,14 +12,8 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { Switch } from "@headlessui/vue";
-import { useI18n } from "vue-i18n";
 import messages from '@/i18n/locales/data-tracking/index'
-const { t } = useI18n({
-  locale: 'en',
-  messages: {
-    ...messages
-  }
-})
+
 const props = defineProps({
   id: {
     type: String,
@@ -29,8 +23,18 @@ const props = defineProps({
     required: true,
     type: Boolean,
   },
+  useI18n: {
+    required: true,
+    type: Function
+  }
 });
 
+const { t } = props.useI18n({
+  locale: 'en',
+  messages: {
+    ...messages
+  }
+})
 const emit = defineEmits<{
   (e: "update:consent", newval: boolean): void;
 }>();

@@ -6,19 +6,23 @@
 <script setup lang="ts">
 import MewAppBtnIcon from "./MewAppBtnIcon.vue";
 import ICONClose from "@/assets/icons/close.svg";
-import { useI18n } from 'vue-i18n'
 import commonMessages from "@/i18n/locales/common/index";
-const { t } = useI18n({
-  messages: {
-    ...commonMessages
-  }
-})
+
 const props = defineProps({
   isWhite: {
     default: false,
     type: Boolean
+  },
+  useI18n: {
+    required: true,
+    type: Function
   }
 });
+const { t } = props.useI18n({
+  messages: {
+    ...commonMessages
+  }
+})
 const emit = defineEmits<{
   close: [payload: MouseEvent];
 }>();
