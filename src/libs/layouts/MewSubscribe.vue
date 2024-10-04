@@ -3,41 +3,39 @@
         <div v-if="!props.dialogOnly"
             class="relative w-full flex flex-col sm:flex-row items-stretch justify-items-stretch p-8 sm:px-14 sm:pt-14 bg-[linear-gradient(94.39deg,#005BE5_1.51%,#0081F0_99.36%)] gap-4 rounded-4xl sm:max-h-[435px]">
             <div class="order-2 sm:order-1 lg:mb-[87px] max-w-full sm:max-w-[490px] md:max-w-full">
-                <h2 class="title3 !text-white mb-4 ">Get better at crypto</h2>
+                <h2 class="title3 !text-white mb-4 ">{{ t('step1.title') }}</h2>
                 <p class="max-w-[599px] text-white sm:text-2xl -tracking-[0.02em] sm:font-light mb-5 sm:mb-4">
-                    Level
-                    up your
-                    skills with
-                    security tips, industry
-                    insights, news and more!
+                    {{ t('step1.description') }}
                 </p>
                 <div class="w-full flex flex-col sm:flex-row">
                     <div class="relative grow sm:max-w-[472px]">
                         <input type="email" id="email-in-sub-box" v-model="email"
-                            :class="[isValidEmail ? 'border-white text-white' : ' focus:outline-none !border-error text-error focus-visible:!border-error focus-visible:ring-error', 'grow bg-primary border-2 text-sm rounded-[20px] h-[58px] w-full  px-5 py-[14px] text-xl transition-all']"
-                            placeholder="Enter your email" required @focus="inFocusEmail = true"
+                            :class="[isValidEmail && !hasError ? 'border-white text-white' : ' focus:outline-none !border-error text-error focus-visible:!border-error focus-visible:ring-error', 'grow bg-primary border-2 text-sm rounded-[20px] h-[58px] w-full  px-5 py-[14px] text-xl transition-all']"
+                            :placeholder="t('step1.enter_email')" required @focus="inFocusEmail = true"
                             @blur="inFocusEmail = false" />
-                        <p v-if="!isValidEmail" class="pl-4 pt-[2px] absolute text-error text-[15px] leading-[23px]">
-                            email
-                            is not valid
+                        <p v-if="!isValidEmail" class="pl-4 pt-[2px] absolute text-error text-[15px] leading-[23px]"> {{
+                            t('step1.email_error') }} </p>
+                        <p v-else-if="hasError" class="pl-4 pt-[2px] absolute text-error text-[15px] leading-[23px]">
+                            {{ t('step1.email_required') }}
                         </p>
                         <MewAppBtnIcon :icon="ICONClose" @click="clearInputEmail" is-white
-                            aria-label-string="clear input"
+                            :aria-label-string="t('common_components.clear-input')"
                             :class="[(email !== '' && inFocusEmail) || !isValidEmail ? 'opacity-100' : 'opacity-0', 'transition-opacity absolute top-3 right-6 z-1']" />
                     </div>
 
-                    <button :disabled="!(isValidEmail && hasInputEmail)"
+                    <button
                         class="cursor-pointer mt-7 sm:mt-0 px-8 py-4 h-[58px] w-full sm:w-auto sm:min-w-[178px]  bg-white rounded-[20px] text-xl text-primary font-bold hoverOpacityHasBG mt-4 sm:mt-0 sm:ml-4"
-                        @click="signUp('blue-container-btn', true)">Sign
-                        me up!</button>
+                        @click="clickSubscribe">{{ t('step1.sign_me_up') }}</button>
                 </div>
             </div>
-            <div class="sm:self-end sm:justify-self-center rder-1 sm:order-2">
+            <div
+                class="sm:flex-none sm:self-end sm:justify-self-center order-1 sm:order-2 sm:max-w-[150px] sm:ml-auto lg:mx-auto">
                 <picture>
                     <source media="(max-width: 576px)" :srcset="IMGPeggyXS" sizes="118px" />
-                    <source media="(ming-width: 577px)" :srcset="IMGPeggy" />
-                    <img :src="IMGPeggy" alt="" class="object-contain mx-auto h-[120px] sm:h-[200px] mt-20 sm:mr-14"
-                        loading="lazy" width="543" height="833" />
+                    <source media="(min-width: 577px)" :srcset="IMGPeggy" />
+                    <img :src="IMGPeggy" alt=""
+                        class="object-contain mx-auto h-[120px] sm:h-[150px] lg:h-[200px] mt-20 lg:mr-15" loading="lazy"
+                        width="543" height="833" />
                 </picture>
             </div>
         </div>
@@ -66,35 +64,31 @@
                                 <!-- STEP 1-->
                                 <div v-if="step === 0" class="mt-2 sm:w-[420px]">
                                     <p class="text-info mb-6 sm:mb-12  text-s-17 !leading-p-150 sm:text-xl tracking">
-                                        Level up your skills with security tips,
-                                        industry
-                                        insights,
-                                        news and more!
+                                        {{ t('step1.description') }}
                                     </p>
                                     <div class="relative grow sm:max-w-[472px] mb-7">
                                         <input type="email" id="email-in-sub-popup" v-model="email"
-                                            :class="[isValidEmail ? 'border-primary' : ' focus:outline-none !border-error text-error focus-visible:!border-error focus-visible:ring-error', ' grow  bg-white border-2 text-sm rounded-[20px] h-[58px] w-full  px-5 py-[14px] text-xl transition-all']"
-                                            placeholder="Enter your email" required @focus="inFocusEmail = true"
+                                            :class="[isValidEmail && !hasError ? 'border-primary' : ' focus:outline-none !border-error text-error focus-visible:!border-error focus-visible:ring-error', 'grow  bg-white border-2 text-sm rounded-[20px] h-[58px] w-full  px-5 py-[14px] text-xl transition-all']"
+                                            :placeholder="t('step1.enter_email')" required @focus="inFocusEmail = true"
                                             @blur="inFocusEmail = false" />
                                         <p v-if="!isValidEmail"
                                             class="pl-4 pt-[2px] absolute text-error text-[15px] leading-[23px]">
-                                            email
-                                            is not valid
+                                            {{ t('step1.email_error') }}
+                                        </p>
+                                        <p v-else-if="hasError"
+                                            class="pl-4 pt-[2px] absolute text-error text-[15px] leading-[23px]">
+                                            {{ t('step1.email_required') }}
                                         </p>
                                         <MewAppBtnIcon :icon="ICONClose" @click="clearInputEmail"
-                                            aria-label-string="clear input"
+                                            :aria-label-string="t('common_components.clear-input')"
                                             :class="[(email !== '' && inFocusEmail) || !isValidEmail ? 'opacity-100' : 'opacity-0', 'transition-opacity absolute top-3 right-6 z-1']" />
                                     </div>
 
-                                    <button :disabled="!(isValidEmail && hasInputEmail)"
+                                    <button
                                         class="cursor-pointer px-8 py-4 mb-2 sm:mb-4 h-[58px] w-full  sm:min-w-[178px] bg-primary rounded-[20px] text-xl text-white font-bold hoverOpacityHasBG"
-                                        @click="signUp('popup-btn')">Sign
-                                        me up!</button>
-                                    <p class="text-center text-info text-s-17 leading-p-150">
-                                        We
-                                        respect
-                                        your privacy. Unsubscribe at any time.</p>
-
+                                        @click="clickSubscribe">{{ t('step1.sign_me_up') }}</button>
+                                    <p class="text-center text-info text-s-17 leading-p-150">{{ t('step1.unsubscribe')
+                                        }}</p>
                                 </div>
                                 <!-- STEP 2-->
                                 <div v-else-if="step === 1"
@@ -121,8 +115,7 @@
                                             </label>
                                         </div>
                                         <p class="pt-2 text-s-17 !leading-p-150 sm:text-xl tracking-sp-01 text-info">
-                                            Crypto
-                                            knowledge, best practices and general tips.</p>
+                                            {{ t('step2.crypto_kb') }}</p>
                                     </div>
                                     <!-- Checkbox 2-->
                                     <div class="mt-[25px] sm:mt-5 flex align-start gap-3 sm:gap-[23px]">
@@ -146,7 +139,7 @@
                                             </label>
                                         </div>
                                         <p class="pt-2 text-s-17 !leading-p-150 sm:text-xl tracking-sp-01 text-info">
-                                            Trending tokens, big movers and onchain activity.</p>
+                                            {{ t('step2.market') }}</p>
                                     </div>
                                     <!-- Checkbox 3-->
                                     <div class="mt-[25px] sm:mt-5 flex align-start gap-3 sm:gap-[23px]">
@@ -170,31 +163,22 @@
                                             </label>
                                         </div>
                                         <p class="pt-2 text-s-17 !leading-p-150 sm:text-xl tracking-sp-01 text-info">
-                                            Product Updates</p>
+                                            {{ t('step2.product_updates') }}</p>
                                     </div>
 
                                 </div>
                                 <!-- STEP 3-->
                                 <div v-else class="mt-2 sm:mt-6 sm:w-[420px]">
                                     <p class="text-info  text-s-17 !leading-p-150 sm:text-xl tracking-sp-01">
-                                        We're
-                                        excited to have you
-                                        here onchain
-                                        with us. Keep an eye on
-                                        your inbox for the
-                                        latest crypto news, trending tokens, security tips and more!</p>
+                                        {{ t('step3.description1') }}</p>
                                     <p class="text-info mt-2  text-s-17 !leading-p-150 sm:text-xl  tracking-sp-01">
-                                        Get
-                                        ahead — and stay
-                                        ahead — in
-                                        the MEW Universe.</p>
-
+                                        {{ t('step3.description2') }}</p>
                                 </div>
                             </div>
 
                             <p v-if="step === 0" @click="setIsOpen(false, 0, 'click-no-thanks')"
                                 class="text-center underline cursor-pointer text-[15px] leading-[23px]">
-                                No thanks, don't show this again. <br /> I already know everything about crypto.
+                                {{ t('step1.no_thanks') }}. <br /> {{ t('step1.i_know') }}
                             </p>
                             <button v-else-if="step === 1" :disabled="atLeastOneCheckbox === false"
                                 class="px-8 py-4 h-[58px] w-full  sm:min-w-[178px] bg-primary rounded-[20px] text-xl text-white font-bold hoverOpacityHasBG disabled:opacity-40 flex justify-center"
@@ -210,18 +194,18 @@
                                         d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
                                         fill="currentFill" />
                                 </svg>
-                                <p v-else>Finish</p>
+                                <p v-else>{{ t('step3.finish') }}</p>
                             </button>
                             <div v-else>
-                                <h2 class="uppercase text-sm font-bold tracking-[1px] mb-2">What's next:
+                                <h2 class="uppercase text-sm font-bold tracking-[1px] mb-2"> {{ t('step3.whats_next') }}
                                 </h2>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <button
                                         class="px-6 py-4  h-[58px] w-full  sm:min-w-[178px] bg-primary rounded-[20px] text-xl text-white font-bold hoverOpacityHasBG"
-                                        @click="clickCreateWallet">Create a wallet</button>
+                                        @click="clickCreateWallet">{{ t('step3.create_wallet') }}</button>
                                     <a class="text-center px-6 py-4 h-[58px] w-full sm:min-w-[178px] bg-primary rounded-[20px] text-xl text-white font-bold hoverOpacityHasBG"
-                                        href="https://ccswap.myetherwallet.com/" @click="clickBuyCrypto">Buy
-                                        Crypto</a>
+                                        href="https://ccswap.myetherwallet.com/" @click="clickBuyCrypto">
+                                        {{ t('step3.buy_crypto') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -230,7 +214,7 @@
                             <div class="bg-primary flex rounded-4xl w-full h-full w-full">
                                 <div class="w-full">
                                 </div>
-                                <mew-app-btn-icon-close
+                                <mew-app-btn-icon-close :useI18n="(useI18n)"
                                     class="inline-block self-start justify-self-end min-w-8 m-4 z-[101] !cursor-pointer"
                                     is-white @click="setIsOpen(false, 0, 'clock-close-btn')" />
 
@@ -260,6 +244,9 @@ import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
 import playPeggy from '@/assets/lottie/optimizeddotMEW.2_0.lottie';
 import IMGPeggyXS from '@/assets/lottie/peggy-xs.webp';
 import IMGPeggy from '@/assets/lottie/peggy.webp';
+import messages from '@/locales/subscribe/index'
+import { mergeLocalesWithCommon } from '@/locales/index'
+const mergedMessages = mergeLocalesWithCommon(messages)
 
 const props = defineProps({
     dialogOnly: {
@@ -285,7 +272,17 @@ const props = defineProps({
         type: String,
         default: ''
     },
+    useI18n: {
+        required: true,
+        type: Function
+    }
 });
+const { t } = props.useI18n({
+    locale: 'en',
+    messages: {
+        ...mergedMessages
+    }
+})
 const $amplitude = props.amplitude;
 const route = useRoute();
 
@@ -332,7 +329,6 @@ const setIsOpen = (_value: boolean = false, _step: number = 0, method?: string) 
 /** Click Sign Up button. */
 const signUp = (method: string, openPopup = false) => {
     if (isValidEmail.value && hasInputEmail.value) {
-
         $amplitude.track(amplitudeConfigs.subscriptionSignupBtn, {
             route: ampUrl.value,
             method: method
@@ -348,16 +344,20 @@ const signUp = (method: string, openPopup = false) => {
 const popUpTitle = computed<string>(() => {
     switch (step.value) {
         case 0:
-            return 'Get better at crypto'
+            return t('step1.title')
         case 1:
-            return 'Let us know what you are interested in.'
+            return t('step2.title')
         default:
-            return 'Welcome to the MEW Universe!'
+            return t('step3.title')
     }
 })
 
+//Used to check if users clicks subscribe without entering email
+const hasError = ref<boolean>(false)
+
 // Valid Email:
 const validateEmail = (email: string) => {
+    hasError.value = false
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
@@ -366,6 +366,20 @@ const email = ref<string>('')
 const isValidEmail = ref<boolean>(true)
 const inFocusEmail = ref<boolean>(false)
 
+const clickSubscribe = () => {
+    const isValid = validateEmail(email.value)
+    if (!email.value || email.value === '') {
+        hasError.value = true
+    }
+    else if (isValid && hasInputEmail) {
+        if (props.dialogOnly) {
+            signUp('popup-btn')
+        }
+        else {
+            signUp('blue-container-btn', true)
+        }
+    }
+}
 watchDebounced(
     email,
     () => {

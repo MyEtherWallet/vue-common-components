@@ -3,7 +3,6 @@ import "./style.css";
 import App from "./App.vue";
 import { MewHeader, MewFooter } from "./libs/main";
 import { createMemoryHistory, createRouter } from "vue-router";
-
 const routes = [{ path: "/", component: MewHeader }];
 
 const router = createRouter({

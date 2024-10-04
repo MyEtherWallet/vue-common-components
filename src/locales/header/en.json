@@ -1,0 +1,38 @@
+{ 
+    "home": "home",
+    "open_menu": "open mobile menu",
+    "buy": "Buy Crypto",
+    "swap": "Swap Tokens",
+    "more_features": {
+      "title": "More Features",
+      "staking": "Staking",
+      "nft": "NFT",
+      "dapps": "DApps"
+    },
+    "resources": {
+      "title": "Resources",
+      "blog": "Blog",
+      "help_center": "Help Center",
+      "faq": "FAQ",
+      "customer_support": "Customer Support"
+    },
+    "products": "Products",
+
+    "mew_mobile_app": {
+      "title": "MEW Mobile App",
+      "description": "Mobile wallet"
+    },
+    "mew_portfolio_manager": {
+      "title": "MEW Portfolio Manager",
+      "description": "Web portfolio interface"
+    },
+    "enkrypt": {
+      "title": "Enkrypt",
+      "description": "Browser extension wallet"
+    },
+    "ethvm": {
+      "title": "ethVM",
+      "description": "Blockchain explorer"
+    },
+    "access_wallet": "Access my wallet"
+}

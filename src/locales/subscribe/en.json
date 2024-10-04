@@ -1,0 +1,28 @@
+{ 
+    "step1": {
+        "title": "Get better at crypto",
+        "description": "Level up your skills with security tips, industry insights, news and more!",
+        "enter_email": "Enter your email",
+        "sign_me_up": "Sign me up!",
+        "email_error": "email is not valid",
+        "email_required": "email is required",
+        "unsubscribe": "We respect your privacy. Unsubscribe at any time.",
+        "no_thanks": "No thanks, don't show this again.",
+        "i_know": "I already know everything about crypto."
+    },
+    "step2": {
+        "title": "Let us know what you are interested in.",
+        "crypto_kb": "Crypto knowledge, best practices and general tips.",
+        "market": "Trending tokens, big movers and onchain activity.",
+        "product_updates": "Product Updates"
+    },
+    "step3": {
+        "title": "Welcome to the MEW Universe!",
+        "description1": "We're excited to have you here onchain with us. Keep an eye on your inbox for the latest crypto news, trending tokens, security tips and more!",
+        "description2": "Get ahead — and stay ahead — in the MEW Universe!",
+        "finish": "Finish",
+        "whats_next": "What's next:",
+        "create_wallet": "Create a wallet",
+        "buy_crypto": "Buy Crypto"
+    }
+}
