@@ -114,9 +114,9 @@
         <div class="text-info order-last md:order-1">
           <!-- Consent Button -->
           <MewSwitchDataTracking :useI18n="(useI18n)" id="consent-switch-footer-menu" :user-consent="userConsent"
-            @update:consent="(val) => emit('update:consent', val)" class="mb-[42px]" />
+            @update:consent="(val) => emit('update:consent', val)" />
           <slot name="lang-switch-footer"></slot>
-          <p class="mb-[10px]">
+          <p class="mt-[42px] mb-[10px]">
             © {{ year }} MyEtherWallet. All rights reserved.
           </p>
           <p class="mb-[10px]">

@@ -7,12 +7,12 @@
       <div class="grid grid-cols-1 gap-6 px-6">
         <MewLink :link-url="PROJECT_LINKS[PROJECTS.LANDING].HOME" :curr-project="props.currProject"
           :link-component="props.linkComponent" :link-text="t('home')" @mewlink:click="trackHome"
-          class="text-lg font-medium leading-6 hoverOpacity p-2" />
+          class="text-lg font-medium leading-6 hoverOpacity p-2 capitalize" />
         <a href="https://ccswap.myetherwallet.com/" target="_blank"
           class="text-lg font-medium leading-6 hoverOpacity p-2" @click="trackBuy">{{ t('buy') }}</a>
         <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_SWAP" :curr-project="props.currProject"
           :link-component="props.linkComponent" :link-text="t('swap')" @mewlink:click="trackSwap"
-          class="text-lg font-medium leading-6 hoverOpacity p-2" />
+          class="text-lg font-medium leading-6 hoverOpacity p-2 capitalize" />
         <!-- More Features Dropdown -->
         <div class="text-lg font-medium leading-6" @click="featuresToggle">
           <div class="flex justify-between items-center hoverOpacity cursor-pointer p-2">
@@ -24,7 +24,7 @@
             class="grid grid-cols-1 gap-4 px-3 pt-6 pb-2 transition-all transition-[height] duration-500 ease-out">
             <MewLink :link-url="PROJECT_LINKS[PROJECTS.LANDING].STAKING" :curr-project="props.currProject"
               :link-component="props.linkComponent" :link-text="t('more_features.staking')"
-              @mewlink:click="trackStaking" class="hoverOpacity cursor-pointer p-2" />
+              @mewlink:click="trackStaking" class="hoverOpacity cursor-pointer p-2 capitalize" />
             <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_NFT" :curr-project="props.currProject"
               :link-component="props.linkComponent" :link-text="t('more_features.nft')" @mewlink:click="trackNft"
               class="hoverOpacity cursor-pointer p-2" />
