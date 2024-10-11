@@ -144,7 +144,11 @@
     <mew-mobile-menu :useI18n="(useI18n)" :is-open="isOpenMobileMenu" :amplitude="$amplitude"
       :link-component="props.linkComponent" :curr-project="props.currProject" :user-consent="props.userConsent"
       :curr-url="ampUrl" @update:consent="(val) => emit('update:consent', val)"
-      @close-mobile-menu="isOpenMobileMenu = false" />
+      @close-mobile-menu="isOpenMobileMenu = false">
+      <template #lang-switch>
+        <slot name="lang-switch-mobile" />
+      </template>
+    </mew-mobile-menu>
   </div>
 </template>
 <script setup lang="ts">

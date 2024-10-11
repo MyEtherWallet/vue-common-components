@@ -127,6 +127,8 @@
         <!-- Consent Button -->
         <MewSwitchDataTracking :useI18n="(useI18n)" id="consent-switch-mobile-menu" :user-consent="userConsent"
           @update:consent="emitConsentUpdate" />
+        <!-- Change Language Slot-->
+        <slot name="lang-switch"></slot>
       </div>
     </div>
   </Transition>
