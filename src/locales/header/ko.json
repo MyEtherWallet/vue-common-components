@@ -1,37 +1,37 @@
 {
-    "home": "홈페이지\n",
-    "open_menu": "모바일 메뉴 열기\n",
-    "buy": "암호화폐 구매\n",
-    "swap": "토큰 교환\n",
+    "home": "home",
+    "open_menu": "open mobile menu",
+    "buy": "Buy Crypto",
+    "swap": "Swap Tokens",
     "more_features": {
-        "title": "추가 기능\n",
-        "staking": "스테이킹\n",
+        "title": "More Features",
+        "staking": "Staking",
         "nft": "NFT",
         "dapps": "Dapps"
     },
     "resources": {
-        "title": "자원\n",
-        "blog": "블로그\n",
-        "help_center": "지원 센터",
-        "faq": "FAQ\n",
-        "customer_support": "고객지원"
+        "title": "Resources",
+        "blog": "Blog",
+        "help_center": "Help Center",
+        "faq": "FAQ",
+        "customer_support": "Customer Support"
     },
-    "products": "상품들\n",
+    "products": "Products",
     "mew_mobile_app": {
-        "title": "MEW 모바일 앱",
-        "description": "모바일 지갑\n"
+        "title": "MEW Mobile App",
+        "description": "Mobile wallet"
     },
     "mew_portfolio_manager": {
-        "title": "MEW 포트폴리오 관리자\n",
-        "description": "웹 포트폴리오 인터페이스\n"
+        "title": "MEW Portfolio Manager",
+        "description": "Web portfolio interface"
     },
     "enkrypt": {
-        "title": "Enkrypt\n",
-        "description": "브라우저 익스텐션 지갑\n"
+        "title": "Enkrypt",
+        "description": "Browser extension wallet"
     },
     "ethvm": {
-        "title": "ehVM\n",
-        "description": "블록체인 탐색기\n"
+        "title": "ethVM",
+        "description": "Blockchain explorer"
     },
-    "access_wallet": "내 지갑 액세스\n"
+    "access_wallet": "Access my wallet"
 }

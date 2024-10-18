@@ -1,6 +1,6 @@
 {
-    "data_tracking": "データトラッキング",
-    "switch": "データトラッキングの切り替え",
-    "on": "オン",
-    "off": "オフ"
+    "data_tracking": "Data Tracking",
+    "switch": "switch data tracking",
+    "on": "On",
+    "off": "Off"
 }

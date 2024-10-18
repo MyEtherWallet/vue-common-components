@@ -1,37 +1,37 @@
 {
-    "home": "ホーム",
-    "open_menu": "モバイルメニューを開く",
-    "buy": "暗号通貨を購入",
-    "swap": "トークンを交換",
+    "home": "home",
+    "open_menu": "open mobile menu",
+    "buy": "Buy Crypto",
+    "swap": "Swap Tokens",
     "more_features": {
-        "title": "その他の機能\n",
-        "staking": "ステーキング",
+        "title": "More Features",
+        "staking": "Staking",
         "nft": "NFT",
         "dapps": "Dapps"
     },
     "resources": {
-        "title": "リソース",
-        "blog": "ブログ",
-        "help_center": "ヘルプセンターをご確認ください。",
-        "faq": "よくある質問",
-        "customer_support": "カスタマーサポート"
+        "title": "Resources",
+        "blog": "Blog",
+        "help_center": "Help Center",
+        "faq": "FAQ",
+        "customer_support": "Customer Support"
     },
-    "products": "製品",
+    "products": "Products",
     "mew_mobile_app": {
-        "title": "MEW モバイルアプリ",
-        "description": "モバイルウォレット"
+        "title": "MEW Mobile App",
+        "description": "Mobile wallet"
     },
     "mew_portfolio_manager": {
-        "title": "MEW ポートフォリオ・マネージャー",
-        "description": "Webポートフォリオ・インターフェース"
+        "title": "MEW Portfolio Manager",
+        "description": "Web portfolio interface"
     },
     "enkrypt": {
         "title": "Enkrypt",
-        "description": "ブラウザ拡張ウォレット"
+        "description": "Browser extension wallet"
     },
     "ethvm": {
         "title": "ethVM",
-        "description": "ブロックチェーンエクスプローラー"
+        "description": "Blockchain explorer"
     },
-    "access_wallet": "マイウォレットにアクセス"
+    "access_wallet": "Access my wallet"
 }

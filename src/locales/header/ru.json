@@ -12,9 +12,9 @@
     "resources": {
         "title": "Resources",
         "blog": "Blog",
-        "help_center": "帮助中心",
+        "help_center": "Центр поддержки",
         "faq": "FAQ",
-        "customer_support": "客户服务"
+        "customer_support": "Служба поддержки"
     },
     "products": "Products",
     "mew_mobile_app": {

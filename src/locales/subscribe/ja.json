@@ -1,28 +1,28 @@
 {
     "step1": {
-        "title": "暗号通貨をもっと上手くできるようになる",
-        "description": "セキュリティのヒント、業界の洞察、ニュースなどで、スキルをレベルアップしましょう！",
-        "enter_email": "Eメールを入力",
-        "sign_me_up": "登録します！",
-        "email_error": "Eメールが無効です",
-        "email_required": "Eメールは必須です",
-        "unsubscribe": "お客様のプライバシーを尊重します。いつでも利用停止可能です。",
-        "no_thanks": "結構です。今後表示しないでください。",
-        "i_know": "暗号通貨についてはすでに何でも知っています。"
+        "title": "Get better at crypto",
+        "description": "Level up your skills with security tips, industry insights, news and more!",
+        "enter_email": "Enter your email",
+        "sign_me_up": "Sign me up!",
+        "email_error": "email is not valid",
+        "email_required": "email is required",
+        "unsubscribe": "We respect your privacy. Unsubscribe at any time.",
+        "no_thanks": "No thanks, don't show this again.",
+        "i_know": "I already know everything about crypto."
     },
     "step2": {
-        "title": "ご関心のある分野をお知らせください。",
-        "crypto_kb": "暗号通貨の知識、ベストプラクティス、一般的なヒント",
-        "market": "トレンドのトークン、大幅な変動をするもの、オンチェーンのアクティビティ",
-        "product_updates": "製品アップデート"
+        "title": "Let us know what you are interested in.",
+        "crypto_kb": "Crypto knowledge, best practices and general tips.",
+        "market": "Trending tokens, big movers and onchain activity.",
+        "product_updates": "Product Updates"
     },
     "step3": {
-        "title": "MEW Universeへようこそ！",
-        "description1": "こちらオンチェーンでお会いできて嬉しいです。暗号通貨の最新ニュース、トレンドのトークン、セキュリティのヒントなどをお届けしますので、受信トレイを定期的にご確認ください！",
-        "description2": "どうぞ、MEWユニバースで一歩前進し、そして常に一歩先を行きましょう！",
-        "finish": "終了",
-        "whats_next": "次は：",
-        "create_wallet": "ウォレットを作成",
-        "buy_crypto": "暗号通貨を購入"
+        "title": "Welcome to the MEW Universe!",
+        "description1": "We're excited to have you here onchain with us. Keep an eye on your inbox for the latest crypto news, trending tokens, security tips and more!",
+        "description2": "Get ahead — and stay ahead — in the MEW Universe!",
+        "finish": "Finish",
+        "whats_next": "What's next:",
+        "create_wallet": "Create a wallet",
+        "buy_crypto": "Buy Crypto"
     }
 }
