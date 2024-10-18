@@ -1,0 +1,37 @@
+{
+    "home": "首页",
+    "open_menu": "打开移动菜单",
+    "buy": "购买加密货币",
+    "swap": "交换代币",
+    "more_features": {
+        "title": "更多功能",
+        "staking": "质押",
+        "nft": "NFT",
+        "dapps": "Dapps"
+    },
+    "resources": {
+        "title": "资源",
+        "blog": "博客",
+        "help_center": "帮助中心",
+        "faq": "常见问题",
+        "customer_support": "客户服务"
+    },
+    "products": "产品",
+    "mew_mobile_app": {
+        "title": "MEW移动应用程序",
+        "description": "移动钱包"
+    },
+    "mew_portfolio_manager": {
+        "title": "MEW投资组合管理器",
+        "description": "网页投资组合界面"
+    },
+    "enkrypt": {
+        "title": "Enkrypt",
+        "description": "浏览器扩展钱包"
+    },
+    "ethvm": {
+        "title": "ethVM",
+        "description": "区块链浏览器"
+    },
+    "access_wallet": "访问我的钱包"
+}

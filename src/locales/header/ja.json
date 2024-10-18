@@ -1,0 +1,37 @@
+{
+    "home": "ホーム",
+    "open_menu": "モバイルメニューを開く",
+    "buy": "暗号通貨を購入",
+    "swap": "トークンを交換",
+    "more_features": {
+        "title": "その他の機能\n",
+        "staking": "ステーキング",
+        "nft": "NFT",
+        "dapps": "Dapps"
+    },
+    "resources": {
+        "title": "リソース",
+        "blog": "ブログ",
+        "help_center": "ヘルプセンターをご確認ください。",
+        "faq": "よくある質問",
+        "customer_support": "カスタマーサポート"
+    },
+    "products": "製品",
+    "mew_mobile_app": {
+        "title": "MEW モバイルアプリ",
+        "description": "モバイルウォレット"
+    },
+    "mew_portfolio_manager": {
+        "title": "MEW ポートフォリオ・マネージャー",
+        "description": "Webポートフォリオ・インターフェース"
+    },
+    "enkrypt": {
+        "title": "Enkrypt",
+        "description": "ブラウザ拡張ウォレット"
+    },
+    "ethvm": {
+        "title": "ethVM",
+        "description": "ブロックチェーンエクスプローラー"
+    },
+    "access_wallet": "マイウォレットにアクセス"
+}

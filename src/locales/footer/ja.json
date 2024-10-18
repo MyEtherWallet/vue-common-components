@@ -1,0 +1,29 @@
+{
+    "about_us": "会社情報",
+    "careers": "キャリア",
+    "how_it_works": "仕組み",
+    "team": "チーム",
+    "privacy": "プライバシー",
+    "terms": "条件",
+    "security_policy": "Security Policy",
+    "bug_bounty": "バグ報奨金",
+    "mobile_app": "MEW モバイルアプリ",
+    "portfolio_manager": "MEW ポートフォリオ・マネージャー",
+    "enkrypt": "Enkrypt",
+    "ethvm": "ethVM",
+    "verify_message": "メッセージを検証",
+    "convert_units": "Convert Units",
+    "offline_helper": "Send Offline Helper",
+    "help_center": "ヘルプセンターをご確認ください。",
+    "customer_support": "カスタマーサポート",
+    "faq": "よくある質問",
+    "blog": "ブログ",
+    "press_kit": "Press Kit",
+    "advertise_with_us": "当社で広告を出す",
+    "join_community": "MEWコミュニティーに参加する",
+    "donate": {
+        "text": "MEWを無料かつオープンソースのまま維持するのを助けてください、皆様からの寄付は、それを可能にするのに大いに役立ちます。",
+        "ethereum": "Ethereum Donation",
+        "bitcoin": "Bitcoin Donation"
+    }
+}

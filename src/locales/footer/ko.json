@@ -1,0 +1,29 @@
+{
+    "about_us": "회사 관련 정보\n",
+    "careers": "구인\n",
+    "how_it_works": "서비스 운영 관련\n",
+    "team": "팀 ",
+    "privacy": "개인정보보호 ",
+    "terms": "약관",
+    "security_policy": "Security Policy",
+    "bug_bounty": "버그 바운티\n",
+    "mobile_app": "MEW 모바일 앱",
+    "portfolio_manager": "MEW 포트폴리오 관리자\n",
+    "enkrypt": "Enkrypt\n",
+    "ethvm": "ehVM\n",
+    "verify_message": "메시지 인증 ",
+    "convert_units": "단위 변환",
+    "offline_helper": "오프라인 도우미 보내기",
+    "help_center": "지원 센터",
+    "customer_support": "고객지원",
+    "faq": "FAQ\n",
+    "blog": "블로그\n",
+    "press_kit": "Press Kit",
+    "advertise_with_us": "저희와 함께 광고하세요\n",
+    "join_community": "MEW 커뮤니티에 가입하세요",
+    "donate": {
+        "text": "MEW를 자유롭고 오픈 소스로 유지할 수 있도록 도와주십시오. 여러분의 기부는 이를 실현하는 데 큰 도움이 될 것입니다.",
+        "ethereum": "이더리움 기부",
+        "bitcoin": "비트코인 기부"
+    }
+}

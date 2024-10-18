@@ -1,0 +1,37 @@
+{
+    "home": "idioma",
+    "open_menu": "abrir menú móvil",
+    "buy": "Comprar criptomonedas",
+    "swap": "Intercambiar tokens",
+    "more_features": {
+        "title": "Más funciones",
+        "staking": "Staking",
+        "nft": "NFT",
+        "dapps": "Dapps"
+    },
+    "resources": {
+        "title": "Recursos",
+        "blog": "Blog",
+        "help_center": "Centro de ayuda",
+        "faq": "Preguntas frecuentes",
+        "customer_support": "Atención al cliente"
+    },
+    "products": "Productos",
+    "mew_mobile_app": {
+        "title": "Aplicación móvil MEW",
+        "description": "Monedero móvil"
+    },
+    "mew_portfolio_manager": {
+        "title": "Gestor de cartera de MEW",
+        "description": "Interfaz de portafolio web"
+    },
+    "enkrypt": {
+        "title": "Encriptar",
+        "description": "Monedero con extensión del navegador"
+    },
+    "ethvm": {
+        "title": "ethVM",
+        "description": "Explorador de cadenas de bloques"
+    },
+    "access_wallet": "Acceder a mi billetera"
+}

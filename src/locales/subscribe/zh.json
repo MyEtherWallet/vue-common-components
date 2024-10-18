@@ -1,0 +1,28 @@
+{
+    "step1": {
+        "title": "更好地掌握加密货币",
+        "description": "通过安全提示、行业洞见、新闻等提升您的技能！",
+        "enter_email": "输入您的电子邮件",
+        "sign_me_up": "帮我注册！",
+        "email_error": "电子邮件无效",
+        "email_required": "需要电子邮件",
+        "unsubscribe": "我们尊重您的隐私。可随时取消订阅。",
+        "no_thanks": "否，谢谢，请勿再显示此内容。",
+        "i_know": "我已经对加密货币了如指掌。"
+    },
+    "step2": {
+        "title": "告诉我们您的兴趣所在。",
+        "crypto_kb": "加密货币知识、最佳实践和一般提示。",
+        "market": "热门代币、重大举措和链上活动。",
+        "product_updates": "产品更新"
+    },
+    "step3": {
+        "title": "欢迎来到MEW宇宙！",
+        "description1": "很高兴您能在链上加入我们。请留意您的收件箱，获取最新加密货币新闻、热门代币、安全提示等！",
+        "description2": "在MEW宇宙抢占先机领先并保持领先！",
+        "finish": "完成",
+        "whats_next": "下一步：",
+        "create_wallet": "创建钱包",
+        "buy_crypto": "购买加密货币"
+    }
+}
