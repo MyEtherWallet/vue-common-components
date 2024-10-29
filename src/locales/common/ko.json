@@ -1,7 +1,7 @@
 {
     "common_components": {
-        "close": "닫기\n",
-        "open-dropdown": "드롭다운 메뉴 열기/닫기\n",
-        "clear-input": "입력 내역 삭제\n"
+        "close": "닫기",
+        "open-dropdown": "드롭다운 메뉴 열기/닫기",
+        "clear-input": "입력 내역 삭제"
     }
 }

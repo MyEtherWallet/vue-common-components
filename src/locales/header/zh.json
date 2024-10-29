@@ -10,7 +10,7 @@
         "dapps": "Dapps"
     },
     "resources": {
-        "title": "资源",
+        "title": "帮助资源",
         "blog": "博客",
         "help_center": "帮助中心",
         "faq": "常见问题",
@@ -27,7 +27,7 @@
     },
     "enkrypt": {
         "title": "Enkrypt",
-        "description": "浏览器扩展钱包"
+        "description": "浏览器插件钱包"
     },
     "ethvm": {
         "title": "ethVM",
