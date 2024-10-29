@@ -1,5 +1,5 @@
 {
-    "home": "idioma",
+    "home": "inicio",
     "open_menu": "abrir menú móvil",
     "buy": "Comprar criptomonedas",
     "swap": "Intercambiar tokens",
@@ -19,19 +19,19 @@
     "products": "Productos",
     "mew_mobile_app": {
         "title": "Aplicación móvil MEW",
-        "description": "Monedero móvil"
+        "description": "Wallet móvil"
     },
     "mew_portfolio_manager": {
         "title": "Gestor de cartera de MEW",
-        "description": "Interfaz de portafolio web"
+        "description": "Interfaz de cartera web"
     },
     "enkrypt": {
-        "title": "Encriptar",
-        "description": "Monedero con extensión del navegador"
+        "title": "Enkrypt",
+        "description": "Wallet de extensión del navegador"
     },
     "ethvm": {
         "title": "ethVM",
         "description": "Explorador de cadenas de bloques"
     },
-    "access_wallet": "Acceder a mi billetera"
+    "access_wallet": "Acceder a mi wallet"
 }

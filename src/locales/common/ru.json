@@ -1,0 +1,7 @@
+{
+    "common_components": {
+        "close": "закрыть",
+        "open-dropdown": "открыть/закрыть выпадающее меню",
+        "clear-input": "очистить ввод"
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "home": "главная",
+    "open_menu": "открыть мобильное меню",
+    "buy": "Купить криптовалюту",
+    "swap": "Обмен токенов",
+    "more_features": {
+        "title": "Еще",
+        "staking": "Стейкинг",
+        "nft": "NFT",
+        "dapps": "Dapps"
+    },
+    "resources": {
+        "title": "Ресурсы",
+        "blog": "Блог",
+        "help_center": "Центр поддержки",
+        "faq": "Часто задаваемые вопросы",
+        "customer_support": "Служба поддержки"
+    },
+    "products": "Продукты",
+    "mew_mobile_app": {
+        "title": "Мобильное приложение MEW",
+        "description": "Мобильный кошелек"
+    },
+    "mew_portfolio_manager": {
+        "title": "Менеджер портфеля MEW",
+        "description": "Веб-интерфейс для кошелька"
+    },
+    "enkrypt": {
+        "title": "Enkrypt",
+        "description": "Кошелек расширение для браузера"
+    },
+    "ethvm": {
+        "title": "ethVM",
+        "description": "Обозреватель блокчейна"
+    },
+    "access_wallet": "Доступ к моему кошельку"
+}

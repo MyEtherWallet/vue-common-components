@@ -5,25 +5,25 @@
     "team": "Equipo",
     "privacy": "Privacidad",
     "terms": "Condiciones",
-    "security_policy": "Security Policy",
+    "security_policy": "Política de seguridad",
     "bug_bounty": "Recompensa por errores",
     "mobile_app": "Aplicación móvil MEW",
     "portfolio_manager": "Gestor de cartera de MEW",
-    "enkrypt": "Encriptar",
+    "enkrypt": "Enkrypt",
     "ethvm": "ethVM",
     "verify_message": "Verificar mensaje",
-    "convert_units": "Convert Units",
-    "offline_helper": "Send Offline Helper",
+    "convert_units": "Convertir unidades",
+    "offline_helper": "Enviar ayudante offline",
     "help_center": "Centro de ayuda",
     "customer_support": "Atención al cliente",
     "faq": "Preguntas frecuentes",
     "blog": "Blog",
-    "press_kit": "Press Kit",
+    "press_kit": "Kit de prensa",
     "advertise_with_us": "Publicita con nosotros",
-    "join_community": "Únete a la Comunidad",
+    "join_community": "Únete a la Comunidad MEW",
     "donate": {
         "text": "Ayúdanos a mantener MEW gratuito y de código abierto, tus donaciones contribuyen en gran medida a hacerlo posible.",
-        "ethereum": "Ethereum Donation",
-        "bitcoin": "Bitcoin Donation"
+        "ethereum": "Donación de Ethereum",
+        "bitcoin": "Donación de Bitcoin"
     }
 }

@@ -3,7 +3,7 @@
         "title": "Mejora tu dominio de las criptomonedas",
         "description": "Mejora tus conocimientos con consejos de seguridad, información sobre el sector, noticias y mucho más.",
         "enter_email": "Introduce tu correo electrónico",
-        "sign_me_up": "¡Inscríbeme!",
+        "sign_me_up": "¡Apúntame!",
         "email_error": "El correo electrónico no es válido",
         "email_required": "Se requiere el correo electrónico",
         "unsubscribe": "Respetamos tu privacidad. Puedes darte de baja en cualquier momento.",
@@ -11,7 +11,7 @@
         "i_know": "Ya sé todo sobre criptomonedas."
     },
     "step2": {
-        "title": "Haznos saber qué te interesa.",
+        "title": "Cuéntanos qué te interesa.",
         "crypto_kb": "Conocimientos sobre criptomonedas, mejores prácticas y consejos generales.",
         "market": "Tokens en tendencia, grandes movimientos y actividad en cadena.",
         "product_updates": "Actualizaciones de productos"
@@ -20,9 +20,9 @@
         "title": "¡Bienvenido al Universo MEW!",
         "description1": "Estamos emocionados de tenerte aquí en la cadena con nosotros. Mantente atento a tu bandeja de entrada para recibir las últimas noticias sobre criptomonedas, tokens de moda, consejos de seguridad y mucho más.",
         "description2": "¡Avanza y mantente a la vanguardia en el Universo MEW!",
-        "finish": "Finalizar",
+        "finish": "Terminar",
         "whats_next": "¿Qué sigue?",
-        "create_wallet": "Crear una billetera",
+        "create_wallet": "Crear una wallet",
         "buy_crypto": "Comprar criptomonedas"
     }
 }
