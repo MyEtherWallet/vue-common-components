@@ -1,113 +1,261 @@
 <template>
   <Transition name="expand-app-mobile-menu">
-    <div v-if="isOpen" class="bg-white h-screen w-screen z-40 fixed overflow-y-auto top-0" role="dialog">
+    <div
+      v-if="isOpen"
+      class="bg-white h-screen w-screen z-40 fixed overflow-y-auto top-0"
+      role="dialog"
+    >
       <div class="flex items-center justify-end pt-4 pr-4 pb-3">
-        <MewAppBtnIconClose :useI18n="(useI18n)" @close="closeMobileMenu" />
+        <MewAppBtnIconClose :useI18n="useI18n" @close="closeMobileMenu" />
       </div>
       <div class="grid grid-cols-1 gap-6 px-6">
-        <MewLink :link-url="PROJECT_LINKS[PROJECTS.LANDING].HOME" :curr-project="props.currProject"
-          :link-component="props.linkComponent" :link-text="t('home')" @mewlink:click="trackHome"
-          class="text-lg font-medium leading-6 hoverOpacity p-2 capitalize" />
-        <a href="https://ccswap.myetherwallet.com/" target="_blank"
-          class="text-lg font-medium leading-6 hoverOpacity p-2" @click="trackBuy">{{ t('buy') }}</a>
-        <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_SWAP" :curr-project="props.currProject"
-          :link-component="props.linkComponent" :link-text="t('swap')" @mewlink:click="trackSwap"
-          class="text-lg font-medium leading-6 hoverOpacity p-2 capitalize" />
+        <MewLink
+          :link-url="PROJECT_LINKS[PROJECTS.LANDING].HOME"
+          :curr-project="props.currProject"
+          :link-component="props.linkComponent"
+          :link-text="t('home')"
+          @mewlink:click="trackHome"
+          class="text-lg font-medium leading-6 hoverOpacity p-2 capitalize"
+        />
+        <a
+          href="https://ccswap.myetherwallet.com/"
+          target="_blank"
+          class="text-lg font-medium leading-6 hoverOpacity p-2"
+          @click="trackBuy"
+          >{{ t("buy") }}</a
+        >
+        <MewLink
+          :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_SWAP"
+          :curr-project="props.currProject"
+          :link-component="props.linkComponent"
+          :link-text="t('swap')"
+          @mewlink:click="trackSwap"
+          class="text-lg font-medium leading-6 hoverOpacity p-2 capitalize"
+        />
         <!-- More Features Dropdown -->
         <div class="text-lg font-medium leading-6" @click="featuresToggle">
-          <div class="flex justify-between items-center hoverOpacity cursor-pointer p-2">
-            {{ t('more_features.title') }}
-            <span><img :src="ICONChevronDown" contain :alt="t('common_components.open-dropdown')" class="ml-1 mt-px"
-                width="11px" height="7px" loading="lazy" /></span>
+          <div
+            class="flex justify-between items-center hoverOpacity cursor-pointer p-2"
+          >
+            {{ t("more_features.title") }}
+            <span
+              ><img
+                :src="ICONChevronDown"
+                contain
+                :alt="t('common_components.open-dropdown')"
+                class="ml-1 mt-px"
+                width="11px"
+                height="7px"
+                loading="lazy"
+            /></span>
           </div>
-          <div v-if="isFeaturesOpen"
-            class="grid grid-cols-1 gap-4 px-3 pt-6 pb-2 transition-all transition-[height] duration-500 ease-out">
-            <MewLink :link-url="PROJECT_LINKS[PROJECTS.LANDING].STAKING" :curr-project="props.currProject"
-              :link-component="props.linkComponent" :link-text="t('more_features.staking')"
-              @mewlink:click="trackStaking" class="hoverOpacity cursor-pointer p-2 capitalize" />
-            <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_NFT" :curr-project="props.currProject"
-              :link-component="props.linkComponent" :link-text="t('more_features.nft')" @mewlink:click="trackNft"
-              class="hoverOpacity cursor-pointer p-2" />
-            <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_DAPPS" :curr-project="props.currProject"
-              :link-component="props.linkComponent" :link-text="t('more_features.dapps')" @mewlink:click="trackDapps"
-              class="hoverOpacity cursor-pointer p-2" />
+          <div
+            v-if="isFeaturesOpen"
+            class="grid grid-cols-1 gap-4 px-3 pt-6 pb-2 transition-all transition-[height] duration-500 ease-out"
+          >
+            <MewLink
+              :link-url="PROJECT_LINKS[PROJECTS.LANDING].STAKING"
+              :curr-project="props.currProject"
+              :link-component="props.linkComponent"
+              :link-text="t('more_features.staking')"
+              @mewlink:click="trackStaking"
+              class="hoverOpacity cursor-pointer p-2 capitalize"
+            />
+            <MewLink
+              :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_NFT"
+              :curr-project="props.currProject"
+              :link-component="props.linkComponent"
+              :link-text="t('more_features.nft')"
+              @mewlink:click="trackNft"
+              class="hoverOpacity cursor-pointer p-2"
+            />
+            <MewLink
+              :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_DAPPS"
+              :curr-project="props.currProject"
+              :link-component="props.linkComponent"
+              :link-text="t('more_features.dapps')"
+              @mewlink:click="trackDapps"
+              class="hoverOpacity cursor-pointer p-2"
+            />
           </div>
         </div>
         <!-- Resources Dropdown -->
         <div class="text-lg font-medium leading-6" @click="resourcesToggle">
-          <div class="flex justify-between items-center hoverOpacity cursor-pointer p-2">
-            {{ t('resources.title') }}
-            <span><img :src="ICONChevronDown" contain :alt="t('common_components.open-dropdown')" class="ml-1 mt-px"
-                width="11px" height="7px" loading="lazy" /></span>
+          <div
+            class="flex justify-between items-center hoverOpacity cursor-pointer p-2"
+          >
+            {{ t("resources.title") }}
+            <span
+              ><img
+                :src="ICONChevronDown"
+                contain
+                :alt="t('common_components.open-dropdown')"
+                class="ml-1 mt-px"
+                width="11px"
+                height="7px"
+                loading="lazy"
+            /></span>
           </div>
-          <div v-if="isResourcesOpen" class="grid grid-cols-1 gap-4 px-3 pt-8 pb-2">
-            <a href="https://www.myetherwallet.com/blog/" target="_blank" class="hoverOpacity cursor-pointer p-2"
-              @click="trackMewtopia">{{ t('resources.blog') }}</a>
-            <a href="https://help.myetherwallet.com/en/" target="_blank" class="hoverOpacity cursor-pointer p-2"
-              @click="trackHelpCenter">{{ t('resources.help_center') }}</a>
-            <MewLink :link-url="PROJECT_LINKS[PROJECTS.LANDING].FAQ" :curr-project="props.currProject"
-              :link-component="props.linkComponent" :link-text="t('resources.faq')" @mewlink:click="trackFAQ"
-              class="hoverOpacity cursor-pointer p-2" />
-            <a href="mailto:support@myetherwallet.com" rel="noopener noreferrer" target="_blank"
-              class="hoverOpacity cursor-pointer p-2" @click="trackCustomerSupport">{{ t('resources.customer_support')
-              }}</a>
+          <div
+            v-if="isResourcesOpen"
+            class="grid grid-cols-1 gap-4 px-3 pt-8 pb-2"
+          >
+            <a
+              href="https://www.myetherwallet.com/blog/"
+              target="_blank"
+              class="hoverOpacity cursor-pointer p-2"
+              @click="trackMewtopia"
+              >{{ t("resources.blog") }}</a
+            >
+            <a
+              href="https://help.myetherwallet.com/en/"
+              target="_blank"
+              class="hoverOpacity cursor-pointer p-2"
+              @click="trackHelpCenter"
+              >{{ t("resources.help_center") }}</a
+            >
+            <MewLink
+              :link-url="PROJECT_LINKS[PROJECTS.LANDING].FAQ"
+              :curr-project="props.currProject"
+              :link-component="props.linkComponent"
+              :link-text="t('resources.faq')"
+              @mewlink:click="trackFAQ"
+              class="hoverOpacity cursor-pointer p-2"
+            />
+            <a
+              href="mailto:support@myetherwallet.com"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="hoverOpacity cursor-pointer p-2"
+              @click="trackCustomerSupport"
+              >{{ t("resources.customer_support") }}</a
+            >
           </div>
         </div>
         <!-- Products Dropdown -->
         <div class="text-lg font-medium leading-6" @click="productsToggle">
-          <div class="flex justify-between items-center hoverOpacity cursor-pointer p-2">
-            {{ t('products') }}
-            <span><img :src="ICONChevronDown" contain :alt="t('common_components.open-dropdown')" class="ml-1 mt-px"
-                width="11px" height="7px" loading="lazy" /></span>
+          <div
+            class="flex justify-between items-center hoverOpacity cursor-pointer p-2"
+          >
+            {{ t("products") }}
+            <span
+              ><img
+                :src="ICONChevronDown"
+                contain
+                :alt="t('common_components.open-dropdown')"
+                class="ml-1 mt-px"
+                width="11px"
+                height="7px"
+                loading="lazy"
+            /></span>
           </div>
           <div v-if="isProductsOpen" class="grid grid-cols-1 gap-2 pt-6 pb-4">
-            <div id="header-products-mew-wallet" class="hoverBGGrey rounded-2xl p-2">
-              <a href="https://www.mewwallet.com/" target="_blank" class="flex items-center pa-2"
-                @click="trackProduct({ item: 'MobileApp' })">
-                <img :src="IMGMobilelogo" alt="MEW mobile wallet logo" width="50px" height="50px" loading="lazy"
-                  class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" />
+            <div
+              id="header-products-mew-wallet"
+              class="hoverBGGrey rounded-2xl p-2"
+            >
+              <a
+                href="https://www.mewwallet.com/"
+                target="_blank"
+                class="flex items-center pa-2"
+                @click="trackProduct({ item: 'MobileApp' })"
+              >
+                <img
+                  :src="IMGMobilelogo"
+                  alt="MEW mobile wallet logo"
+                  width="50px"
+                  height="50px"
+                  loading="lazy"
+                  class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]"
+                />
                 <div class="grow">
                   <p class="text-base xl:text-lg font-bold mb-1 text-nowrap">
-                    {{ t('mew_mobile_app.title') }}
+                    {{ t("mew_mobile_app.title") }}
                   </p>
-                  <p class="opacity-65 text-sm">{{ t('mew_mobile_app.description') }}</p>
+                  <p class="opacity-65 text-sm">
+                    {{ t("mew_mobile_app.description") }}
+                  </p>
                 </div>
               </a>
             </div>
             <div id="header-products-mew" class="hoverBGGrey rounded-2xl p-2">
-              <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].WALLET_ACCESS" :curr-project="props.currProject"
-                :link-component="props.linkComponent" @mewlink:click="trackProduct({ item: 'MewWeb' })">
-                <div class="flex items-center pa-2" @click="trackProduct({ item: 'MewWeb' })">
-                  <img :src="IMGWeblogo" alt="MEW portfolio manager logo" width="50px" height="50px" loading="lazy"
-                    class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" />
+              <MewLink
+                :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].WALLET_ACCESS"
+                :curr-project="props.currProject"
+                :link-component="props.linkComponent"
+                @mewlink:click="trackProduct({ item: 'MewWeb' })"
+              >
+                <div
+                  class="flex items-center pa-2"
+                  @click="trackProduct({ item: 'MewWeb' })"
+                >
+                  <img
+                    :src="IMGWeblogo"
+                    alt="MEW portfolio manager logo"
+                    width="50px"
+                    height="50px"
+                    loading="lazy"
+                    class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]"
+                  />
                   <div class="block">
                     <p class="text-base xl:text-lg font-bold mb-1 text-nowrap">
-                      {{ t('mew_portfolio_manager.title') }}
+                      {{ t("mew_portfolio_manager.title") }}
                     </p>
-                    <p class="opacity-65 text-sm">{{ t('mew_portfolio_manager.description') }}</p>
+                    <p class="opacity-65 text-sm">
+                      {{ t("mew_portfolio_manager.description") }}
+                    </p>
                   </div>
                 </div>
               </MewLink>
             </div>
-            <div id="header-products-enkrypt" class="hoverBGGrey rounded-2xl p-2">
-              <a href="https://www.enkrypt.com/" target="_blank" class="flex items-center pa-2"
-                @click="trackProduct({ item: 'Enkrypt' })">
-                <img :src="IMGEnkryptlogo" alt="enkrypt wallet extension logo" width="50px" height="50px" loading="lazy"
-                  class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" />
+            <div
+              id="header-products-enkrypt"
+              class="hoverBGGrey rounded-2xl p-2"
+            >
+              <a
+                href="https://www.enkrypt.com/"
+                target="_blank"
+                class="flex items-center pa-2"
+                @click="trackProduct({ item: 'Enkrypt' })"
+              >
+                <img
+                  :src="IMGEnkryptlogo"
+                  alt="enkrypt wallet extension logo"
+                  width="50px"
+                  height="50px"
+                  loading="lazy"
+                  class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]"
+                />
                 <div>
-                  <p class="text-base xl:text-lg font-bold mb-1">{{ t('enkrypt.title') }}</p>
-                  <p class="opacity-65 text-sm">{{ t('enkrypt.description') }}</p>
+                  <p class="text-base xl:text-lg font-bold mb-1">
+                    {{ t("enkrypt.title") }}
+                  </p>
+                  <p class="opacity-65 text-sm">
+                    {{ t("enkrypt.description") }}
+                  </p>
                 </div>
               </a>
             </div>
             <div id="header-products-ethVM" class="hoverBGGrey rounded-2xl p-2">
-              <a href="https://www.ethvm.com/" target="_blank" class="flex items-center pa-2"
-                @click="trackProduct({ item: 'Ethvm' })">
-                <img :src="IMGEthvmlogo" alt="ethVM logo" width="50px" height="50px" loading="lazy"
-                  class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]" />
+              <a
+                href="https://www.ethvm.com/"
+                target="_blank"
+                class="flex items-center pa-2"
+                @click="trackProduct({ item: 'Ethvm' })"
+              >
+                <img
+                  :src="IMGEthvmlogo"
+                  alt="ethVM logo"
+                  width="50px"
+                  height="50px"
+                  loading="lazy"
+                  class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]"
+                />
                 <div>
-                  <p class="text-base xl:text-lg font-bold mb-1">{{ t('ethvm.title') }}</p>
-                  <p class="opacity-65 text-sm">{{ t('ethvm.description') }}</p>
+                  <p class="text-base xl:text-lg font-bold mb-1">
+                    {{ t("ethvm.title") }}
+                  </p>
+                  <p class="opacity-65 text-sm">{{ t("ethvm.description") }}</p>
                 </div>
               </a>
             </div>
@@ -115,18 +263,27 @@
         </div>
         <!-- Access Button -->
         <div class="flex items-cemnter">
-
-          <MewLink :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].WALLET_ACCESS" :curr-project="props.currProject"
-            :link-component="props.linkComponent" @mewlink:click="trackAccessWallet"
-            class="px-4 py-2 bg-black text-white h-10 rounded-3xl hoverOpacity">
-            <p class="text-base xl:text-lg font-medium leading-6 tracking-sp-06">
-              {{ t('access_wallet') }}
+          <MewLink
+            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].WALLET_ACCESS"
+            :curr-project="props.currProject"
+            :link-component="props.linkComponent"
+            @mewlink:click="trackAccessWallet"
+            class="px-4 py-2 bg-black text-white h-10 rounded-3xl hoverOpacity"
+          >
+            <p
+              class="text-base xl:text-lg font-medium leading-6 tracking-sp-06"
+            >
+              {{ t("access_wallet") }}
             </p>
           </MewLink>
         </div>
         <!-- Consent Button -->
-        <MewSwitchDataTracking :useI18n="(useI18n)" id="consent-switch-mobile-menu" :user-consent="userConsent"
-          @update:consent="emitConsentUpdate" />
+        <MewSwitchDataTracking
+          :useI18n="useI18n"
+          id="consent-switch-mobile-menu"
+          :user-consent="userConsent"
+          @update:consent="emitConsentUpdate"
+        />
         <!-- Change Language Slot-->
         <slot name="lang-switch"></slot>
       </div>
@@ -148,9 +305,9 @@ import MewLink from "./MewLink.vue";
 import { PROJECT_LINKS, PROJECTS } from "@/helpers/links";
 import { RouterLink } from "vue-router";
 import { AmplitudePropType } from "../types";
-import messages from '@/locales/header/index'
-import { mergeLocalesWithCommon } from '@/locales/index'
-const mergedMessages = mergeLocalesWithCommon(messages)
+import messages from "@/locales/header/index";
+import { mergeLocalesWithCommon } from "@/locales/index";
+const mergedMessages = mergeLocalesWithCommon(messages);
 
 interface itemType {
   item: string;
@@ -166,12 +323,12 @@ const props = defineProps({
   },
   amplitude: {
     default: () => {
-      track: () => { };
+      track: () => {};
     },
     type: Object as PropType<AmplitudePropType>,
   },
   linkComponent: {
-    default: () => { },
+    default: () => {},
     type: Object as PropType<typeof RouterLink>,
   },
   userConsent: {
@@ -181,21 +338,20 @@ const props = defineProps({
   },
   currProject: {
     required: true,
-    type: String as PropType<PROJECTS>
+    type: String as PropType<PROJECTS>,
   },
   currUrl: {
     type: String,
-    required: true
+    required: true,
   },
   useI18n: {
     required: true,
-    type: Function
-  }
+    type: Function,
+  },
 });
 const { t } = props.useI18n({
-  locale: 'en',
-  messages: { ...mergedMessages }
-})
+  messages: { ...mergedMessages },
+});
 const $amplitude = props.amplitude;
 const emit = defineEmits<{
   (e: "update:consent", newval: boolean): void;
@@ -203,8 +359,8 @@ const emit = defineEmits<{
 }>();
 
 const emitConsentUpdate = (val: boolean) => {
-  emit('update:consent', val)
-}
+  emit("update:consent", val);
+};
 
 const trackHome = () => {
   $amplitude.track(amplitudeConfigs.headerHome, { route: props.currUrl });
