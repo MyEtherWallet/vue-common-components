@@ -33,5 +33,5 @@
         "title": "ethVM",
         "description": "Обозреватель блокчейна"
     },
-    "access_wallet": "Доступ к моему кошельку"
+    "access_wallet": "Доступ к кошельку"
 }

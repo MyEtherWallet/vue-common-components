@@ -1,8 +1,8 @@
 {
     "step1": {
-        "title": "Mejora tu dominio de las criptomonedas",
-        "description": "Mejora tus conocimientos con consejos de seguridad, información sobre el sector, noticias y mucho más.",
-        "enter_email": "Introduce tu correo electrónico",
+        "title": "Hazte mejor en cripto",
+        "description": "Mejora tus conocimientos con consejos de seguridad, noticias y más.",
+        "enter_email": "Ingresa tu correo",
         "sign_me_up": "¡Apúntame!",
         "email_error": "El correo electrónico no es válido",
         "email_required": "Se requiere el correo electrónico",
@@ -18,7 +18,7 @@
     },
     "step3": {
         "title": "¡Bienvenido al Universo MEW!",
-        "description1": "Estamos emocionados de tenerte aquí en la cadena con nosotros. Mantente atento a tu bandeja de entrada para recibir las últimas noticias sobre criptomonedas, tokens de moda, consejos de seguridad y mucho más.",
+        "description1": "Mantente atento a tu bandeja de entrada para recibir las últimas noticias sobre criptomonedas, tokens de moda, consejos de seguridad y mucho más.",
         "description2": "¡Avanza y mantente a la vanguardia en el Universo MEW!",
         "finish": "Terminar",
         "whats_next": "¿Qué sigue?",
