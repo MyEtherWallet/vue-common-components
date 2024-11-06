@@ -172,7 +172,7 @@ type useI18nParams = {
 
 const openSubscirbe = ref(true);
 const useI18n = (param: useI18nParams) => {
-  const _locale = param.locale || "es";
+  const _locale = param.locale || "ko";
   const t = (key: string) => {
     if (key.includes(".")) {
       const keyOne = key.split(".").shift();

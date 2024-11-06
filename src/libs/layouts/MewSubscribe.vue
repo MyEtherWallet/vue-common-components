@@ -493,7 +493,7 @@ const { t, locale } = props.useI18n({
 });
 
 const stylesDialogWH = computed(() => {
-  return locale.value === "ru"
+  return locale.value === "ru" || locale.value === "ko"
     ? "md:w-[860px] sm:max-h-[560px] md:max-h-[530px]"
     : "md:w-[800px] sm:max-h-[512px] ";
 });
