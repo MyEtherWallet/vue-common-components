@@ -122,7 +122,7 @@
             ]"
             @click.stop
           >
-            <divx
+            <div
               class="flex flex-col sm:flex-row h-full content-stretch sm:min-h-[512px]"
             >
               <div
@@ -430,7 +430,7 @@
                   class="opacity-0 w-1 h-1 sm:opacity-100 sm:w-[460px] sm:h-[460px] md:w-[500px] md:h-[500px] absolute top-[-40px] inset-x-0 sm:inset-y-0 sm:right-[-90px] sm:left-auto mx-auto"
                 />
               </div>
-            </divx>
+            </div>
           </div>
         </transition>
       </div>
