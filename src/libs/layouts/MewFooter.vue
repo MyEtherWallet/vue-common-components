@@ -437,16 +437,6 @@ const props = defineProps({
     required: true,
     type: Object as PropType<AmplitudeLike>,
   },
-  /** For analytics */
-  product: {
-    required: true,
-    type: String,
-  },
-  /** For analytics */
-  network: {
-    required: false,
-    type: String,
-  },
   linkComponent: {
     type: Object as PropType<typeof RouterLink>,
     default: RouterLink,
@@ -465,6 +455,7 @@ const props = defineProps({
   },
   useI18n: {
     required: true,
+    // type: Function as PropType<UseI18n>,
     type: Function,
   },
 });

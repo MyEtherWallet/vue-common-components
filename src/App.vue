@@ -7,13 +7,13 @@
       :link-component="RouterLink"
       :user-consent="userConsent"
       @update:consent="onUserConsentChange"
-      :amplitude="{ track }"
+      :amplitude="amplitudeMock"
     />
     <MEWSubscribe
       :useI18n="useI18n"
       v-model="openSubscirbe"
       :curr-project="PROJECTS.BLOG"
-      :amplitude="{ track }"
+      :amplitude="amplitudeMock"
       project-id="test"
       class="m-5"
     />
@@ -144,8 +144,6 @@
       packageVersion="3.4.5"
       :link-component="RouterLink"
       :amplitude="amplitudeMock"
-      :network="undefined"
-      :product="'vue-common-components'"
       :user-consent="userConsent"
       @update:consent="onUserConsentChange"
     />
@@ -157,7 +155,6 @@ import { Ref, ref } from "vue";
 import { MewHeader, MewFooter, MEWSubscribe } from "./libs/main";
 import { RouterLink } from "vue-router";
 import { PROJECTS } from "@/helpers/links";
-import { MassagesSchema } from "./locales/index";
 import { AmplitudeLike, UseI18n } from "./libs/types";
 
 const amplitudeMock: AmplitudeLike = {
