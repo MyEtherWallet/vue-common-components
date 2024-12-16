@@ -444,10 +444,8 @@ import MewAppBtnIcon from "./MewAppBtnIcon.vue";
 import ICONClose from "@/assets/icons/close.svg";
 import { computed, ref, PropType, watch } from "vue";
 import { watchDebounced } from "@vueuse/core";
-import { AmplitudePropType } from "@/libs/types";
 import { PROJECTS } from "@/helpers/links";
 import { useRoute } from "vue-router";
-import amplitudeConfigs from "@/helpers/amplitudeConfigs";
 import { DotLottieVue } from "@lottiefiles/dotlottie-vue";
 import playPeggy from "@/assets/lottie/optimizeddotMEW.2_0.lottie";
 import IMGPeggyXS from "@/assets/lottie/peggy-xs.webp";
@@ -455,6 +453,9 @@ import IMGPeggy from "@/assets/lottie/peggy.webp";
 import IMGLottie from "@/assets/lottie/lottie-xs.webp";
 import messages from "@/locales/subscribe/index";
 import { mergeLocalesWithCommon } from "@/locales/index";
+import { AmplitudeLike } from "../types";
+import { AnalyticsSubscriptionEventName } from "@/analytics/events";
+import { trackSubscriptionEvent } from "@/analytics/amplitude";
 const mergedMessages = mergeLocalesWithCommon(messages);
 
 const props = defineProps({
@@ -464,7 +465,7 @@ const props = defineProps({
   },
   amplitude: {
     required: true,
-    type: Object as PropType<AmplitudePropType>,
+    type: Object as PropType<AmplitudeLike>,
   },
   currProject: {
     required: true,
@@ -540,24 +541,33 @@ watch(model, (newVal) => {
   setBackgroundStyle(_value);
 });
 
+const trackEvent = (
+  name: AnalyticsSubscriptionEventName,
+  extraData?: Record<string, unknown>,
+) => {
+  trackSubscriptionEvent($amplitude, name, {
+    route: ampUrl.value,
+    language: locale.value,
+    ...extraData,
+  });
+};
+
 /** Open/Close poup  */
 const setIsOpen = (
   _value: boolean = false,
   _step: number = 0,
-  method?: string
+  method?: string,
 ) => {
   model.value = _value;
   if (_value) {
-    $amplitude.track(amplitudeConfigs.subscriptionOpen, {
-      route: ampUrl.value,
+    trackEvent(AnalyticsSubscriptionEventName.OPEN_POPUP, {
       step: step.value.toFixed(),
-      method: method,
+      method,
     });
   } else {
-    $amplitude.track(amplitudeConfigs.subscriptionClose, {
-      route: ampUrl.value,
+    trackEvent(AnalyticsSubscriptionEventName.CLOSE_POPUP, {
       step: step.value.toFixed(),
-      method: method,
+      method,
     });
     resetAll();
   }
@@ -571,10 +581,7 @@ const setIsOpen = (
 /** Click Sign Up button. */
 const signUp = (method: string, openPopup = false) => {
   if (isValidEmail.value && hasInputEmail.value) {
-    $amplitude.track(amplitudeConfigs.subscriptionSignupBtn, {
-      route: ampUrl.value,
-      method: method,
-    });
+    trackEvent(AnalyticsSubscriptionEventName.CLICK_SIGNUP_BTN, { method });
     if (openPopup) {
       setIsOpen(true, 1, method);
     }
@@ -624,7 +631,7 @@ watchDebounced(
   () => {
     isValidEmail.value = email.value === "" ? true : validateEmail(email.value);
   },
-  { debounce: 800, maxWait: 1500 }
+  { debounce: 800, maxWait: 1500 },
 );
 
 const clearInputEmail = () => {
@@ -703,8 +710,7 @@ const finishSignUP = async () => {
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
-    $amplitude.track(amplitudeConfigs.subscriptionCreateSubscription, {
-      route: ampUrl.value,
+    trackEvent(AnalyticsSubscriptionEventName.CLICK_FINISH, {
       cryptoKb: checkBoxCryptoKB.value,
       market: checkBoxMarket.value,
       updates: checkBoxUpdates.value,
@@ -719,16 +725,14 @@ const finishSignUP = async () => {
 
 const clickCreateWallet = () => {
   emit("subscribe:createWallet");
-  $amplitude.track(amplitudeConfigs.createWallet1, {
+  trackEvent(AnalyticsSubscriptionEventName.CREATE_WALLET1, {
     location: "subscribe-popup",
   });
   resetAll();
 };
 const clickBuyCrypto = () => {
   resetAll();
-  $amplitude.track(amplitudeConfigs.subscriptionBuyCryptoBtn, {
-    route: ampUrl.value,
-  });
+  trackEvent(AnalyticsSubscriptionEventName.CLICK_BUY_CRYPTO_BTN);
 };
 </script>
 <style>

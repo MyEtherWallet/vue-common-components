@@ -158,7 +158,7 @@
                 href="https://www.mewwallet.com/"
                 target="_blank"
                 class="flex items-center pa-2"
-                @click="trackProduct({ item: 'MobileApp' })"
+                @click="trackProductAnchor($event, 'MobileApp')"
               >
                 <img
                   :src="IMGMobilelogo"
@@ -183,11 +183,11 @@
                 :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].WALLET_ACCESS"
                 :curr-project="props.currProject"
                 :link-component="props.linkComponent"
-                @mewlink:click="trackProduct({ item: 'MewWeb' })"
+                @mewlink:click="trackProductLink($event, 'MewWeb')"
               >
                 <div
                   class="flex items-center pa-2"
-                  @click="trackProduct({ item: 'MewWeb' })"
+                  @click="trackProductAnchor($event, 'MewWeb')"
                 >
                   <img
                     :src="IMGWeblogo"
@@ -216,7 +216,7 @@
                 href="https://www.enkrypt.com/"
                 target="_blank"
                 class="flex items-center pa-2"
-                @click="trackProduct({ item: 'Enkrypt' })"
+                @click="trackProductAnchor($event, 'Enkrypt')"
               >
                 <img
                   :src="IMGEnkryptlogo"
@@ -241,7 +241,7 @@
                 href="https://www.ethvm.com/"
                 target="_blank"
                 class="flex items-center pa-2"
-                @click="trackProduct({ item: 'Ethvm' })"
+                @click="trackProductAnchor($event, 'Ethvm')"
               >
                 <img
                   :src="IMGEthvmlogo"
@@ -292,7 +292,6 @@
 </template>
 
 <script setup lang="ts">
-import amplitudeConfigs from "@/helpers/amplitudeConfigs";
 import { PropType, ref } from "vue";
 import ICONChevronDown from "@/assets/icons/chevron-down.svg";
 import IMGWeblogo from "@/assets/images/products/mewweb-logo.svg";
@@ -303,10 +302,12 @@ import MewSwitchDataTracking from "./MewSwitchDataTracking.vue";
 import MewAppBtnIconClose from "./MewAppBtnIconClose.vue";
 import MewLink from "./MewLink.vue";
 import { PROJECT_LINKS, PROJECTS } from "@/helpers/links";
-import { RouterLink } from "vue-router";
-import { AmplitudePropType } from "../types";
+import { RouterLink, useRoute } from "vue-router";
 import messages from "@/locales/header/index";
 import { mergeLocalesWithCommon } from "@/locales/index";
+import { AnalyticsHeaderLinkName } from "@/analytics/events";
+import { AmplitudeLike, UseI18n } from "../types";
+import { trackHeaderLinkClickedEvent } from "@/analytics/amplitude";
 const mergedMessages = mergeLocalesWithCommon(messages);
 
 interface itemType {
@@ -322,10 +323,12 @@ const props = defineProps({
     default: false,
   },
   amplitude: {
-    default: () => {
-      track: () => {};
-    },
-    type: Object as PropType<AmplitudePropType>,
+    default: (): AmplitudeLike => ({
+      track: () => ({
+        promise: Promise.resolve({}),
+      }),
+    }),
+    type: Object as PropType<AmplitudeLike>,
   },
   linkComponent: {
     default: () => {},
@@ -349,7 +352,7 @@ const props = defineProps({
     type: Function,
   },
 });
-const { t } = props.useI18n({
+const { t, locale } = (props.useI18n as UseI18n)({
   messages: { ...mergedMessages },
 });
 const $amplitude = props.amplitude;
@@ -358,57 +361,74 @@ const emit = defineEmits<{
   (e: "closeMobileMenu"): void;
 }>();
 
+const route = useRoute();
+
 const emitConsentUpdate = (val: boolean) => {
   emit("update:consent", val);
 };
 
-const trackHome = () => {
-  $amplitude.track(amplitudeConfigs.headerHome, { route: props.currUrl });
-  emit("closeMobileMenu");
-};
-const trackSwap = () => {
-  $amplitude.track(amplitudeConfigs.headerSwap, { route: props.currUrl });
-};
-const trackBuy = () => {
-  $amplitude.track(amplitudeConfigs.headerBuy, { route: props.currUrl });
-};
+function trackClickEvent(
+  linkName: AnalyticsHeaderLinkName,
+  destinationURL: string,
+  extraData?: Record<string, unknown>,
+) {
+  trackHeaderLinkClickedEvent($amplitude, linkName, {
+    sourceURL: route.fullPath, // TODO: don't include search & hash?
+    destinationURL, // TODO: don't include search & hash?
+    language: locale.value,
+    ...extraData,
+  });
+}
 
-const trackNft = () => {
-  $amplitude.track(amplitudeConfigs.headerNft, { route: props.currUrl });
-};
-const trackDapps = () => {
-  $amplitude.track(amplitudeConfigs.headerDapps, { route: props.currUrl });
-};
-const trackMewtopia = () => {
-  $amplitude.track(amplitudeConfigs.headerMewtopia, { route: props.currUrl });
-};
-const trackHelpCenter = () => {
-  $amplitude.track(amplitudeConfigs.headerHelpCenter, {
-    route: props.currUrl,
-  });
-};
-const trackCustomerSupport = () => {
-  $amplitude.track(amplitudeConfigs.headerCustomerSupport, {
-    route: props.currUrl,
-  });
-};
-const trackAccessWallet = () => {
-  $amplitude.track(amplitudeConfigs.headerAccessWallet, {
-    route: props.currUrl,
-  });
-};
-const trackProduct = (obj: itemType) => {
-  $amplitude.track(amplitudeConfigs.headerProduct, {
-    ...obj,
-    route: props.currUrl,
-  });
-};
-const trackFAQ = () => {
-  $amplitude.track(amplitudeConfigs.headerFAQ, { route: props.currUrl });
+const trackHome = (destinationURL: string) => {
+  trackClickEvent(AnalyticsHeaderLinkName.HOME, destinationURL);
   emit("closeMobileMenu");
 };
-const trackStaking = () => {
-  $amplitude.track(amplitudeConfigs.headerStaking, { route: props.currUrl });
+const trackSwap = (destinationURL: string) => {
+  trackClickEvent(AnalyticsHeaderLinkName.SWAP_TOKENS, destinationURL);
+};
+const trackBuy = (evt: MouseEvent) => {
+  const destinationURL = (evt.target as HTMLAnchorElement)?.href;
+  trackClickEvent(AnalyticsHeaderLinkName.BUY_CRYPTO, destinationURL);
+};
+const trackNft = (destinationURL: string) => {
+  trackClickEvent(AnalyticsHeaderLinkName.NFT, destinationURL);
+};
+const trackDapps = (destinationURL: string) => {
+  trackClickEvent(AnalyticsHeaderLinkName.DAPPS, destinationURL);
+};
+const trackMewtopia = (evt: MouseEvent) => {
+  const destinationURL = (evt.target as HTMLAnchorElement)?.href;
+  trackClickEvent(AnalyticsHeaderLinkName.MEWTOPIA, destinationURL);
+};
+const trackHelpCenter = (evt: MouseEvent) => {
+  const destinationURL = (evt.target as HTMLAnchorElement)?.href;
+  trackClickEvent(AnalyticsHeaderLinkName.HELP_CENTER, destinationURL);
+};
+const trackCustomerSupport = (evt: MouseEvent) => {
+  const destinationURL = (evt.target as HTMLAnchorElement)?.href;
+  trackClickEvent(AnalyticsHeaderLinkName.CUSTOMER_SUPPORT, destinationURL);
+};
+const trackAccessWallet = (destinationURL: string) => {
+  trackClickEvent(AnalyticsHeaderLinkName.ACCESS_WALLET, destinationURL);
+};
+const trackProductLink = (destinationURL: string, targetProduct: string) => {
+  trackClickEvent(AnalyticsHeaderLinkName.PRODUCT, destinationURL, {
+    targetProduct,
+  });
+};
+const trackProductAnchor = (evt: MouseEvent, targetProduct: string) => {
+  const destinationURL = (evt.target as HTMLAnchorElement)?.href;
+  trackClickEvent(AnalyticsHeaderLinkName.PRODUCT, destinationURL, {
+    targetProduct,
+  });
+};
+const trackFAQ = (destinationURL: string) => {
+  trackClickEvent(AnalyticsHeaderLinkName.FAQ, destinationURL);
+  emit("closeMobileMenu");
+};
+const trackStaking = (destinationURL: string) => {
+  trackClickEvent(AnalyticsHeaderLinkName.STAKING, destinationURL);
   emit("closeMobileMenu");
 };
 
@@ -424,9 +444,10 @@ const productsToggle = () => {
   isProductsOpen.value = !isProductsOpen.value;
 };
 
-const closeMobileMenu = () => {
+const closeMobileMenu = (evt: MouseEvent) => {
+  const destinationURL = (evt.target as HTMLAnchorElement)?.href;
+  trackClickEvent(AnalyticsHeaderLinkName.CLOSE_MOBILE_MENU, destinationURL);
   emit("closeMobileMenu");
-  $amplitude.track(amplitudeConfigs.closeMobileMenu, { route: props.currUrl });
 };
 </script>
 <style>

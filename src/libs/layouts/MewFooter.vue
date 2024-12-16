@@ -284,7 +284,7 @@
               href="https://www.facebook.com/MyEtherWallet"
               target="_blank"
               :class="linkClass"
-              @click="trackJoinMewCommunity('facebook')"
+              @click="trackJoinMewCommunity($event, 'facebook')"
             >
               <img
                 :src="SVGFacebook"
@@ -299,7 +299,7 @@
               href="https://twitter.com/myetherwallet/"
               target="_blank"
               :class="linkClass"
-              @click="trackJoinMewCommunity('twitter')"
+              @click="trackJoinMewCommunity($event, 'twitter')"
             >
               <img
                 :src="SVGTwitter"
@@ -314,7 +314,7 @@
               href="https://www.instagram.com/myetherwallet/"
               target="_blank"
               :class="linkClass"
-              @click="trackJoinMewCommunity('instagram')"
+              @click="trackJoinMewCommunity($event, 'instagram')"
             >
               <img
                 :src="SVGInstagram"
@@ -329,7 +329,7 @@
               href="https://www.linkedin.com/company/myetherwallet/"
               target="_blank"
               :class="linkClass"
-              @click="trackJoinMewCommunity('linkedin')"
+              @click="trackJoinMewCommunity($event, 'linkedin')"
             >
               <img
                 :src="SVGLinkedin"
@@ -344,7 +344,7 @@
               href="https://github.com/myetherwallet"
               target="_blank"
               :class="linkClass"
-              @click="trackJoinMewCommunity('github')"
+              @click="trackJoinMewCommunity($event, 'github')"
             >
               <img
                 :src="SVGGithub"
@@ -359,7 +359,7 @@
               href="https://www.reddit.com/r/MyEtherWallet/"
               target="_blank"
               :class="linkClass"
-              @click="trackJoinMewCommunity('reddit')"
+              @click="trackJoinMewCommunity($event, 'reddit')"
             >
               <img
                 :src="SVGReddit"
@@ -374,7 +374,7 @@
               href="https://medium.com/@myetherwallet"
               target="_blank"
               :class="linkClass"
-              @click="trackJoinMewCommunity('medium')"
+              @click="trackJoinMewCommunity($event, 'medium')"
             >
               <img
                 :src="SVGMedium"
@@ -389,7 +389,7 @@
               href="https://t.me/myetherwallet"
               target="_blank"
               :class="linkClass"
-              @click="trackJoinMewCommunity('telegram')"
+              @click="trackJoinMewCommunity($event, 'telegram')"
             >
               <img
                 :src="SVGTelegram"
@@ -418,14 +418,15 @@ import SVGMedium from "@/assets/social/medium.svg";
 import SVGTelegram from "@/assets/social/telegram.svg";
 import DonateEth from "@/assets/social/eth.webp";
 import DonateBtc from "@/assets/social/btc.webp";
-import amplitudeConfigs from "@/helpers/amplitudeConfigs";
-import { AmplitudePropType } from "@/libs/types";
+import { AmplitudeLike, UseI18n } from "@/libs/types";
 import { RouterLink, useRoute } from "vue-router";
 import { PropType } from "vue";
 import { PROJECT_LINKS, PROJECTS } from "@/helpers/links";
 import MewLink from "./MewLink.vue";
 import MewSwitchDataTracking from "./MewSwitchDataTracking.vue";
 import messages from "@/locales/footer/index";
+import { trackFooterLinkClickedEvent } from "@/analytics/amplitude";
+import { AnalyticsFooterLinkName } from "@/analytics/events";
 
 const emit = defineEmits<{
   (e: "update:consent", newval: boolean): void;
@@ -434,7 +435,17 @@ const emit = defineEmits<{
 const props = defineProps({
   amplitude: {
     required: true,
-    type: Object as PropType<AmplitudePropType>,
+    type: Object as PropType<AmplitudeLike>,
+  },
+  /** For analytics */
+  product: {
+    required: true,
+    type: String,
+  },
+  /** For analytics */
+  network: {
+    required: false,
+    type: String,
   },
   linkComponent: {
     type: Object as PropType<typeof RouterLink>,
@@ -457,7 +468,7 @@ const props = defineProps({
     type: Function,
   },
 });
-const { t } = props.useI18n({
+const { t, locale } = (props.useI18n as UseI18n)({
   messages: {
     ...messages,
   },
@@ -471,102 +482,105 @@ const packageVersion = props.packageVersion;
 /**Amplitude */
 const $amplitude = props.amplitude;
 const route = useRoute();
-const trackAboutUs = () => {
-  $amplitude.track(amplitudeConfigs.footerAboutUs, { route: route.fullPath });
-};
-const trackCareers = () => {
-  $amplitude.track(amplitudeConfigs.footerCareers, { route: route.fullPath });
-};
-const trackHowItWorks = () => {
-  $amplitude.track(amplitudeConfigs.footerHowItWorks, {
-    route: route.fullPath,
+
+const trackClickEvent = (
+  name: AnalyticsFooterLinkName,
+  destinationURL: string,
+  extraData?: Record<string, unknown>,
+): void => {
+  trackFooterLinkClickedEvent($amplitude, name, {
+    sourceURL: route.fullPath, // TODO: don't include search & hash?
+    destinationURL, // TODO: don't include search & hash?
+    language: locale.value,
+    ...extraData,
   });
 };
-const trackTeam = () => {
-  $amplitude.track(amplitudeConfigs.footerTeam), { route: route.fullPath };
+
+const trackAboutUs = (destinationURL: string) => {
+  trackClickEvent(AnalyticsFooterLinkName.ABOUT_US, destinationURL);
 };
-const trackAdvertiseWithUs = () => {
-  $amplitude.track(amplitudeConfigs.footerAdvertiseWithUs, {
-    route: route.fullPath,
-  });
+const trackCareers = (destinationURL: string) => {
+  trackClickEvent(AnalyticsFooterLinkName.CAREERS, destinationURL);
 };
-const trackPrivacy = () => {
-  $amplitude.track(amplitudeConfigs.footerPrivacy, { route: route.fullPath });
+const trackHowItWorks = (destinationURL: string) => {
+  trackClickEvent(AnalyticsFooterLinkName.HOW_IT_WORKS, destinationURL);
 };
-const trackTerms = () => {
-  $amplitude.track(amplitudeConfigs.footerTerms, { route: route.fullPath });
+const trackTeam = (destinationURL: string) => {
+  trackClickEvent(AnalyticsFooterLinkName.TEAM, destinationURL);
 };
-const trackBugBounty = () => {
-  $amplitude.track(amplitudeConfigs.footerBugBounty, { route: route.fullPath });
+const trackAdvertiseWithUs = (destinationURL: string) => {
+  trackClickEvent(AnalyticsFooterLinkName.ADVERTISE_WITH_US, destinationURL);
 };
-const trackMobile = () => {
-  $amplitude.track(amplitudeConfigs.footerMobile, { route: route.fullPath });
+const trackPrivacy = (destinationURL: string) => {
+  trackClickEvent(AnalyticsFooterLinkName.PRIVACY, destinationURL);
 };
-const trackEnkrypt = () => {
-  $amplitude.track(amplitudeConfigs.footerEnkrypt, { route: route.fullPath });
+const trackTerms = (destinationURL: string) => {
+  trackClickEvent(AnalyticsFooterLinkName.TERMS, destinationURL);
 };
-const trackPortfolio = () => {
-  $amplitude.track(amplitudeConfigs.footerPortfolio, { route: route.fullPath });
+const trackBugBounty = (destinationURL: string) => {
+  trackClickEvent(AnalyticsFooterLinkName.BUG_BOUNTY, destinationURL);
 };
-const trackEthvm = () => {
-  $amplitude.track(amplitudeConfigs.footerEthvm, { route: route.fullPath });
+const trackMobile = (evt: MouseEvent) => {
+  const destinationURL = (evt.target as HTMLAnchorElement)?.href;
+  trackClickEvent(AnalyticsFooterLinkName.MEW_MOBILE_APP, destinationURL);
 };
-const trackMewtopia = () => {
-  $amplitude.track(amplitudeConfigs.footerMewtopia, { route: route.fullPath });
+const trackEnkrypt = (evt: MouseEvent) => {
+  const destinationURL = (evt.target as HTMLAnchorElement)?.href;
+  trackClickEvent(AnalyticsFooterLinkName.ENKRYPT, destinationURL);
 };
-const trackPressKit = () => {
-  $amplitude.track(amplitudeConfigs.footerPressKit, { route: route.fullPath });
+const trackPortfolio = (destinationURL: string) => {
+  trackClickEvent(AnalyticsFooterLinkName.PORTFOLIO, destinationURL);
 };
-const trackHelpCenter = () => {
-  $amplitude.track(amplitudeConfigs.footerHelpCenter, {
-    route: route.fullPath,
-  });
+const trackEthvm = (evt: MouseEvent) => {
+  const destinationURL = (evt.target as HTMLAnchorElement)?.href;
+  trackClickEvent(AnalyticsFooterLinkName.ETHVM, destinationURL);
 };
-const trackFAQ = () => {
-  $amplitude.track(amplitudeConfigs.footerFAQ, { route: route.fullPath });
+const trackMewtopia = (evt: MouseEvent) => {
+  const destinationURL = (evt.target as HTMLAnchorElement)?.href;
+  trackClickEvent(AnalyticsFooterLinkName.MEWTOPIA, destinationURL);
 };
-const trackCustomerSupport = () => {
-  $amplitude.track(amplitudeConfigs.footerCustomerSupport, {
-    route: route.fullPath,
-  });
+const trackPressKit = (destinationURL: string) => {
+  trackClickEvent(AnalyticsFooterLinkName.PRESS_KIT, destinationURL);
 };
-const trackSecurityPolicy = () => {
-  $amplitude.track(amplitudeConfigs.footerSecurityPolicy, {
-    route: route.fullPath,
-  });
+const trackHelpCenter = (evt: MouseEvent) => {
+  const destinationURL = (evt.target as HTMLAnchorElement)?.href;
+  trackClickEvent(AnalyticsFooterLinkName.HELP_CENTER, destinationURL);
 };
-const trackVerifyMessage = () => {
-  $amplitude.track(amplitudeConfigs.footerVerifyMessage, {
-    route: route.fullPath,
-  });
+const trackFAQ = (destinationURL: string) => {
+  trackClickEvent(AnalyticsFooterLinkName.FAQ, destinationURL);
 };
-const trackConvertUnits = () => {
-  $amplitude.track(amplitudeConfigs.footerConvertUnits, {
-    route: route.fullPath,
-  });
+const trackCustomerSupport = (evt: MouseEvent) => {
+  const destinationURL = (evt.target as HTMLAnchorElement)?.href;
+  trackClickEvent(AnalyticsFooterLinkName.CUSTOMER_SUPPORT, destinationURL);
 };
-const trackSendOfflineHelper = () => {
-  $amplitude.track(amplitudeConfigs.footerSendOfflineHelper, {
-    route: route.fullPath,
-  });
+const trackSecurityPolicy = (destinationURL: string) => {
+  trackClickEvent(AnalyticsFooterLinkName.SECURITY_POLICY, destinationURL);
 };
-const trackEthDonation = () => {
-  $amplitude.track(amplitudeConfigs.footerEthDonation, {
-    route: route.fullPath,
-  });
+const trackVerifyMessage = (destinationURL: string) => {
+  trackClickEvent(AnalyticsFooterLinkName.VERIFY_MESSAGE, destinationURL);
 };
-const trackBtcDonation = () => {
-  $amplitude.track(amplitudeConfigs.footerBtcDonation, {
-    route: route.fullPath,
-  });
+const trackConvertUnits = (destinationURL: string) => {
+  trackClickEvent(AnalyticsFooterLinkName.CONVERT_UNITS, destinationURL);
 };
-const trackCoinGecko = () => {
-  $amplitude.track(amplitudeConfigs.footerCoinGecko, { route: route.fullPath });
+const trackSendOfflineHelper = (destinationURL: string) => {
+  trackClickEvent(AnalyticsFooterLinkName.SEND_OFFLINE_HELPER, destinationURL);
 };
-const trackJoinMewCommunity = (item: string) => {
-  $amplitude.track(amplitudeConfigs.footerJoinMewCommunity, {
-    item: item,
-    route: route.fullPath,
+const trackEthDonation = (evt: MouseEvent) => {
+  const destinationURL = (evt.target as HTMLAnchorElement)?.href;
+  trackClickEvent(AnalyticsFooterLinkName.ETH_DONATION, destinationURL);
+};
+const trackBtcDonation = (evt: MouseEvent) => {
+  const destinationURL = (evt.target as HTMLAnchorElement)?.href;
+  trackClickEvent(AnalyticsFooterLinkName.BTC_DONATION, destinationURL);
+};
+const trackCoinGecko = (evt: MouseEvent) => {
+  const destinationURL = (evt.target as HTMLAnchorElement)?.href;
+  trackClickEvent(AnalyticsFooterLinkName.COINGECKO, destinationURL);
+};
+const trackJoinMewCommunity = (evt: MouseEvent, community: string) => {
+  const destinationURL = (evt.target as HTMLAnchorElement)?.href;
+  trackClickEvent(AnalyticsFooterLinkName.JOIN_COMMUNITY, destinationURL, {
+    community,
   });
 };
 </script>
