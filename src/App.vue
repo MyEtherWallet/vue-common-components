@@ -7,13 +7,13 @@
       :link-component="RouterLink"
       :user-consent="userConsent"
       @update:consent="onUserConsentChange"
-      :amplitude="{ track }"
+      :amplitude="amplitudeMock"
     />
     <MEWSubscribe
       :useI18n="useI18n"
       v-model="openSubscirbe"
       :curr-project="PROJECTS.BLOG"
-      :amplitude="{ track }"
+      :amplitude="amplitudeMock"
       project-id="test"
       class="m-5"
     />
@@ -143,7 +143,7 @@
       :curr-project="PROJECTS.BLOG"
       packageVersion="3.4.5"
       :link-component="RouterLink"
-      :amplitude="{ track: () => {} }"
+      :amplitude="amplitudeMock"
       :user-consent="userConsent"
       @update:consent="onUserConsentChange"
     />
@@ -151,11 +151,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { Ref, ref } from "vue";
 import { MewHeader, MewFooter, MEWSubscribe } from "./libs/main";
 import { RouterLink } from "vue-router";
 import { PROJECTS } from "@/helpers/links";
-import { MassagesShema } from "./locales/index";
+import { AmplitudeLike, UseI18n } from "./libs/types";
+
+const amplitudeMock: AmplitudeLike = {
+  track() {
+    return {
+      promise: Promise.resolve({}),
+    };
+  },
+};
 
 const userConsent = ref(false);
 const onUserConsentChange = (newval: boolean) => {
@@ -165,13 +173,8 @@ const track = () => {
   console.log("Tracking");
 };
 
-type useI18nParams = {
-  locale: string | undefined;
-  messages: MassagesShema;
-};
-
 const openSubscirbe = ref(true);
-const useI18n = (param: useI18nParams) => {
+const useI18n: UseI18n = (param) => {
   const _locale = param.locale || "zh";
   const t = (key: string) => {
     if (key.includes(".")) {
@@ -182,6 +185,6 @@ const useI18n = (param: useI18nParams) => {
 
     return param.messages[_locale][key] || key;
   };
-  return { t, locale: { value: _locale } };
+  return { t, locale: { value: _locale } as Ref<string> };
 };
 </script>

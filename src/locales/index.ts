@@ -1,10 +1,10 @@
 import commonMessages from "@/locales/common";
-export type MassagesShema = {
+export type MassagesSchema = {
     [key: string]: any
 }
 
 export const getLocales = (locales: Record<string, unknown>) => {
-    const messages = {} as MassagesShema;
+    const messages = {} as MassagesSchema;
     for (const path in locales) {
         const filename = path.replace(/(\.\/|\.json)/g, '');
         // @ts-ignore
@@ -15,7 +15,7 @@ export const getLocales = (locales: Record<string, unknown>) => {
 }
 
 export const mergeLocalesWithCommon = (locales: Record<string, unknown>) => {
-    const mergedLocales = locales as MassagesShema;
+    const mergedLocales = locales as MassagesSchema;
     for (const key in commonMessages) {
         if (mergedLocales[key]) {
             mergedLocales[key] = {
