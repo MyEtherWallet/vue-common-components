@@ -151,7 +151,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, Ref } from "vue";
 import { MewHeader, MewFooter, MEWSubscribe } from "./libs/main";
 import { RouterLink } from "vue-router";
 import { PROJECTS } from "@/helpers/links";
@@ -172,7 +172,7 @@ type useI18nParams = {
 
 const openSubscirbe = ref(true);
 const useI18n = (param: useI18nParams) => {
-  const _locale = param.locale || "zh";
+  const _locale = param.locale || "en";
   const t = (key: string) => {
     if (key.includes(".")) {
       const keyOne = key.split(".").shift();

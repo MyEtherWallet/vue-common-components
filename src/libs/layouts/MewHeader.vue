@@ -273,7 +273,7 @@
             :link-component="props.linkComponent"
             link-text=""
             @mewlink:click="trackAccessWallet"
-            class="hidden sm:flex sm:ml-auto sm:mr-5 lg:mx-0 mx-items-center px-4 py-2 bg-black text-white h-10 rounded-3xl hoverOpacity"
+            class="hidden sm:flex sm:ml-auto sm:mr-5 lg:mx-0 items-center px-4 py-2 bg-black text-white h-10 rounded-3xl hoverOpacity"
           >
             <span
               class="text-base xl:text-lg text-center font-medium leading-6 tracking-sp-06"
