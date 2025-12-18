@@ -114,34 +114,6 @@
             @click="trackEthvm"
             >{{ t("ethvm") }}</a
           >
-          <!--  Verify Message
-                Convert Units
-                Offline Helper
-              -->
-          <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].VERIFY_MESSAGE"
-            :class="['mt-8', linkClass]"
-            :curr-project="props.currProject"
-            :link-component="props.linkComponent"
-            :link-text="t('verify_message')"
-            @mewlink:click="trackVerifyMessage"
-          />
-          <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].CONVERT_UNITS"
-            :class="linkClass"
-            :curr-project="props.currProject"
-            :link-component="props.linkComponent"
-            :link-text="t('convert_units')"
-            @mewlink:click="trackConvertUnits"
-          />
-          <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].SEND_OFFLINE_HELPER"
-            :class="linkClass"
-            :curr-project="props.currProject"
-            :link-component="props.linkComponent"
-            :link-text="t('offline_helper')"
-            @mewlink:click="trackSendOfflineHelper"
-          />
         </div>
         <div class="grid grid-cols-1 gap-2.5 content-start">
           <!--  Help Center
