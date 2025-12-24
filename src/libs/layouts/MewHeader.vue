@@ -44,7 +44,7 @@
             >
               {{ t("buy") }}</a
             >
-            <MewLink
+            <!-- <MewLink
               :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_SWAP"
               :curr-project="props.currProject"
               :link-component="props.linkComponent"
@@ -54,9 +54,9 @@
                 { 'hidden xl:block': hideSwap },
                 'font-medium text-base xl:text-lg hoverOpacity',
               ]"
-            />
+            /> -->
             <!-- More Features Dropdown -->
-            <MewAppDropdownMenu
+            <!-- <MewAppDropdownMenu
               :text="t('more_features.title')"
               :useI18n="useI18n"
             >
@@ -103,7 +103,7 @@
                   />
                 </div>
               </template>
-            </MewAppDropdownMenu>
+            </MewAppDropdownMenu> -->
             <!-- Resources Dropdown -->
             <MewAppDropdownMenu :text="t('resources.title')" :useI18n="useI18n">
               <template #items>
