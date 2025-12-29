@@ -11,14 +11,14 @@
               Team
               -->
           <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].ABOUT"
+            :link-url="PROJECT_LINKS[PROJECTS.LANDING].ABOUT"
             :class="linkClass"
             :curr-project="props.currProject"
             :link-component="props.linkComponent"
             :link-text="t('about_us')"
             @mewlink:click="trackAboutUs"
           />
-          <MewLink
+          <!-- <MewLink
             :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].CAREERS"
             :class="linkClass"
             :curr-project="props.currProject"
@@ -33,9 +33,9 @@
             :link-component="props.linkComponent"
             :link-text="t('how_it_works')"
             @mewlink:click="trackHowItWorks"
-          />
+          /> -->
           <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].TEAM"
+            :link-url="PROJECT_LINKS[PROJECTS.LANDING].TEAM"
             :class="linkClass"
             :curr-project="props.currProject"
             :link-component="props.linkComponent"
@@ -48,7 +48,7 @@
                 Bug Bounty
               -->
           <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].PRIVACY_POLICY"
+            :link-url="PROJECT_LINKS[PROJECTS.LANDING].PRIVACY_POLICY"
             :class="['mt-8', linkClass]"
             :curr-project="props.currProject"
             :link-component="props.linkComponent"
@@ -56,7 +56,7 @@
             @mewlink:click="trackPrivacy"
           />
           <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].TERMS_OF_SERVICE"
+            :link-url="PROJECT_LINKS[PROJECTS.LANDING].TERMS_OF_SERVICE"
             :class="linkClass"
             :curr-project="props.currProject"
             :link-component="props.linkComponent"
@@ -64,7 +64,7 @@
             @mewlink:click="trackTerms"
           />
           <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].SECURITY_POLICY"
+            :link-url="PROJECT_LINKS[PROJECTS.LANDING].SECURITY_POLICY"
             :class="linkClass"
             :curr-project="props.currProject"
             :link-component="props.linkComponent"
@@ -114,34 +114,6 @@
             @click="trackEthvm"
             >{{ t("ethvm") }}</a
           >
-          <!--  Verify Message
-                Convert Units
-                Offline Helper
-              -->
-          <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].VERIFY_MESSAGE"
-            :class="['mt-8', linkClass]"
-            :curr-project="props.currProject"
-            :link-component="props.linkComponent"
-            :link-text="t('verify_message')"
-            @mewlink:click="trackVerifyMessage"
-          />
-          <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].CONVERT_UNITS"
-            :class="linkClass"
-            :curr-project="props.currProject"
-            :link-component="props.linkComponent"
-            :link-text="t('convert_units')"
-            @mewlink:click="trackConvertUnits"
-          />
-          <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].SEND_OFFLINE_HELPER"
-            :class="linkClass"
-            :curr-project="props.currProject"
-            :link-component="props.linkComponent"
-            :link-text="t('offline_helper')"
-            @mewlink:click="trackSendOfflineHelper"
-          />
         </div>
         <div class="grid grid-cols-1 gap-2.5 content-start">
           <!--  Help Center
@@ -185,21 +157,21 @@
                 Advertise with Us
               -->
           <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].PRESSKIT"
+            :link-url="PROJECT_LINKS[PROJECTS.LANDING].PRESSKIT"
             :class="['mt-8', linkClass]"
             :curr-project="props.currProject"
             :link-component="props.linkComponent"
             :link-text="t('press_kit')"
             @mewlink:click="trackPressKit"
           />
-          <MewLink
+          <!-- <MewLink
             :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].ADVERTISE_WITH_US"
             :class="linkClass"
             :curr-project="props.currProject"
             :link-component="props.linkComponent"
             :link-text="t('advertise_with_us')"
             @mewlink:click="trackAdvertiseWithUs"
-          />
+          /> -->
         </div>
         <!--Donation Block-->
         <div class="grid grid-cols-1 gap-2.5 content-start">
