@@ -24,61 +24,6 @@
           @click="trackBuy"
           >{{ t("buy") }}</a
         >
-        <MewLink
-          :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_SWAP"
-          :curr-project="props.currProject"
-          :link-component="props.linkComponent"
-          :link-text="t('swap')"
-          @mewlink:click="trackSwap"
-          class="text-lg font-medium leading-6 hoverOpacity p-2 capitalize"
-        />
-        <!-- More Features Dropdown -->
-        <div class="text-lg font-medium leading-6" @click="featuresToggle">
-          <div
-            class="flex justify-between items-center hoverOpacity cursor-pointer p-2"
-          >
-            {{ t("more_features.title") }}
-            <span
-              ><img
-                :src="ICONChevronDown"
-                contain
-                :alt="t('common_components.open-dropdown')"
-                class="ml-1 mt-px"
-                width="11px"
-                height="7px"
-                loading="lazy"
-            /></span>
-          </div>
-          <div
-            v-if="isFeaturesOpen"
-            class="grid grid-cols-1 gap-4 px-3 pt-6 pb-2 transition-all transition-[height] duration-500 ease-out"
-          >
-            <MewLink
-              :link-url="PROJECT_LINKS[PROJECTS.LANDING].STAKING"
-              :curr-project="props.currProject"
-              :link-component="props.linkComponent"
-              :link-text="t('more_features.staking')"
-              @mewlink:click="trackStaking"
-              class="hoverOpacity cursor-pointer p-2 capitalize"
-            />
-            <MewLink
-              :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_NFT"
-              :curr-project="props.currProject"
-              :link-component="props.linkComponent"
-              :link-text="t('more_features.nft')"
-              @mewlink:click="trackNft"
-              class="hoverOpacity cursor-pointer p-2"
-            />
-            <MewLink
-              :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_DAPPS"
-              :curr-project="props.currProject"
-              :link-component="props.linkComponent"
-              :link-text="t('more_features.dapps')"
-              @mewlink:click="trackDapps"
-              class="hoverOpacity cursor-pointer p-2"
-            />
-          </div>
-        </div>
         <!-- Resources Dropdown -->
         <div class="text-lg font-medium leading-6" @click="resourcesToggle">
           <div
@@ -179,10 +124,9 @@
               </a>
             </div>
             <div id="header-products-mew" class="hoverBGGrey rounded-2xl p-2">
-              <MewLink
-                :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].WALLET_ACCESS"
-                :curr-project="props.currProject"
-                :link-component="props.linkComponent"
+              <a
+                href="https://app.myetherwallet.com/"
+                target="_blank"
                 @mewlink:click="trackProduct({ item: 'MewWeb' })"
               >
                 <div
@@ -206,7 +150,7 @@
                     </p>
                   </div>
                 </div>
-              </MewLink>
+              </a>
             </div>
             <div
               id="header-products-enkrypt"
@@ -312,7 +256,6 @@ const mergedMessages = mergeLocalesWithCommon(messages);
 interface itemType {
   item: string;
 }
-const isFeaturesOpen = ref<boolean>(false);
 const isResourcesOpen = ref<boolean>(false);
 const isProductsOpen = ref<boolean>(false);
 
@@ -366,19 +309,10 @@ const trackHome = () => {
   $amplitude.track(amplitudeConfigs.headerHome, { route: props.currUrl });
   emit("closeMobileMenu");
 };
-const trackSwap = () => {
-  $amplitude.track(amplitudeConfigs.headerSwap, { route: props.currUrl });
-};
 const trackBuy = () => {
   $amplitude.track(amplitudeConfigs.headerBuy, { route: props.currUrl });
 };
 
-const trackNft = () => {
-  $amplitude.track(amplitudeConfigs.headerNft, { route: props.currUrl });
-};
-const trackDapps = () => {
-  $amplitude.track(amplitudeConfigs.headerDapps, { route: props.currUrl });
-};
 const trackMewtopia = () => {
   $amplitude.track(amplitudeConfigs.headerMewtopia, { route: props.currUrl });
 };
@@ -406,14 +340,6 @@ const trackProduct = (obj: itemType) => {
 const trackFAQ = () => {
   $amplitude.track(amplitudeConfigs.headerFAQ, { route: props.currUrl });
   emit("closeMobileMenu");
-};
-const trackStaking = () => {
-  $amplitude.track(amplitudeConfigs.headerStaking, { route: props.currUrl });
-  emit("closeMobileMenu");
-};
-
-const featuresToggle = () => {
-  isFeaturesOpen.value = !isFeaturesOpen.value;
 };
 
 const resourcesToggle = () => {

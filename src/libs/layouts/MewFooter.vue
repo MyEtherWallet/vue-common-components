@@ -99,11 +99,10 @@
             @click="trackEnkrypt"
             >{{ t("enkrypt") }}</a
           >
-          <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].WALLET_ACCESS"
+          <a
+            href="https://app.myetherwallet.com/"
+            target="_blank"
             :class="linkClass"
-            :curr-project="props.currProject"
-            :link-component="props.linkComponent"
             :link-text="t('portfolio_manager')"
             @mewlink:click="trackPortfolio"
           />
@@ -455,7 +454,7 @@ const trackHowItWorks = () => {
   });
 };
 const trackTeam = () => {
-  $amplitude.track(amplitudeConfigs.footerTeam), { route: route.fullPath };
+  $amplitude.track(amplitudeConfigs.footerTeam, { route: route.fullPath });
 };
 const trackAdvertiseWithUs = () => {
   $amplitude.track(amplitudeConfigs.footerAdvertiseWithUs, {
