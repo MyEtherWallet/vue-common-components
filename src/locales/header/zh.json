@@ -33,5 +33,5 @@
         "title": "ethVM",
         "description": "区块链浏览器"
     },
-    "access_wallet": "访问我的钱包"
+    "access_wallet": "Connect wallet"
 }
