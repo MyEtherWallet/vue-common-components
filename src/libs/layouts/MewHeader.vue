@@ -8,7 +8,7 @@
         :class="[
           'max-w-[1392px] h-full lg:mx-6 2xl:mx-auto lg:rounded-[52px] transition-all duration-500',
           {
-            'bg-white bg-opacity-70 shadow-[0px_3px_12px_-6px_rgba(0,0,0,0.32);] backdrop-blur-xl':
+            'bg-white bg-opacity-70 shadow-[0px_3px_12px_-6px_rgba(0,0,0,0.32)] backdrop-blur-xl':
               bgVisible,
           },
         ]"
@@ -175,13 +175,9 @@
                     </a>
                   </div>
                   <div id="header-products-mew" class="hoverBGGrey rounded-2xl">
-                    <MewLink
-                      :link-url="
-                        PROJECT_LINKS[PROJECTS.PORTFOLIO].WALLET_ACCESS
-                      "
-                      :curr-project="props.currProject"
-                      :link-component="props.linkComponent"
-                      link-text=""
+                    <a
+                      href="https://app.myetherwallet.com/"
+                      target="_blank"
                       @mewlink:click="trackProduct({ item: 'MewWeb' })"
                     >
                       <div class="flex items-start p-2">
@@ -204,7 +200,7 @@
                           </p>
                         </div>
                       </div>
-                    </MewLink>
+                    </a>
                   </div>
                   <div
                     id="header-products-enkrypt"
@@ -267,11 +263,9 @@
             </MewAppDropdownMenu>
           </div>
           <!-- Access Button -->
-          <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].WALLET_ACCESS"
-            :curr-project="props.currProject"
-            :link-component="props.linkComponent"
-            link-text=""
+          <a
+            href="https://app.myetherwallet.com/"
+            target="_blank"
             @mewlink:click="trackAccessWallet"
             class="hidden sm:flex sm:ml-auto sm:mr-5 lg:mx-0 items-center px-4 py-2 bg-black text-white h-10 rounded-3xl hoverOpacity"
           >
@@ -279,7 +273,7 @@
               class="text-base xl:text-lg text-center font-medium leading-6 tracking-sp-06"
               >{{ t("access_wallet") }}</span
             >
-          </MewLink>
+          </a>
           <!-- Mobile Menu Button -->
           <img
             :src="ICONMenu"
