@@ -11,7 +11,7 @@
               Team
               -->
           <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.LANDING].ABOUT"
+            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].ABOUT"
             :class="linkClass"
             :curr-project="props.currProject"
             :link-component="props.linkComponent"
