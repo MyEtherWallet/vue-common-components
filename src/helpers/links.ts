@@ -22,12 +22,12 @@ export const PROJECT_LINKS: Record<PROJECTS, Record<string, string>> = {
     BUG_BOUNTY: "bug-bounty",
     PRESSKIT: "presskit",
     SECURITY_POLICY: "security-policy",
+    ABOUT: "about",
   },
   [PROJECTS.LANDING]: {
     FAQ: "faq",
     STAKING: "staking",
     PRIVACY_POLICY: "privacy-policy",
-    ABOUT: "about",
     HOME: "",
   },
   [PROJECTS.TOKENS]: {},
