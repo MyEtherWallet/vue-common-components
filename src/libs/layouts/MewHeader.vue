@@ -264,7 +264,7 @@
           </div>
           <!-- Access Button -->
           <a
-            href="https://app.myetherwallet.com/"
+            href="https://app.myetherwallet.com/access?type=default"
             target="_blank"
             @mewlink:click="trackAccessWallet"
             class="hidden sm:flex sm:ml-auto sm:mr-5 lg:mx-0 items-center px-4 py-2 bg-black text-white h-10 rounded-3xl hoverOpacity"

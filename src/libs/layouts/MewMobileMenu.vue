@@ -207,11 +207,9 @@
         </div>
         <!-- Access Button -->
         <div class="flex items-cemnter">
-          <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].WALLET_ACCESS"
-            :curr-project="props.currProject"
-            :link-component="props.linkComponent"
-            @mewlink:click="trackAccessWallet"
+          <a
+            href="https://app.myetherwallet.com/access?type=default"
+            target="_blank"
             class="px-4 py-2 bg-black text-white h-10 rounded-3xl hoverOpacity"
           >
             <p
@@ -219,14 +217,17 @@
             >
               {{ t("access_wallet") }}
             </p>
-          </MewLink>
+          </a>
         </div>
+        <hr class="h-px bg-[rgba(188,200,204,1)] border-0 w-full mt-1 mb-10" />
+
         <!-- Consent Button -->
         <MewSwitchDataTracking
           :useI18n="useI18n"
           id="consent-switch-mobile-menu"
           :user-consent="userConsent"
           @update:consent="emitConsentUpdate"
+          class=""
         />
         <!-- Change Language Slot-->
         <slot name="lang-switch"></slot>
@@ -237,7 +238,7 @@
 
 <script setup lang="ts">
 import amplitudeConfigs from "@/helpers/amplitudeConfigs";
-import { PropType, ref } from "vue";
+import { h, PropType, ref } from "vue";
 import ICONChevronDown from "@/assets/icons/chevron-down.svg";
 import IMGWeblogo from "@/assets/images/products/mewweb-logo.svg";
 import IMGMobilelogo from "@/assets/images/products/mewwallet-logo.svg";
