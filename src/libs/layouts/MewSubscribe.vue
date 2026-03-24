@@ -85,7 +85,7 @@
         </picture>
       </div>
     </div>
-    <Teleport to="body">
+    <Teleport to="body" :disabled="!useTeleport">
       <!-- The backdrop, rendered as an absolute sibling to the panel container -->
       <transition
         enter-active-class="transform ease-out duration-500 transition opacity-0 delay-100"
@@ -485,6 +485,10 @@ const props = defineProps({
     required: true,
     type: Function,
   },
+  useTeleport: {
+    type: Boolean,
+    default: true,
+  },
 });
 const { t, locale } = props.useI18n({
   messages: {
@@ -544,7 +548,7 @@ watch(model, (newVal) => {
 const setIsOpen = (
   _value: boolean = false,
   _step: number = 0,
-  method?: string
+  method?: string,
 ) => {
   model.value = _value;
   if (_value) {
@@ -624,7 +628,7 @@ watchDebounced(
   () => {
     isValidEmail.value = email.value === "" ? true : validateEmail(email.value);
   },
-  { debounce: 800, maxWait: 1500 }
+  { debounce: 800, maxWait: 1500 },
 );
 
 const clearInputEmail = () => {
