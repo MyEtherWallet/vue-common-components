@@ -56,7 +56,7 @@
             @mewlink:click="trackPrivacy"
           />
           <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].TERMS_OF_SERVICE"
+            :link-url="PROJECT_LINKS[PROJECTS.LANDING].TERMS_OF_SERVICE"
             :class="linkClass"
             :curr-project="props.currProject"
             :link-component="props.linkComponent"
