@@ -11,7 +11,7 @@
               Team
               -->
           <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].ABOUT"
+            :link-url="PROJECT_LINKS[PROJECTS.LANDING].ABOUT"
             :class="linkClass"
             :curr-project="props.currProject"
             :link-component="props.linkComponent"
@@ -35,7 +35,7 @@
             @mewlink:click="trackHowItWorks"
           /> -->
           <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].TEAM"
+            :link-url="PROJECT_LINKS[PROJECTS.LANDING].TEAM"
             :class="linkClass"
             :curr-project="props.currProject"
             :link-component="props.linkComponent"
@@ -64,7 +64,7 @@
             @mewlink:click="trackTerms"
           />
           <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].SECURITY_POLICY"
+            :link-url="PROJECT_LINKS[PROJECTS.LANDING].SECURITY_POLICY"
             :class="linkClass"
             :curr-project="props.currProject"
             :link-component="props.linkComponent"
@@ -156,7 +156,7 @@
                 Advertise with Us
               -->
           <MewLink
-            :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].PRESSKIT"
+            :link-url="PROJECT_LINKS[PROJECTS.LANDING].PRESSKIT"
             :class="['mt-8', linkClass]"
             :curr-project="props.currProject"
             :link-component="props.linkComponent"
