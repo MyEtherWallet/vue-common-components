@@ -17,6 +17,14 @@
           @mewlink:click="trackHome"
           class="text-lg font-medium leading-6 hoverOpacity p-2 capitalize"
         />
+        <MewLink
+          :link-url="PROJECT_LINKS[PROJECTS.LANDING].REWARDS"
+          :curr-project="props.currProject"
+          :link-component="props.linkComponent"
+          :link-text="t('rewards')"
+          @mewlink:click="trackRewards"
+          class="text-lg font-medium leading-6 hoverOpacity p-2"
+        />
         <a
           href="https://ccswap.myetherwallet.com/"
           target="_blank"
@@ -210,13 +218,10 @@
           <a
             href="https://app.myetherwallet.com/access?type=default"
             target="_blank"
-            class="px-4 py-2 bg-black text-white h-10 rounded-3xl hoverOpacity"
+            class="inline-flex items-center justify-center whitespace-nowrap rounded-3xl bg-primary px-4 py-[9px] text-base font-semibold leading-[22px] tracking-[-0.32px] text-white hoverOpacityHasBG"
+            @click="trackAccessWallet"
           >
-            <p
-              class="text-base xl:text-lg font-medium leading-6 tracking-sp-06"
-            >
-              {{ t("access_wallet") }}
-            </p>
+            {{ t("access_wallet") }}
           </a>
         </div>
         <hr class="h-px bg-[rgba(188,200,204,1)] border-0 w-full mt-1 mb-10" />
@@ -308,6 +313,10 @@ const emitConsentUpdate = (val: boolean) => {
 
 const trackHome = () => {
   $amplitude.track(amplitudeConfigs.headerHome, { route: props.currUrl });
+  emit("closeMobileMenu");
+};
+const trackRewards = () => {
+  $amplitude.track(amplitudeConfigs.headerRewards, { route: props.currUrl });
   emit("closeMobileMenu");
 };
 const trackBuy = () => {

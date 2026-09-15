@@ -31,6 +31,7 @@ export default {
     },
     colors: {
       appBackground: "#f5f5f7",
+      greyBase: "#f5f5f5",
       titleColor: "#222222",
       primary: "#005ae5",
       primaryActive: "#0067e0",

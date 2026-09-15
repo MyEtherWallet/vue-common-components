@@ -1,290 +1,238 @@
 <template>
   <div id="myetherwallet-core-header">
-    <header
-      v-if="!isOpenMobileMenu"
-      class="fixed w-full z-10 h-[72px] lg:h-[104px] lg:py-5 inset-x-0 top-0"
-    >
+    <header v-if="!isOpenMobileMenu" class="fixed inset-x-0 top-0 z-10 lg:p-5">
       <div
-        :class="[
-          'max-w-[1392px] h-full lg:mx-6 2xl:mx-auto lg:rounded-[52px] transition-all duration-500',
-          {
-            'bg-white bg-opacity-70 shadow-[0px_3px_12px_-6px_rgba(0,0,0,0.32)] backdrop-blur-xl':
-              bgVisible,
-          },
-        ]"
+        class="mx-auto flex max-w-[1400px] items-center justify-between gap-6 bg-white p-6 lg:rounded-[99px] lg:p-4"
       >
-        <div
-          class="flex flex-row items-center justify-between px-4 my-auto h-full"
+        <!-- Logo -->
+        <MewLink
+          :link-url="PROJECT_LINKS[PROJECTS.LANDING].HOME"
+          :curr-project="props.currProject"
+          :link-component="props.linkComponent"
+          link-text=""
+          class="flex shrink-0"
+          @mewlink:click="trackLogo"
         >
-          <!-- Logo -->
+          <img
+            :src="IMGMEWlogo"
+            contain
+            :alt="t('home')"
+            class="h-8 w-auto cursor-pointer"
+            width="113"
+            height="32"
+            loading="lazy"
+          />
+        </MewLink>
+        <!-- Menu items -->
+        <nav class="hidden items-center gap-2 lg:flex">
           <MewLink
             :link-url="PROJECT_LINKS[PROJECTS.LANDING].HOME"
             :curr-project="props.currProject"
             :link-component="props.linkComponent"
-            link-text=""
-            @mewlink:click="trackLogo"
-          >
-            <img
-              :src="IMGMEWlogo"
-              contain
-              :alt="t('home')"
-              class="cursor-pointer"
-              width="113px"
-              height="auto"
-              loading="lazy"
-            />
-          </MewLink>
-          <!-- Menu items -->
-          <div class="hidden lg:flex flex-row gap-x-5 xl:gap-x-8">
-            <a
-              href="https://ccswap.myetherwallet.com/"
-              target="_blank"
-              class="font-medium text-base xl:text-lg hoverOpacity"
-              @click="trackBuy"
-            >
-              {{ t("buy") }}</a
-            >
-            <!-- <MewLink
-              :link-url="PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_SWAP"
-              :curr-project="props.currProject"
-              :link-component="props.linkComponent"
-              :link-text="t('swap')"
-              @mewlink:click="trackSwap"
-              :class="[
-                { 'hidden xl:block': hideSwap },
-                'font-medium text-base xl:text-lg hoverOpacity',
-              ]"
-            /> -->
-            <!-- More Features Dropdown -->
-            <!-- <MewAppDropdownMenu
-              :text="t('more_features.title')"
-              :useI18n="useI18n"
-            >
-              <template #items>
-                <div class="grid gap-6">
-                  <MewLink
-                    :link-url="PROJECT_LINKS[PROJECTS.LANDING].STAKING"
-                    :curr-project="props.currProject"
-                    :link-component="props.linkComponent"
-                    :link-text="t('more_features.staking')"
-                    @mewlink:click="trackStaking"
-                    class="text-base xl:text-lg hoverOpacity"
-                  />
-                  <MewLink
-                    v-if="hideSwap"
-                    :link-url="
-                      PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_SWAP
-                    "
-                    :curr-project="props.currProject"
-                    :link-component="props.linkComponent"
-                    :link-text="t('swap')"
-                    @mewlink:click="trackSwap"
-                    class="xl:hidden text-base xl:text-lg hoverOpacity"
-                  />
-                  <MewLink
-                    :link-url="
-                      PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_NFT
-                    "
-                    :curr-project="props.currProject"
-                    :link-component="props.linkComponent"
-                    :link-text="t('more_features.nft')"
-                    @mewlink:click="trackNft"
-                    class="text-base xl:text-lg hoverOpacity"
-                  />
-                  <MewLink
-                    :link-url="
-                      PROJECT_LINKS[PROJECTS.PORTFOLIO].HOW_IT_WORKS_DAPPS
-                    "
-                    :curr-project="props.currProject"
-                    :link-component="props.linkComponent"
-                    :link-text="t('more_features.dapps')"
-                    @mewlink:click="trackDapps"
-                    class="text-base xl:text-lg hoverOpacity"
-                  />
-                </div>
-              </template>
-            </MewAppDropdownMenu> -->
-            <!-- Resources Dropdown -->
-            <MewAppDropdownMenu :text="t('resources.title')" :useI18n="useI18n">
-              <template #items>
-                <div class="grid gap-6">
-                  <a
-                    href="https://www.myetherwallet.com/blog"
-                    target="_blank"
-                    class="text-base xl:text-lg hoverOpacity"
-                    @click="trackMewtopia"
-                    >{{ t("resources.blog") }}</a
-                  >
-                  <a
-                    href="https://help.myetherwallet.com/en/"
-                    target="_blank"
-                    class="text-base xl:text-lg hoverOpacity"
-                    @click="trackHelpCenter"
-                    >{{ t("resources.help_center") }}</a
-                  >
-                  <MewLink
-                    :link-url="PROJECT_LINKS[PROJECTS.LANDING].FAQ"
-                    :curr-project="props.currProject"
-                    :link-component="props.linkComponent"
-                    :link-text="t('resources.faq')"
-                    @mewlink:click="trackFAQ"
-                    class="text-base xl:text-lg hoverOpacity"
-                  />
-                  <a
-                    href="mailto:support@myetherwallet.com"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    class="text-base xl:text-lg hoverOpacity"
-                    @click="trackCustomerSupport"
-                    >{{ t("resources.customer_support") }}</a
-                  >
-                </div>
-              </template>
-            </MewAppDropdownMenu>
-            <!-- Products Dropdown -->
-            <MewAppDropdownMenu :text="t('products')" :useI18n="useI18n">
-              <template #items>
-                <div
-                  class="grid grid-cols-1 3xl:grid-cols-2 gap-y-1 lg:gap-y-2 min-w-[280px] lg:min-w-[300px] 3xl:min-w-[568px] -mx-4 lg:mx-0"
+            :link-text="t('home')"
+            :class="[menuItemClasses(isHomeActive), 'capitalize']"
+            @mewlink:click="trackHome"
+          />
+          <MewLink
+            :link-url="PROJECT_LINKS[PROJECTS.LANDING].REWARDS"
+            :curr-project="props.currProject"
+            :link-component="props.linkComponent"
+            :link-text="t('rewards')"
+            :class="menuItemClasses(isRewardsActive)"
+            @mewlink:click="trackRewards"
+          />
+          <!-- Resources Dropdown -->
+          <MewAppDropdownMenu :text="t('resources.title')" :useI18n="useI18n">
+            <template #items>
+              <div class="grid gap-6">
+                <a
+                  href="https://www.myetherwallet.com/blog"
+                  target="_blank"
+                  class="text-base xl:text-lg hoverOpacity"
+                  @click="trackMewtopia"
+                  >{{ t("resources.blog") }}</a
                 >
-                  <div class="hoverBGGrey rounded-2xl">
-                    <a
-                      href="https://www.mewwallet.com/"
-                      target="_blank"
-                      class="flex items-start p-2"
-                      @click="trackProduct({ item: 'MobileApp' })"
-                    >
+                <a
+                  href="https://help.myetherwallet.com/en/"
+                  target="_blank"
+                  class="text-base xl:text-lg hoverOpacity"
+                  @click="trackHelpCenter"
+                  >{{ t("resources.help_center") }}</a
+                >
+                <MewLink
+                  :link-url="PROJECT_LINKS[PROJECTS.LANDING].FAQ"
+                  :curr-project="props.currProject"
+                  :link-component="props.linkComponent"
+                  :link-text="t('resources.faq')"
+                  @mewlink:click="trackFAQ"
+                  class="text-base xl:text-lg hoverOpacity"
+                />
+                <a
+                  href="mailto:support@myetherwallet.com"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  class="text-base xl:text-lg hoverOpacity"
+                  @click="trackCustomerSupport"
+                  >{{ t("resources.customer_support") }}</a
+                >
+              </div>
+            </template>
+          </MewAppDropdownMenu>
+          <!-- Products Dropdown -->
+          <MewAppDropdownMenu :text="t('products')" :useI18n="useI18n">
+            <template #items>
+              <div
+                class="grid grid-cols-1 3xl:grid-cols-2 gap-y-1 lg:gap-y-2 min-w-[280px] lg:min-w-[300px] 3xl:min-w-[568px] -mx-4 lg:mx-0"
+              >
+                <div class="hoverBGGrey rounded-2xl">
+                  <a
+                    href="https://www.mewwallet.com/"
+                    target="_blank"
+                    class="flex items-start p-2"
+                    @click="trackProduct({ item: 'MobileApp' })"
+                  >
+                    <img
+                      :src="IMGMobilelogo"
+                      alt="MEW mobile wallet icon"
+                      class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]"
+                      width="50px"
+                      height="auto"
+                      loading="lazy"
+                    />
+                    <div class="grow">
+                      <p
+                        class="text-base xl:text-lg font-bold mb-1 text-wrap"
+                      >
+                        {{ t("mew_mobile_app.title") }}
+                      </p>
+                      <p class="opacity-65 text-sm">
+                        {{ t("mew_mobile_app.description") }}
+                      </p>
+                    </div>
+                  </a>
+                </div>
+                <div id="header-products-mew" class="hoverBGGrey rounded-2xl">
+                  <a
+                    href="https://app.myetherwallet.com/"
+                    target="_blank"
+                    @mewlink:click="trackProduct({ item: 'MewWeb' })"
+                  >
+                    <div class="flex items-start p-2">
                       <img
-                        :src="IMGMobilelogo"
-                        alt="MEW mobile wallet icon"
-                        class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]"
+                        :src="IMGWeblogo"
+                        alt="MEW portfolio manager"
                         width="50px"
                         height="auto"
+                        class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]"
                         loading="lazy"
                       />
-                      <div class="grow">
+                      <div class="block">
                         <p
                           class="text-base xl:text-lg font-bold mb-1 text-wrap"
                         >
-                          {{ t("mew_mobile_app.title") }}
+                          {{ t("mew_portfolio_manager.title") }}
                         </p>
                         <p class="opacity-65 text-sm">
-                          {{ t("mew_mobile_app.description") }}
+                          {{ t("mew_portfolio_manager.description") }}
                         </p>
                       </div>
-                    </a>
-                  </div>
-                  <div id="header-products-mew" class="hoverBGGrey rounded-2xl">
-                    <a
-                      href="https://app.myetherwallet.com/"
-                      target="_blank"
-                      @mewlink:click="trackProduct({ item: 'MewWeb' })"
-                    >
-                      <div class="flex items-start p-2">
-                        <img
-                          :src="IMGWeblogo"
-                          alt="MEW portfolio manager"
-                          width="50px"
-                          height="auto"
-                          class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]"
-                          loading="lazy"
-                        />
-                        <div class="block">
-                          <p
-                            class="text-base xl:text-lg font-bold mb-1 text-wrap"
-                          >
-                            {{ t("mew_portfolio_manager.title") }}
-                          </p>
-                          <p class="opacity-65 text-sm">
-                            {{ t("mew_portfolio_manager.description") }}
-                          </p>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div
-                    id="header-products-enkrypt"
-                    class="hoverBGGrey rounded-2xl"
-                  >
-                    <a
-                      href="https://www.enkrypt.com/"
-                      target="_blank"
-                      class="flex items-start p-2"
-                      @click="trackProduct({ item: 'Enkrypt' })"
-                    >
-                      <img
-                        :src="IMGEnkryptlogo"
-                        alt="Enkrypt wallet extension"
-                        width="50px"
-                        height="auto"
-                        class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]"
-                        loading="lazy"
-                      />
-                      <div>
-                        <p class="text-base xl:text-lg font-bold mb-1">
-                          {{ t("enkrypt.title") }}
-                        </p>
-                        <p class="opacity-65 text-sm">
-                          {{ t("enkrypt.description") }}
-                        </p>
-                      </div>
-                    </a>
-                  </div>
-                  <div
-                    id="header-products-ethVM"
-                    class="hoverBGGrey rounded-2xl"
-                  >
-                    <a
-                      href="https://www.ethvm.com/"
-                      target="_blank"
-                      class="flex items-start p-2"
-                      @click="trackProduct({ item: 'Ethvm' })"
-                    >
-                      <img
-                        :src="IMGEthvmlogo"
-                        alt="ethVM - block explorer"
-                        width="50px"
-                        height="auto"
-                        class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]"
-                        loading="lazy"
-                      />
-                      <div>
-                        <p class="text-base xl:text-lg font-bold mb-1">
-                          {{ t("ethvm.title") }}
-                        </p>
-                        <p class="opacity-65 text-sm">
-                          {{ t("ethvm.description") }}
-                        </p>
-                      </div>
-                    </a>
-                  </div>
+                    </div>
+                  </a>
                 </div>
-              </template>
-            </MewAppDropdownMenu>
-          </div>
-          <!-- Access Button -->
-          <a
-            href="https://app.myetherwallet.com/access?type=default"
-            target="_blank"
-            @mewlink:click="trackAccessWallet"
-            class="hidden sm:flex sm:ml-auto sm:mr-5 lg:mx-0 items-center px-4 py-2 bg-black text-white h-10 rounded-3xl hoverOpacity"
-          >
-            <span
-              class="text-base xl:text-lg text-center font-medium leading-6 tracking-sp-06"
-              >{{ t("access_wallet") }}</span
+                <div
+                  id="header-products-enkrypt"
+                  class="hoverBGGrey rounded-2xl"
+                >
+                  <a
+                    href="https://www.enkrypt.com/"
+                    target="_blank"
+                    class="flex items-start p-2"
+                    @click="trackProduct({ item: 'Enkrypt' })"
+                  >
+                    <img
+                      :src="IMGEnkryptlogo"
+                      alt="Enkrypt wallet extension"
+                      width="50px"
+                      height="auto"
+                      class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]"
+                      loading="lazy"
+                    />
+                    <div>
+                      <p class="text-base xl:text-lg font-bold mb-1">
+                        {{ t("enkrypt.title") }}
+                      </p>
+                      <p class="opacity-65 text-sm">
+                        {{ t("enkrypt.description") }}
+                      </p>
+                    </div>
+                  </a>
+                </div>
+                <div
+                  id="header-products-ethVM"
+                  class="hoverBGGrey rounded-2xl"
+                >
+                  <a
+                    href="https://www.ethvm.com/"
+                    target="_blank"
+                    class="flex items-start p-2"
+                    @click="trackProduct({ item: 'Ethvm' })"
+                  >
+                    <img
+                      :src="IMGEthvmlogo"
+                      alt="ethVM - block explorer"
+                      width="50px"
+                      height="auto"
+                      class="w-[50px] rounded-2xl mr-4 shadow-[0_1.35px_5.4px_0_rgba(0,0,0,0.1)]"
+                      loading="lazy"
+                    />
+                    <div>
+                      <p class="text-base xl:text-lg font-bold mb-1">
+                        {{ t("ethvm.title") }}
+                      </p>
+                      <p class="opacity-65 text-sm">
+                        {{ t("ethvm.description") }}
+                      </p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </template>
+          </MewAppDropdownMenu>
+        </nav>
+        <!-- Actions -->
+        <div class="flex items-center gap-4 lg:flex-1 lg:justify-end lg:gap-2">
+          <div class="hidden items-center gap-2 sm:flex">
+            <a
+              href="https://ccswap.myetherwallet.com/"
+              target="_blank"
+              :class="[BUTTON_BASE, 'text-primary hoverBGGrey']"
+              @click="trackBuy"
+              >{{ t("buy") }}</a
             >
-          </a>
+            <a
+              href="https://app.myetherwallet.com/access?type=default"
+              target="_blank"
+              :class="[BUTTON_BASE, 'bg-primary text-white hoverOpacityHasBG']"
+              @click="trackAccessWallet"
+              >{{ t("access_wallet") }}</a
+            >
+          </div>
           <!-- Mobile Menu Button -->
-          <img
-            :src="ICONMenu"
-            contain
-            :alt="t('open_menu')"
-            width="40px"
-            height="auto"
-            loading="lazy"
-            class="block lg:hidden rounded-full hoverBGGrey"
+          <button
+            type="button"
+            class="flex size-8 items-center justify-center lg:hidden"
+            :aria-label="t('open_menu')"
             @click="openMobileMenu"
-          />
+          >
+            <img
+              :src="ICONBars"
+              alt=""
+              width="24"
+              height="24"
+              class="size-6"
+              loading="lazy"
+            />
+          </button>
         </div>
       </div>
     </header>
@@ -311,7 +259,7 @@ import IMGWeblogo from "@/assets/images/products/mewweb-logo.svg";
 import IMGMobilelogo from "@/assets/images/products/mewwallet-logo.svg";
 import IMGEnkryptlogo from "@/assets/images/products/enkrypt-logo.webp";
 import IMGEthvmlogo from "@/assets/images/products/ethvm-logo.svg";
-import ICONMenu from "@/assets/icons/menu.svg";
+import ICONBars from "@/assets/icons/bars-3.svg";
 import amplitudeConfigs from "@/helpers/amplitudeConfigs";
 import MewAppDropdownMenu from "./MewAppDropdownMenu.vue";
 import MewMobileMenu from "./MewMobileMenu.vue";
@@ -359,13 +307,17 @@ const props = defineProps({
     type: Function,
   },
 });
-const { t, locale } = props.useI18n({
+const { t } = props.useI18n({
   messages: { ...mergedMessages },
 });
 
-const hideSwap = computed(() => {
-  return locale.value === "es";
-});
+const BUTTON_BASE =
+  "inline-flex items-center justify-center whitespace-nowrap rounded-3xl px-4 py-[9px] text-base font-semibold leading-[22px] tracking-[-0.32px]";
+
+const menuItemClasses = (active: boolean) => [
+  "rounded-[20px] px-3 text-s-17 font-medium leading-[22px] text-black hoverBGGrey [font-feature-settings:'case'_1]",
+  active ? "bg-greyBase py-1.5" : "py-1",
+];
 /**
  * Amplitude
  */
@@ -379,20 +331,40 @@ const route = useRoute();
 const ampUrl = computed<string>(() => {
   return props.currUrl ? props.currUrl : route.fullPath || "";
 });
+
+const LOCALE_PREFIX = /^\/(en|ru|es|ja|zh|ko)(?=\/|$)/;
+
+const currentPath = computed<string>(() => {
+  let path = ampUrl.value || "/";
+  try {
+    path = new URL(path, "https://www.myetherwallet.com").pathname;
+  } catch {
+    path = path.split("?")[0];
+  }
+  return path.replace(LOCALE_PREFIX, "") || "/";
+});
+
+const isLanding = computed(() => props.currProject === PROJECTS.LANDING);
+const isHomeActive = computed(
+  () => isLanding.value && currentPath.value === "/",
+);
+const isRewardsActive = computed(
+  () =>
+    isLanding.value &&
+    currentPath.value.startsWith(`/${PROJECT_LINKS[PROJECTS.LANDING].REWARDS}`),
+);
+
+const trackHome = () => {
+  $amplitude.track(amplitudeConfigs.headerHome, { route: ampUrl.value });
+};
+const trackRewards = () => {
+  $amplitude.track(amplitudeConfigs.headerRewards, { route: ampUrl.value });
+};
 const trackLogo = () => {
   $amplitude.track(amplitudeConfigs.headerLogo, { route: ampUrl.value });
 };
-const trackSwap = () => {
-  $amplitude.track(amplitudeConfigs.headerSwap, { route: ampUrl.value });
-};
 const trackBuy = () => {
   $amplitude.track(amplitudeConfigs.headerBuy, { route: ampUrl.value });
-};
-const trackNft = () => {
-  $amplitude.track(amplitudeConfigs.headerNft, { route: ampUrl.value });
-};
-const trackDapps = () => {
-  $amplitude.track(amplitudeConfigs.headerDapps, { route: ampUrl.value });
 };
 const trackMewtopia = () => {
   $amplitude.track(amplitudeConfigs.headerMewtopia, { route: ampUrl.value });
@@ -420,9 +392,6 @@ const trackProduct = (obj: itemType) => {
 };
 const trackFAQ = () => {
   $amplitude.track(amplitudeConfigs.headerFAQ, { route: ampUrl.value });
-};
-const trackStaking = () => {
-  $amplitude.track(amplitudeConfigs.headerStaking, { route: ampUrl.value });
 };
 
 /**

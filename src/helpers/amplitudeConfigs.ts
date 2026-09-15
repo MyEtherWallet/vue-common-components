@@ -5,6 +5,7 @@ export default {
   headerBuy: "LP2HeaderBuyCrypto",
   headerNft: "LP2HeaderNft",
   headerStaking: "LP2HeaderStaking",
+  headerRewards: "LP2HeaderRewards",
   headerDapps: "LP2HeaderDapps",
   headerMewtopia: "LP2HeaderMewtopia",
   headerHelpCenter: "LP2HeaderHelpCenter",

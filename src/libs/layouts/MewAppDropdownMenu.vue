@@ -1,11 +1,20 @@
 <template>
   <Menu as="div" class="relative inline-block props.text-left" @mouseover="open = true" @mouseleave="open = false">
     <div>
-      <MenuButton :id="`menu-button-${props.text}`"
-        class="font-medium text-base xl:text-lg hoverOpacity flex items-center">
+      <MenuButton
+        :id="`menu-button-${props.text}`"
+        class="flex items-center gap-1 rounded-[20px] px-3 py-1 text-s-17 font-medium leading-[22px] text-black hoverBGGrey [font-feature-settings:'case'_1]"
+      >
         {{ props.text }}
-        <img :src="ICONChevronDown" contain :alt="t('common_components.open-dropdown')" class="ml-1 mt-px"
-          loading="lazy" width="11px" height="7px" />
+        <img
+          :src="ICONMenuChevron"
+          contain
+          :alt="t('common_components.open-dropdown')"
+          class="h-[22px] w-3"
+          loading="lazy"
+          width="12"
+          height="22"
+        />
       </MenuButton>
     </div>
     <transition enter-active-class="transition duration-100 ease-out" enter-from-class="transform scale-95 opacity-0"
@@ -25,7 +34,7 @@
 
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItems } from "@headlessui/vue";
-import ICONChevronDown from "@/assets/icons/chevron-down.svg";
+import ICONMenuChevron from "@/assets/icons/menu-chevron.svg";
 import { ref } from "vue";
 import commonMessages from "@/locales/common/index";
 

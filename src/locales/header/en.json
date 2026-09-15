@@ -1,7 +1,8 @@
 { 
     "home": "home",
     "open_menu": "open mobile menu",
-    "buy": "Buy Crypto",
+    "buy": "Buy crypto",
+    "rewards": "Rewards",
     "swap": "Swap Tokens",
     "more_features": {
       "title": "More Features",
