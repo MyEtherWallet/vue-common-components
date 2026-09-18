@@ -115,11 +115,21 @@
           >
         </div>
         <div class="grid grid-cols-1 gap-2.5 content-start">
-          <!--  Help Center
+          <!--  
+                Rewards
+                Help Center
                 Customer support
                 FAQ
                 Blog
               -->
+          <MewLink
+            :link-url="PROJECT_LINKS[PROJECTS.LANDING].REWARDS"
+            :class="linkClass"
+            :curr-project="props.currProject"
+            :link-component="props.linkComponent"
+            :link-text="t('rewards')"
+            @mewlink:click="trackAboutUs"
+          />
           <a
             href="https://help.myetherwallet.com/en/"
             target="_blank"
