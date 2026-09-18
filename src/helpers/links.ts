@@ -21,6 +21,7 @@ export const PROJECT_LINKS: Record<PROJECTS, Record<string, string>> = {
   [PROJECTS.LANDING]: {
     FAQ: "faq",
     STAKING: "staking",
+    REWARDS: "rewards",
     PRIVACY_POLICY: "privacy-policy",
     TERMS_OF_SERVICE: "terms-of-service",
     TEAM: "team",
