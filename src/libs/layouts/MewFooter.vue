@@ -262,21 +262,6 @@
           <p class="mb-3 font-bold">{{ t("join_community") }}</p>
           <div class="flex flex-wrap gap-3">
             <a
-              href="https://www.facebook.com/MyEtherWallet"
-              target="_blank"
-              :class="linkClass"
-              @click="trackJoinMewCommunity('facebook')"
-            >
-              <img
-                :src="SVGFacebook"
-                contain
-                alt="MEW Facebook"
-                width="48px"
-                height="48px"
-                loading="lazy"
-              />
-            </a>
-            <a
               href="https://twitter.com/myetherwallet/"
               target="_blank"
               :class="linkClass"
@@ -352,13 +337,13 @@
               />
             </a>
             <a
-              href="https://medium.com/@myetherwallet"
+              href="https://www.youtube.com/@MyEtherWallet"
               target="_blank"
               :class="linkClass"
               @click="trackJoinMewCommunity('medium')"
             >
               <img
-                :src="SVGMedium"
+                :src="SVGYoutube"
                 contain
                 alt="MEW Medium"
                 width="48px"
@@ -389,13 +374,13 @@
 </template>
 
 <script setup lang="ts">
-import SVGFacebook from "@/assets/social/facebook.svg";
+// import SVGFacebook from "@/assets/social/facebook.svg";
 import SVGTwitter from "@/assets/social/twitter.svg";
 import SVGInstagram from "@/assets/social/instagram.svg";
 import SVGLinkedin from "@/assets/social/linkedin.svg";
 import SVGGithub from "@/assets/social/github.svg";
 import SVGReddit from "@/assets/social/reddit.svg";
-import SVGMedium from "@/assets/social/medium.svg";
+import SVGYoutube from "@/assets/social/youtube.svg";
 import SVGTelegram from "@/assets/social/telegram.svg";
 import DonateEth from "@/assets/social/eth.webp";
 import DonateBtc from "@/assets/social/btc.webp";
