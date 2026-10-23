@@ -1,8 +1,8 @@
 {
     "home": "ホーム",
     "open_menu": "スマホ用メニューを開く",
-    "buy": "暗号資産を購入",
-    "rewards": "リワード",
+    "buy": "Buy crypto",
+    "rewards": "Rewards",
     "swap": "トークンを交換",
     "more_features": {
         "title": "その他の機能",
@@ -34,5 +34,5 @@
         "title": "ethVM",
         "description": "ブロックチェーンエクスプローラー"
     },
-    "access_wallet": "マイウォレットに移動する"
+    "access_wallet": "Connect wallet"
 }
