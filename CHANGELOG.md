@@ -1,5 +1,7 @@
+### Release v2.0.0
 
-
+### Feat
+- First v7 design-library release. Adds `AppFooter` (Figma "MEW Web App – Design Library" › Footer, 1189:2949) with `FOOTER_EVENTS` and the footer types. 1.x remains for the landing page and Mewtopia.
 
 ### Release v1.1.4
 

@@ -1,3 +1,5 @@
+import containerQueries from "@tailwindcss/container-queries";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -55,6 +57,19 @@ export default {
       purple: "rgba(104, 76, 255, 1)",
       "purple-10": "rgba(104,76,255,0.1)",
       "purple-7": "rgba(104,76,255,0.07)",
+      /**
+       * v7 design-library tokens (Figma "MEW Web App – Design Library"), light
+       * values. Same class names as the v7 app, which generates these classes
+       * from its own theme when it scans this package, so they only drive this
+       * repo's preview.
+       */
+      "background-default": "#f5f5f5",
+      "background-default-hover": "#e6e6e6",
+      "text-default": "#000000",
+      "text-subtle": "#575757",
+      "text-brand": "#005ae5",
+      "border-hover": "#a5a5a5",
+      "border-focus": "#0675ff",
     },
     extend: {
       fontSize: {
@@ -66,6 +81,23 @@ export default {
         "s-32": "32px",
         "s-28": "28px",
         "s-17": "17px",
+        // v7 design-library typography (same names as the v7 app)
+        "label-base": [
+          "16px",
+          { lineHeight: "22px", letterSpacing: "-0.02em", fontWeight: "600" },
+        ],
+        "label-xs": [
+          "12px",
+          { lineHeight: "18px", letterSpacing: "-0.02em", fontWeight: "600" },
+        ],
+        "text-base": [
+          "16px",
+          { lineHeight: "22px", letterSpacing: "0em", fontWeight: "400" },
+        ],
+        "text-sm": [
+          "14px",
+          { lineHeight: "20px", letterSpacing: "0em", fontWeight: "400" },
+        ],
       },
       lineHeight: {
         "p-100": "100%",
@@ -88,5 +120,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [containerQueries],
 };
