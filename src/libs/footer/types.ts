@@ -14,6 +14,15 @@ export interface FooterLink {
   event?: string;
 }
 
+/** Token logos shipped with the library for the donation chips. */
+export const FOOTER_DONATION_TOKENS = ["ethereum", "bitcoin"] as const;
+export type FooterDonationToken = (typeof FOOTER_DONATION_TOKENS)[number];
+
+export interface FooterDonation extends FooterLink {
+  /** Token avatar drawn before the label; omitted → label only. */
+  token?: FooterDonationToken;
+}
+
 export interface FooterLinkGroup {
   /** Accessible name of the group's <nav>. */
   ariaLabel: string;
