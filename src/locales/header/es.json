@@ -1,8 +1,8 @@
 {
     "home": "inicio",
     "open_menu": "abrir menú móvil",
-    "buy": "Comprar criptomonedas",
-    "rewards": "Recompensas",
+    "buy": "Buy crypto",
+    "rewards": "Rewards",
     "swap": "Intercambiar tokens",
     "more_features": {
         "title": "Más funciones",
@@ -34,5 +34,5 @@
         "title": "ethVM",
         "description": "Explorador de cadenas de bloques"
     },
-    "access_wallet": "Acceder a mi wallet"
+    "access_wallet": "Connect wallet"
 }

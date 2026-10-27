@@ -1,8 +1,8 @@
 {
     "home": "главная",
     "open_menu": "открыть мобильное меню",
-    "buy": "Купить криптовалюту",
-    "rewards": "Награды",
+    "buy": "Buy crypto",
+    "rewards": "Rewards",
     "swap": "Обмен токенов",
     "more_features": {
         "title": "Еще",
@@ -34,5 +34,5 @@
         "title": "ethVM",
         "description": "Обозреватель блокчейна"
     },
-    "access_wallet": "Доступ к кошельку"
+    "access_wallet": "Connect wallet"
 }
