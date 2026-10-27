@@ -4,7 +4,12 @@ import type { AmplitudePropType } from "@/libs/types";
 import FooterDonationChip from "./FooterDonationChip.vue";
 import FooterSocialButton from "./FooterSocialButton.vue";
 import MewWordmark from "./MewWordmark.vue";
-import type { FooterLink, FooterLinkGroup, FooterSocial } from "./types";
+import type {
+  FooterDonation,
+  FooterLink,
+  FooterLinkGroup,
+  FooterSocial,
+} from "./types";
 
 /**
  * Footer (v7 design library, Figma component set 1189:2949). One component for
@@ -16,7 +21,7 @@ const props = withDefaults(
   defineProps<{
     linkGroups: FooterLinkGroup[];
     donationText: string;
-    donations: FooterLink[];
+    donations: FooterDonation[];
     communityTitle: string;
     socials: FooterSocial[];
     /** e.g. "© 2026 MyEtherWallet. All rights reserved." */
@@ -75,6 +80,7 @@ const linkTarget = (link: FooterLink) =>
               :key="donation.href"
               :label="donation.label"
               :href="donation.href"
+              :token="donation.token"
               @click="track(donation.event)"
             />
           </div>

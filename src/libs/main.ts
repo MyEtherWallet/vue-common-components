@@ -18,8 +18,14 @@ export { MewHeader, MewFooter, MEWSubscribe, MewHeaderWebComponent, MewSubscribe
 
 // v7 design library (2.x)
 export { AppFooter };
-export { FOOTER_EVENTS, FOOTER_SOCIALS } from "./footer/types";
+export {
+  FOOTER_DONATION_TOKENS,
+  FOOTER_EVENTS,
+  FOOTER_SOCIALS,
+} from "./footer/types";
 export type {
+  FooterDonation,
+  FooterDonationToken,
   FooterLink,
   FooterLinkGroup,
   FooterSocial,

@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import { AppFooter, FOOTER_EVENTS } from "./libs/main";
-import type { FooterLink, FooterLinkGroup, FooterSocial } from "./libs/main";
+import type { FooterDonation, FooterLinkGroup, FooterSocial } from "./libs/main";
 
 const WIDTHS = [
   { label: "Small — 320", box: "w-[320px]" },
@@ -58,9 +58,9 @@ const linkGroups: FooterLinkGroup[] = [
   },
 ];
 
-const donations: FooterLink[] = [
-  { label: "Ethereum Donation", href: "https://www.ethvm.com/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D", event: FOOTER_EVENTS.ethDonation },
-  { label: "Bitcoin Donation", href: "https://www.blockchain.com/explorer/addresses/btc/1DECAF2uSpFTP4L1fAHR8GCLrPqdwdLse9", event: FOOTER_EVENTS.btcDonation },
+const donations: FooterDonation[] = [
+  { label: "Ethereum Donation", href: "https://www.ethvm.com/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D", event: FOOTER_EVENTS.ethDonation, token: "ethereum" },
+  { label: "Bitcoin Donation", href: "https://www.blockchain.com/explorer/addresses/btc/1DECAF2uSpFTP4L1fAHR8GCLrPqdwdLse9", event: FOOTER_EVENTS.btcDonation, token: "bitcoin" },
 ];
 
 const socials: FooterSocial[] = [
