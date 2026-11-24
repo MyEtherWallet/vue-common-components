@@ -11,7 +11,7 @@ import type { FooterSocialName } from "./types";
 /**
  * Social link (Figma footer: 44px circle, 1px border/hover). The glyphs are
  * the library's social icons without their own outline ring, since the button
- * draws it. Figma draws no hover state.
+ * draws it. Figma draws no hover state; hover fills the circle.
  */
 defineProps<{ name: FooterSocialName; label: string; href: string }>();
 
@@ -32,7 +32,7 @@ const ICON: Record<FooterSocialName, string> = {
     target="_blank"
     rel="noopener noreferrer"
     :aria-label="label"
-    class="flex size-11 items-center justify-center overflow-hidden rounded-full border border-border-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+    class="flex size-11 items-center justify-center overflow-hidden rounded-full border border-border-hover transition-colors hover:bg-background-default-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
   >
     <img :src="ICON[name]" alt="" class="size-full" loading="lazy" />
   </a>

@@ -13,7 +13,7 @@ Pin the range that matches your app. Breaking changes within a line bump the maj
 
 # COMPONENTS
 -  vue header and vue footer
-- `AppFooter` (2.x) — v7 design-library footer. Content-only props (already-translated copy, links, socials, version); the consumer owns i18n and URLs. Responsive by its own width (container queries): Small < 688px, Medium 688–1359px, Large ≥ 1360px. Preview: `yarn dev` and open `/#footer`.
+- `AppFooter` (2.x) — v7 design-library footer. Content-only props (already-translated copy, links, socials, version); the consumer owns i18n and URLs. Responsive by its own width (container queries): Small < 688px, Medium 688–1359px, Large ≥ 1360px — but the footer is capped at 500px and centred, so it renders Small until that cap is raised. Pass `transparent` to drop its background colour. Preview: `yarn dev` and open `/#footer`.
 
 ```
 import { AppFooter, FOOTER_EVENTS } from '@myetherwallet/vue-common-components'

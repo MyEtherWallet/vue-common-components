@@ -65,6 +65,7 @@ export default {
        */
       "background-default": "#f5f5f5",
       "background-default-hover": "#e6e6e6",
+      "background-default-pressed": "#d6d6d6",
       "text-default": "#000000",
       "text-subtle": "#575757",
       "text-brand": "#005ae5",

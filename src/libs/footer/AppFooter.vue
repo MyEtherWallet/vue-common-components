@@ -16,6 +16,9 @@ import type {
  * the three Figma sizes, switched by the footer's own width with container
  * queries: Small < 688, Medium 688–1359, Large ≥ 1360. All copy and links come
  * from the consumer (see ./types).
+ *
+ * The footer is capped at 500px and centred, so today it always renders Small;
+ * Medium and Large only come back if the cap on <footer> is raised.
  */
 const props = withDefaults(
   defineProps<{
@@ -34,6 +37,8 @@ const props = withDefaults(
     releaseUrl: string;
     versionLabel?: string;
     amplitude?: AmplitudePropType;
+    /** Drops the background colour so the page behind shows through. */
+    transparent?: boolean;
   }>(),
   { versionLabel: "Version:", amplitude: undefined },
 );
@@ -51,7 +56,12 @@ const linkTarget = (link: FooterLink) =>
 </script>
 
 <template>
-  <footer class="@container w-full bg-background-default">
+  <footer
+    :class="[
+      '@container mx-auto w-full max-w-[500px]',
+      { 'bg-background-default': !transparent },
+    ]"
+  >
     <div
       class="flex flex-col gap-16 px-5 pb-5 pt-24 @[688px]:px-8 @[688px]:pb-8"
     >

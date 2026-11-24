@@ -8,6 +8,12 @@
         <AppFooter v-bind="SAMPLE" :amplitude="{ track: log }" />
       </div>
     </section>
+    <section>
+      <p class="mb-2 font-bold">Transparent — on a page background</p>
+      <div class="w-full bg-gradient-to-b from-blue-10 to-purple-10">
+        <AppFooter v-bind="SAMPLE" transparent :amplitude="{ track: log }" />
+      </div>
+    </section>
   </div>
 </template>
 
