@@ -15,10 +15,7 @@ import type {
  * Footer (v7 design library, Figma component set 1189:2949). One component for
  * the three Figma sizes, switched by the footer's own width with container
  * queries: Small < 688, Medium 688–1359, Large ≥ 1360. All copy and links come
- * from the consumer (see ./types).
- *
- * The footer is capped at 500px and centred, so today it always renders Small;
- * Medium and Large only come back if the cap on <footer> is raised.
+ * from the consumer (see ./types). The footer is capped at 1500px and centred.
  */
 const props = withDefaults(
   defineProps<{
@@ -58,7 +55,7 @@ const linkTarget = (link: FooterLink) =>
 <template>
   <footer
     :class="[
-      '@container mx-auto w-full max-w-[500px]',
+      '@container mx-auto w-full max-w-[1500px]',
       { 'bg-background-default': !transparent },
     ]"
   >
